@@ -19,7 +19,7 @@ test('mobile viewport: create trip, edit gear, pack, reload, catalog and favorit
   await page.screenshot({path:'test-results/mobile-trip.png',fullPage:true});
   await page.goto('/catalog');
   await page.getByLabel('Search gear',{exact:true}).fill('Maven');
-  await page.getByRole('button',{name:'View Maven B1.2 — 8x42',exact:true}).click();
+  await page.getByTestId('product-maven-b12-8x42').click();
   await page.getByRole('button',{name:'Save favorite ♡',exact:true}).click();
   await expect(page.getByRole('button',{name:'Saved to favorites ♥',exact:true})).toBeVisible();
   await page.screenshot({path:'test-results/mobile-product.png',fullPage:true});

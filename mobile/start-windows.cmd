@@ -11,6 +11,8 @@ echo HunterOS mobile - installing project dependencies. Your website is not chan
 call npm install
 if errorlevel 1 goto failed
 echo Sign into the same Expo account you use in Expo Go on your iPhone when prompted.
+call npx expo login
+if errorlevel 1 goto failed
 echo Keep this window open. Use the iPhone Camera to scan the QR code.
 call npx expo start --go
 if errorlevel 1 goto failed
