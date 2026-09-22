@@ -1,0 +1,27 @@
+import { test, expect } from '@playwright/test';
+test('mobile viewport: create trip, edit gear, pack, reload, catalog and favorite',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/');
+  await page.getByRole('button',{name:'Build a trip',exact:true}).click();
+  await page.getByLabel('Trip name',{exact:true}).fill('Family camp test');
+  await page.getByRole('button',{name:'Camping',exact:true}).click();
+  await page.getByTestId('create-trip').click();
+  await expect(page.getByText('Family camp test',{exact:true}).last()).toBeVisible();
+  await page.getByRole('checkbox',{name:'Packed: Backpack / carry system',exact:true}).click();
+  await expect(page.getByRole('checkbox',{name:'Packed: Backpack / carry system',exact:true})).toHaveAttribute('aria-checked','true');
+  await page.reload();
+  await expect(page.getByRole('checkbox',{name:'Packed: Backpack / carry system',exact:true})).toHaveAttribute('aria-checked','true');
+  await page.getByRole('button',{name:'Add custom gear',exact:true}).click();
+  await page.getByLabel('Item name',{exact:true}).fill('Measured pillow');
+  await page.getByLabel('Weight per unit in grams (blank if unknown)',{exact:true}).fill('100');
+  await page.getByRole('button',{name:'Save gear',exact:true}).click();
+  await expect(page.getByText('Measured pillow',{exact:true}).first()).toBeVisible();
+  await page.screenshot({path:'test-results/mobile-trip.png',fullPage:true});
+  await page.goto('/catalog');
+  await page.getByLabel('Search gear',{exact:true}).fill('Maven');
+  await page.getByTestId('product-maven-b12-8x42').click();
+  await page.getByRole('button',{name:'Save favorite ♡',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Saved to favorites ♥',exact:true})).toBeVisible();
+  await page.screenshot({path:'test-results/mobile-product.png',fullPage:true});
+  expect(errors).toEqual([]);
+});
