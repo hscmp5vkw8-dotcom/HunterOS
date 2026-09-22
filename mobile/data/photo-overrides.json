@@ -1,0 +1,24 @@
+{
+  "kifaru-44-mag-ark-medium": {
+    "weightGrams": 2891.65135875,
+    "weightLabel": "6 lb 6 oz · Medium 25-inch ARK included",
+    "weightCheckedAt": "2026-09-22",
+    "photo": {"url":"https://kifaru.net/cdn/shop/files/KIF_44Mag-022-112024_resized.jpg?v=1744135397&width=1024","sourceURL":"https://kifaru.net/products/44-mag","caption":"Kifaru 44 Mag product reference; photo shows a pack with frame. Check belt/frame size and color.","checkedAt":"2026-09-22"}
+  },
+  "kifaru-44-mag-bag": {"weightGrams":1474.1752025,"weightLabel":"3 lb 4 oz · bag only; frame excluded","weightCheckedAt":"2026-09-22"},
+  "maven-b12-8x42": {
+    "weightGrams":759.994015935,"weightLabel":"26.808 oz · manufacturer 8x42 column","weightCheckedAt":"2026-09-22",
+    "photo":{"url":"https://mavenbuilt.com/cdn/shop/products/B1.2_GreyOrange_01_ada3925f-8282-450f-880e-ec5fdf1dc111_800x.jpg?v=1627492438","sourceURL":"https://mavenbuilt.com/collections/binoculars/products/b1-2-8x42-10x42","caption":"Maven B1.2 8x42 in Grey/Orange. Confirm your selected color and magnification.","checkedAt":"2026-09-22"}
+  },
+  "maven-b6-10x50": {
+    "weightGrams":869.99016566,"weightLabel":"30.688 oz · manufacturer 10x50 column","weightCheckedAt":"2026-09-22",
+    "photo":{"url":"https://mavenbuilt.com/cdn/shop/products/B6_GreyOrange_01_6e1c6405-4045-495f-93d0-1c156dd26cc6_800x.jpg?v=1627492105","sourceURL":"https://mavenbuilt.com/products/b-6-10x50-12x50","caption":"Maven B.6 manufacturer reference in Grey/Orange; verify the selected magnification.","checkedAt":"2026-09-22"}
+  },
+  "sitka-dew-point-jacket-600520": {"photo":{"url":"https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1271%2F144853%2F600520-SA_main_dyyt__28321.1789143826.png&w=1080","sourceURL":"https://www.sitkagear.com/products/dew-point-jacket/optifade-subalpine","caption":"SITKA Dew Point Jacket in Optifade Subalpine. Garment weight still needs size-specific review.","checkedAt":"2026-09-22"}},
+  "sitka-dew-point-pant-600521": {"photo":{"url":"https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1270%2F145802%2F600521-SA_main_lwgn__17421.1789144064.png&w=1080","sourceURL":"https://www.sitkagear.com/products/dew-point-pant/optifade-subalpine","caption":"SITKA Dew Point Pant in Optifade Subalpine. Choose actual size before purchase.","checkedAt":"2026-09-22"}},
+  "durston-xmid2-2026": {
+    "weightGrams":975,"weightLabel":"975 g · tent + sacks + six stakes; support poles excluded","weightCheckedAt":"2026-09-22",
+    "note":"Corrected the legacy typical-setup entry: the manufacturer lists 890 g for the complete tent alone and 975 g for tent, stuff sacks and six stakes. Trekking/support poles are separate. This entry uses the typical setup, not the bare tent figure.",
+    "photo":{"url":"https://durstongear.com/cdn/shop/files/Durston-X-Mid-2-2025-Ultralight-Backpacking-Tent-Main-View.jpg?v=1741043373&width=1200","sourceURL":"https://durstongear.com/products/x-mid-2-tent-ultralight-backpacking","caption":"X-Mid 2 image currently used on Durston's product page; its image filename says 2025 while the page describes the 2026 revision.","checkedAt":"2026-09-22"}
+  }
+}
