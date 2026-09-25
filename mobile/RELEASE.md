@@ -1,3 +1,11 @@
+## Current product-picture update: 0.4.2 (8)
+
+Android release 2 is Active / Available to internal testers on the existing private Google Play track. iOS: Uploaded successfully; Apple processing pending. Family Beta assignment and review still need completion. Both cloud builds finished and their archived artifacts passed static identity/permission checks. Runtime source commit: 31ed1a717a055dd682876810666501eec843f4d6. See PRODUCT-PHOTOS.md for the shared catalog, data separation and validation.
+
+The earlier 0.4.1 entries below are historical. Physical upgrades, native behavior, recovery and two-account cloud acceptance remain unverified. No public-store release or new family email was sent.
+
+---
+
 # HunterOS0.4.1 family beta release
 
 Status 2026-09-25T18:52:14.536Z: direct-entry Account Back and private saved feedback are implemented and browser-verified.43 tests, TypeScript and all-platform export pass. A final clean web export confirms0.4.1 metadata. Source is preserved in draft PR5; main remains unchanged. No public store release.

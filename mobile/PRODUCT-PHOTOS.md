@@ -20,6 +20,8 @@ Only allowlisted manufacturer HTTPS pages can be fetched. Redirects stay on the 
 
 ## Validation
 
-58 unit checks (15 new photo/import/privacy checks), TypeScript, and Android/iOS/web exports passed during implementation. All 57 distinct bundled image URLs returned an image response. Live browser import, publication, anonymous shared read, private field separation and locker display were checked using the real Exo K4 2200 page. Physical phone/upgrade tests are separate from browser verification.
+58 unit checks (15 new photo/import/privacy checks), TypeScript, and Android/iOS/web exports passed during implementation. All 57 distinct bundled image URLs returned an image response. Live browser import, publication, anonymous shared read, private field separation and locker display were checked using the real Exo K4 2200 page. An independent signed-out browser session added the shared product to a trip and kept its packing state after reload. Cached shared details remained available across a reload with the backend blocked; reconnect cleared the warning. Temporary network/viewport overrides were removed. Physical phone/upgrade tests are separate from browser verification.
+
+Both 0.4.2 (8) native builds finished and their archived artifacts passed static package/version/permission checks. Android uses the existing signing certificate and is published to the private Play internal-testing track. The iOS upload succeeded; consult RELEASE.md for Apple processing/review status. Testers must install 0.4.2 before shared catalog updates can appear.
 
 Photo expansion sources and dates are recorded per product in `data/photo-overrides.json`; run `npm run catalog` to regenerate the catalog. Do not change photo-only entries to source-checked specification status.
