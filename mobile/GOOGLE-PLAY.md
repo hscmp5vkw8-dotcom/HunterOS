@@ -1,3 +1,11 @@
+## Current product-picture update: 0.4.2 (8)
+
+Android release 2 is Active / Available to internal testers on the existing private Google Play track. iOS: Uploaded successfully; Apple processing pending. Family Beta assignment and review still need completion. Both cloud builds finished and their archived artifacts passed static identity/permission checks. Runtime source commit: 31ed1a717a055dd682876810666501eec843f4d6. See PRODUCT-PHOTOS.md for the shared catalog, data separation and validation.
+
+The earlier 0.4.1 entries below are historical. Physical upgrades, native behavior, recovery and two-account cloud acceptance remain unverified. No public-store release or new family email was sent.
+
+---
+
 # HunterOS on Google Play - internal family testing
 
 Updated September 25, 2026. Google Play internal testing is active for version 0.4.1 (7). The scope is private testing, not a public production launch. Internal testing supports up to 100 selected testers and Play Store app updates.

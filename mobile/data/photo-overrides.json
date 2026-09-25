@@ -3,22 +3,520 @@
     "weightGrams": 2891.65135875,
     "weightLabel": "6 lb 6 oz · Medium 25-inch ARK included",
     "weightCheckedAt": "2026-09-22",
-    "photo": {"url":"https://kifaru.net/cdn/shop/files/KIF_44Mag-022-112024_resized.jpg?v=1744135397&width=1024","sourceURL":"https://kifaru.net/products/44-mag","caption":"Kifaru 44 Mag product reference; photo shows a pack with frame. Check belt/frame size and color.","checkedAt":"2026-09-22"}
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF_44Mag-022-112024_resized.jpg?v=1744135397&width=1024",
+      "sourceURL": "https://kifaru.net/products/44-mag",
+      "caption": "Kifaru 44 Mag product reference; photo shows a pack with frame. Check belt/frame size and color.",
+      "checkedAt": "2026-09-22"
+    }
   },
-  "kifaru-44-mag-bag": {"weightGrams":1474.1752025,"weightLabel":"3 lb 4 oz · bag only; frame excluded","weightCheckedAt":"2026-09-22"},
+  "kifaru-44-mag-bag": {
+    "weightGrams": 1474.1752025,
+    "weightLabel": "3 lb 4 oz · bag only; frame excluded",
+    "weightCheckedAt": "2026-09-22",
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF_44Mag-022-112024_resized.jpg?v=1744135397&width=1000",
+      "sourceURL": "https://kifaru.net/products/44-mag",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
   "maven-b12-8x42": {
-    "weightGrams":759.994015935,"weightLabel":"26.808 oz · manufacturer 8x42 column","weightCheckedAt":"2026-09-22",
-    "photo":{"url":"https://mavenbuilt.com/cdn/shop/products/B1.2_GreyOrange_01_ada3925f-8282-450f-880e-ec5fdf1dc111_800x.jpg?v=1627492438","sourceURL":"https://mavenbuilt.com/collections/binoculars/products/b1-2-8x42-10x42","caption":"Maven B1.2 8x42 in Grey/Orange. Confirm your selected color and magnification.","checkedAt":"2026-09-22"}
+    "weightGrams": 759.994015935,
+    "weightLabel": "26.808 oz · manufacturer 8x42 column",
+    "weightCheckedAt": "2026-09-22",
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/B1.2_GreyOrange_01_ada3925f-8282-450f-880e-ec5fdf1dc111_800x.jpg?v=1627492438",
+      "sourceURL": "https://mavenbuilt.com/collections/binoculars/products/b1-2-8x42-10x42",
+      "caption": "Maven B1.2 8x42 in Grey/Orange. Confirm your selected color and magnification.",
+      "checkedAt": "2026-09-22"
+    }
   },
   "maven-b6-10x50": {
-    "weightGrams":869.99016566,"weightLabel":"30.688 oz · manufacturer 10x50 column","weightCheckedAt":"2026-09-22",
-    "photo":{"url":"https://mavenbuilt.com/cdn/shop/products/B6_GreyOrange_01_6e1c6405-4045-495f-93d0-1c156dd26cc6_800x.jpg?v=1627492105","sourceURL":"https://mavenbuilt.com/products/b-6-10x50-12x50","caption":"Maven B.6 manufacturer reference in Grey/Orange; verify the selected magnification.","checkedAt":"2026-09-22"}
+    "weightGrams": 869.99016566,
+    "weightLabel": "30.688 oz · manufacturer 10x50 column",
+    "weightCheckedAt": "2026-09-22",
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/B6_GreyOrange_01_6e1c6405-4045-495f-93d0-1c156dd26cc6_800x.jpg?v=1627492105",
+      "sourceURL": "https://mavenbuilt.com/products/b-6-10x50-12x50",
+      "caption": "Maven B.6 manufacturer reference in Grey/Orange; verify the selected magnification.",
+      "checkedAt": "2026-09-22"
+    }
   },
-  "sitka-dew-point-jacket-600520": {"photo":{"url":"https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1271%2F144853%2F600520-SA_main_dyyt__28321.1789143826.png&w=1080","sourceURL":"https://www.sitkagear.com/products/dew-point-jacket/optifade-subalpine","caption":"SITKA Dew Point Jacket in Optifade Subalpine. Garment weight still needs size-specific review.","checkedAt":"2026-09-22"}},
-  "sitka-dew-point-pant-600521": {"photo":{"url":"https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1270%2F145802%2F600521-SA_main_lwgn__17421.1789144064.png&w=1080","sourceURL":"https://www.sitkagear.com/products/dew-point-pant/optifade-subalpine","caption":"SITKA Dew Point Pant in Optifade Subalpine. Choose actual size before purchase.","checkedAt":"2026-09-22"}},
+  "sitka-dew-point-jacket-600520": {
+    "photo": {
+      "url": "https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1271%2F144853%2F600520-SA_main_dyyt__28321.1789143826.png&w=1080",
+      "sourceURL": "https://www.sitkagear.com/products/dew-point-jacket/optifade-subalpine",
+      "caption": "SITKA Dew Point Jacket in Optifade Subalpine. Garment weight still needs size-specific review.",
+      "checkedAt": "2026-09-22"
+    }
+  },
+  "sitka-dew-point-pant-600521": {
+    "photo": {
+      "url": "https://www.sitkagear.com/_next/image?q=100&url=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-bdswytx2s5%2Fimages%2Fstencil%2Foriginal%2Fproducts%2F1270%2F145802%2F600521-SA_main_lwgn__17421.1789144064.png&w=1080",
+      "sourceURL": "https://www.sitkagear.com/products/dew-point-pant/optifade-subalpine",
+      "caption": "SITKA Dew Point Pant in Optifade Subalpine. Choose actual size before purchase.",
+      "checkedAt": "2026-09-22"
+    }
+  },
   "durston-xmid2-2026": {
-    "weightGrams":975,"weightLabel":"975 g · tent + sacks + six stakes; support poles excluded","weightCheckedAt":"2026-09-22",
-    "note":"Corrected the legacy typical-setup entry: the manufacturer lists 890 g for the complete tent alone and 975 g for tent, stuff sacks and six stakes. Trekking/support poles are separate. This entry uses the typical setup, not the bare tent figure.",
-    "photo":{"url":"https://durstongear.com/cdn/shop/files/Durston-X-Mid-2-2025-Ultralight-Backpacking-Tent-Main-View.jpg?v=1741043373&width=1200","sourceURL":"https://durstongear.com/products/x-mid-2-tent-ultralight-backpacking","caption":"X-Mid 2 image currently used on Durston's product page; its image filename says 2025 while the page describes the 2026 revision.","checkedAt":"2026-09-22"}
+    "weightGrams": 975,
+    "weightLabel": "975 g · tent + sacks + six stakes; support poles excluded",
+    "weightCheckedAt": "2026-09-22",
+    "note": "Corrected the legacy typical-setup entry: the manufacturer lists 890 g for the complete tent alone and 975 g for tent, stuff sacks and six stakes. Trekking/support poles are separate. This entry uses the typical setup, not the bare tent figure.",
+    "photo": {
+      "url": "https://durstongear.com/cdn/shop/files/Durston-X-Mid-2-2025-Ultralight-Backpacking-Tent-Main-View.jpg?v=1741043373&width=1200",
+      "sourceURL": "https://durstongear.com/products/x-mid-2-tent-ultralight-backpacking",
+      "caption": "X-Mid 2 image currently used on Durston's product page; its image filename says 2025 while the page describes the 2026 revision.",
+      "checkedAt": "2026-09-22"
+    }
+  },
+  "sitka-jetstream-jacket-600496": {
+    "photo": {
+      "url": "https://cdn11.bigcommerce.com/s-bdswytx2s5/images/stencil/original/attribute_rule_images/15068_source_1787597659.png",
+      "sourceURL": "https://www.sitkagear.com/products/jetstream-jacket/optifade-subalpine",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "kifaru-bedlam-bag": {
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF_BEDLAM_022_Hero.jpg?v=1731332581&width=1000",
+      "sourceURL": "https://kifaru.net/products/bedlam",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "kifaru-stryker-xl-bag": {
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF-STRYKER-RG-022_Hero.jpg?v=1764816466&width=1000",
+      "sourceURL": "https://kifaru.net/products/stryker-xl",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "kifaru-ark-frame": {
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF_ARK_0_284636be-8dd4-4c88-8b28-fbd699dad7f2.jpg?v=1724708101&width=1000",
+      "sourceURL": "https://kifaru.net/products/ark-frame",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "kifaru-kutthroat": {
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/products/Kutthroat_1.web.jpg?v=1677696750&width=1000",
+      "sourceURL": "https://kifaru.net/products/kutthroat",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "maven-b6-12x50": {
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/B6_GreyOrange_01_6e1c6405-4045-495f-93d0-1c156dd26cc6_1024x.jpg?v=1627492105&width=1000",
+      "sourceURL": "https://mavenbuilt.com/products/b-6-10x50-12x50",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "maven-b12-10x42": {
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/B1.2_GreyOrange_01_ada3925f-8282-450f-880e-ec5fdf1dc111_1024x.jpg?v=1627492438&width=1000",
+      "sourceURL": "https://mavenbuilt.com/collections/binoculars/products/b1-2-8x42-10x42",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "maven-c1-8x42": {
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/C1_GreyOrange_01_696bc0c4-5346-4814-b51d-0790640b867f_1024x.jpg?v=1588793881&width=1000",
+      "sourceURL": "https://mavenbuilt.com/collections/binoculars/products/c-1-8x42-10x42-12x42",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "maven-c1-10x42": {
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/C1_GreyOrange_01_696bc0c4-5346-4814-b51d-0790640b867f_1024x.jpg?v=1588793881&width=1000",
+      "sourceURL": "https://mavenbuilt.com/collections/binoculars/products/c-1-8x42-10x42-12x42",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "maven-c1-12x42": {
+    "photo": {
+      "url": "https://mavenbuilt.com/cdn/shop/products/C1_GreyOrange_01_696bc0c4-5346-4814-b51d-0790640b867f_1024x.jpg?v=1588793881&width=1000",
+      "sourceURL": "https://mavenbuilt.com/collections/binoculars/products/c-1-8x42-10x42-12x42",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "kifaru-hoodlum-ark-medium": {
+    "photo": {
+      "url": "https://kifaru.net/cdn/shop/files/KIF_Hoodlum_022-Hero.jpg?v=1748951822&width=1000",
+      "sourceURL": "https://kifaru.net/products/hoodlum-2",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "sitka-core-lightweight-hoodie": {
+    "photo": {
+      "url": "https://cdn11.bigcommerce.com/s-bdswytx2s5/images/stencil/original/attribute_rule_images/3613_source_1788547327.png",
+      "sourceURL": "https://www.sitkagear.com/products/core-lightweight-hoodie/optifade-subalpine",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "sitka-intercept-pant": {
+    "photo": {
+      "url": "https://cdn11.bigcommerce.com/s-bdswytx2s5/images/stencil/original/attribute_rule_images/7984_source_1787597359.png",
+      "sourceURL": "https://www.sitkagear.com/products/intercept-pant/optifade-subalpine",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "sitka-ambient-100": {
+    "photo": {
+      "url": "https://cdn11.bigcommerce.com/s-bdswytx2s5/images/stencil/original/attribute_rule_images/8056_source_1789143854.png",
+      "sourceURL": "https://www.sitkagear.com/products/ambient-100-hooded-jacket/optifade-subalpine",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "sawyer-squeeze-filter": {
+    "photo": {
+      "url": "https://cdn.prod.website-files.com/61549f9352f3558157a226ea/6776e9804a8c2ee279d54f97_sawyer-squeeze-water-filteration.png",
+      "sourceURL": "https://www.sawyer.com/product/squeeze-water-filter-system",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "msr-pocketrocket-2": {
+    "photo": {
+      "url": "https://cascadedesigns.com/cdn/shop/files/09884_MSR_PocketRocket2.jpg?v=1724820262&width=1000",
+      "sourceURL": "https://cascadedesigns.com/products/pocketrocket-2-stove",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "thermarest-xlite-nxt-regular": {
+    "photo": {
+      "url": "https://cascadedesigns.com/cdn/shop/files/11627_thermarest_neoair_xlite_nxt_solarflare_regular_angle.jpg?v=1724820257&width=1000",
+      "sourceURL": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "thermarest-xlite-nxt-wide": {
+    "photo": {
+      "url": "https://cascadedesigns.com/cdn/shop/files/11627_thermarest_neoair_xlite_nxt_solarflare_regular_angle.jpg?v=1724820257&width=1000",
+      "sourceURL": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "wm-versalite-6ft": {
+    "photo": {
+      "url": "https://www.westernmountaineering.com/wp-content/uploads/2015/06/Versalite-top-closed.jpg",
+      "sourceURL": "https://www.westernmountaineering.com/product/versalite/",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "wm-versalite-56": {
+    "photo": {
+      "url": "https://www.westernmountaineering.com/wp-content/uploads/2015/06/Versalite-top-closed.jpg",
+      "sourceURL": "https://www.westernmountaineering.com/product/versalite/",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "wm-versalite-66": {
+    "photo": {
+      "url": "https://www.westernmountaineering.com/wp-content/uploads/2015/06/Versalite-top-closed.jpg",
+      "sourceURL": "https://www.westernmountaineering.com/product/versalite/",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "sawyer-micro-squeeze": {
+    "photo": {
+      "url": "https://cdn.prod.website-files.com/61549f9352f3558157a226ea/6776e71314ec24e0364e8f96_Micro-squeeze-water-filteration-system-new-cap.png",
+      "sourceURL": "https://www.sawyer.com/product/micro-squeeze-water-filtration-system",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "garmin-inreach-mini2": {
+    "photo": {
+      "url": "https://res.garmin.com/en/products/010-02602-00/v/cf-lg-751bd56a-08aa-4b4f-a932-0e2d8ac71de7.jpg",
+      "sourceURL": "https://www.garmin.com/en-US/p/765374",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "garmin-gpsmap67i": {
+    "photo": {
+      "url": "https://res.garmin.com/en/products/010-02812-00/v/cf-lg.jpg",
+      "sourceURL": "https://www.garmin.com/en-US/p/890109",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-chicken-dumplings": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55165-chicken-and-dumplings-pouch_1024x1024.jpg?v=1756029741&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/chicken-and-dumplings-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-chicken-fajita": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55175-chicken-fajita-bowl-pouch_1024x1024.jpg?v=1756029929&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/chicken-fajita-bowl-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-lasagna": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55125-lasagna-with-meat-sauce-pouch_1024x1024.jpg?v=1756029539&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/lasagna-with-meat-sauce-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-beef-stroganoff": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55149-beef-stroganoff-with-noodles-pouch_1024x1024.jpg?v=1756029646&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/beef-stroganoff-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-beef-stew": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55145-beef-stew-pouch_1024x1024.jpg?v=1756029595&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/beef-stew-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-breakfast-skillet": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55451-breakfast-skillet-pouch_1024x1024.jpg?v=1756030647&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/breakfast-skillet-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-chili-mac": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55106-chili-mac-with-beef-pouch_1024x1024.jpg?v=1756029430&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/chili-mac-with-beef-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-tikka": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55179-chicken-tikka-masala-pouch_1024x1024.jpg?v=1756030124&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/chicken-tikka-masala-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-biscuits-gravy": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55453-biscuits-and-gravy-pouch_1024x1024.jpg?v=1756030691&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/biscuits-and-gravy-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "mh-granola-blueberry": {
+    "photo": {
+      "url": "https://mountainhouse.com/cdn/shop/files/55450-granola-with-milk-and-blueberries-pouch_1024x1024.jpg?v=1756030605&width=1000",
+      "sourceURL": "https://mountainhouse.com/products/granola-with-milk-and-blueberries-pouch",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "helinox-chair-zero-l": {
+    "photo": {
+      "url": "https://helinox.com/cdn/shop/files/helinox_chair_zero_l_grey_hero.jpg?crop=center&height=1024&v=1754052301&width=1000",
+      "sourceURL": "https://helinox.com/products/chair-zero-l",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "helinox-chair-zero-lt": {
+    "photo": {
+      "url": "https://helinox.com/cdn/shop/files/chairzero_lt_sizedhero_cyan.png?crop=center&height=1024&v=1770286309&width=1000",
+      "sourceURL": "https://helinox.com/products/chair-zero-lt",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "helinox-table-zero-lt": {
+    "photo": {
+      "url": "https://helinox.com/cdn/shop/files/tablezero_lt_sizedhero.png?crop=center&height=1024&v=1770286256&width=1000",
+      "sourceURL": "https://helinox.com/products/table-zero-lt",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "helinox-chair-zero-highback": {
+    "photo": {
+      "url": "https://helinox.com/cdn/shop/files/helinox_chair_zero_high_back_grey_hero.jpg?crop=center&height=1024&v=1756891146&width=1000",
+      "sourceURL": "https://helinox.com/products/chair-zero-high-back",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "nemo-fillo-elite": {
+    "photo": {
+      "url": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/o3y53f8dqqdrdcnreofw.jpg?v=1776198386",
+      "sourceURL": "https://www.nemoequipment.com/products/fillo-elite-backpacking-pillow",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "nemo-fillo": {
+    "photo": {
+      "url": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/d2njobgf4usczrhydxwc.jpg?v=1776198392",
+      "sourceURL": "https://www.nemoequipment.com/products/fillo-backpacking-pillow",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "nemo-dragonfly-osmo2": {
+    "photo": {
+      "url": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/ppilrwrnoe1zbcob6a3n.jpg?v=1776198381",
+      "sourceURL": "https://www.nemoequipment.com/products/dragonfly-osmo",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-nemo-tensor-all-season": {
+    "photo": {
+      "url": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/upvd6kpv23f4cxosmt4x.jpg?v=1776198384",
+      "sourceURL": "https://www.nemoequipment.com/products/tensor-all-season-insulated-sleeping-pad",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-exo-mtn-gear-k4-5000": {
+    "photo": {
+      "url": "https://exomtngear.com/cdn/shop/products/K4-5000-CY_1200x1200.jpg?v=1678290971&width=1000",
+      "sourceURL": "https://exomtngear.com/products/k4-5000-pack-system",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "nemo-hornet-osmo2": {
+    "photo": {
+      "url": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/vpizutjrsyhdgytfey9c.jpg?v=1776198388",
+      "sourceURL": "https://www.nemoequipment.com/products/hornet-osmo",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "food-big-1": {
+    "photo": {
+      "url": "https://peakrefuel.com/cdn/shop/files/Chicken_Alfredo_Pasta-Front.png?v=1788472662&width=1000",
+      "sourceURL": "https://peakrefuel.com/products/chicken-alfredo",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "food-big-0": {
+    "photo": {
+      "url": "https://peakrefuel.com/cdn/shop/files/Beef_Pasta_Marinara-Front.png?v=1788472801&width=1000",
+      "sourceURL": "https://peakrefuel.com/products/beef-pasta-marinara-meal",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-exo-mtn-gear-k4-7200": {
+    "photo": {
+      "url": "https://exomtngear.com/cdn/shop/products/K4-7200-RG_1200x1200.jpg?v=1678291021&width=1000",
+      "sourceURL": "https://exomtngear.com/products/k4-7200-pack-system",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-grayl-geopress-24-oz": {
+    "photo": {
+      "url": "https://grayl.com/cdn/shop/files/GEO_BALI_BLUE_STD_1800px_61db9ee3-9d6c-46d8-9d82-51bff7764d9c_450x450.png?v=1761960022&width=1000",
+      "sourceURL": "https://grayl.com/products/24oz-geopress-filter-purifier-water-bottle-nature-edition",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-kenetrek-mountain-extreme-400": {
+    "photo": {
+      "url": "https://kenetrek.com/cdn/shop/files/KE-420-400_1024x1024.jpg?v=1712174598&width=1000",
+      "sourceURL": "https://kenetrek.com/products/mountain-extreme-400",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-goal-zero-lighthouse-600": {
+    "photo": {
+      "url": "https://goalzero.com/cdn/shop/products/2a80fdd023ddde5f7476536c35575890.jpg?v=1642615105&width=1000",
+      "sourceURL": "https://goalzero.com/products/lighthouse-600-lantern-usb-power-hub",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-goal-zero-yeti-300": {
+    "photo": {
+      "url": "https://goalzero.com/cdn/shop/files/Y300_2copy.jpg?v=1709162280&width=1000",
+      "sourceURL": "https://goalzero.com/products/yeti-300-portable-power-station-lifepo4-battery",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-snow-peak-titanium-single-450": {
+    "photo": {
+      "url": "https://www.snowpeak.com/cdn/shop/products/mg-143_alt_04.jpg?v=1642437764&width=1000",
+      "sourceURL": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-argali-high-country-game-bags": {
+    "photo": {
+      "url": "https://argalioutdoors.com/cdn/shop/files/ARG_HC_1200x1200-1.png?v=1724192183&width=1000",
+      "sourceURL": "https://argalioutdoors.com/products/high-country-pack",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-biolite-campstove-2": {
+    "photo": {
+      "url": "https://www.bioliteenergy.com/cdn/shop/files/campstove-2csc0200-382115.png?v=1711827654&width=1000",
+      "sourceURL": "https://www.bioliteenergy.com/products/campstove-2-plus",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-aeropress-go": {
+    "photo": {
+      "url": "https://aeropress.com/cdn/shop/files/AP_GO_PDP_ATF_1_1024x.png?v=1757106750&width=1000",
+      "sourceURL": "https://aeropress.com/products/aeropress-go-travel-coffee-press",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
+  },
+  "x-therm-a-rest-neoair-xlite-nxt": {
+    "photo": {
+      "url": "https://cascadedesigns.com/cdn/shop/files/11627_thermarest_neoair_xlite_nxt_solarflare_regular_angle.jpg?v=1724820257&width=1000",
+      "sourceURL": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+      "caption": "Manufacturer product reference. Confirm color, size, model year and included accessories.",
+      "checkedAt": "2026-09-25"
+    }
   }
 }
