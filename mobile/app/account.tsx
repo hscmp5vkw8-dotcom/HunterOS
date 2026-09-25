@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Text } from 'react-native';
 import type { User } from '@supabase/supabase-js';
 import { useRouter } from 'expo-router';
@@ -88,5 +88,6 @@ export default function Account() {
  {mode==='reset'&&<Button title="Save new password" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.finishRecovery(password,repeat);changeMode('signin');return 'Password updated. Sign in with your new password. Your local plans have not changed.';})}/>}
  {mode!=='signin'&&<Button secondary title="Return to sign in" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.cancelRecovery();changeMode('signin');return '';})}/>}
  <Text style={s.small}>Use your own account. Each account has its own cloud backup.</Text></Card>}
- <ErrorText message={message}/><Button secondary title="Back" disabled={busy} onPress={()=>router.back()}/></Page>;
+ <ErrorText message={message}/><Button secondary title="Back" disabled={busy} onPress={()=>{if(router.canGoBack())router.back();else router.replace('/');}}/></Page>;
 }
+
