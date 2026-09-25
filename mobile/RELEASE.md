@@ -4,12 +4,12 @@ Status 2026-09-25T18:52:14.536Z: direct-entry Account Back and private saved fee
 
 ## Current candidates
 
-- Android0.4.1(6), preview standalone APK: IN_QUEUE. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/8b5afdab-a17a-46a3-9c55-f2e095285a99
-- iOS0.4.1(7), production/TestFlight candidate: IN_PROGRESS. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/a190877d-119b-4ecd-93e6-cbe79070e039
+- Android0.4.1(6), preview standalone APK: IN_PROGRESS at19:24UTC. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/8b5afdab-a17a-46a3-9c55-f2e095285a99
+- iOS0.4.1(7): FINISHED; IPA archived and inspected. EAS submission55a9ba86-0413-4f80-ad57-bd9d295c70d5 finished19:19:34UTC. Apple build84e5adb9-2ce7-498e-b4fc-66e6810a6919 is VALID, internal IN_BETA_TESTING, external READY_FOR_BETA_SUBMISSION as of19:25UTC. Owner test notes saved. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/a190877d-119b-4ecd-93e6-cbe79070e039
 - Existing0.4.0 Android5/iOS6 archives do not contain the Back/feedback changes. iOS0.4.0(6) was processed for internal testing only. External family TestFlight remains0.1.2(3).
 - Earlier0.4.0 iOS5 is superseded for unused permission descriptions and must not be submitted.
 
-Builds run in Expo's cloud independently of the laptop. Do not submit duplicate jobs. EAS autoIncrement advanced local counters to Android6/iOS7. Check these exact job IDs and archive successful artifacts before sharing links.
+Builds run in Expo's cloud independently of the laptop. Do not submit duplicate jobs. EAS autoIncrement advanced local counters to Android7/iOS7 after the separate Play AAB request. Check these exact job IDs and archive successful artifacts before sharing links.
 
 ## Completed
 
@@ -21,7 +21,7 @@ Builds run in Expo's cloud independently of the laptop. Do not submit duplicate 
 ## Before family notification
 
 1. Inspect the completed0.4.1 APK/IPA for identity, counters, signer continuity and intended permissions. Preserve hashes and matching source. Old artifact checks do not verify these new files.
-2. Upload the valid iOS candidate to TestFlight, verify processing, add notes and complete required external beta review/Family Beta assignment.
+2. iOS7 upload, processing and owner notes are complete. Finish owner acceptance, required external beta review and Family Beta assignment.
 3. Test real recovery/code/new-password/sign-in. The owner enters and submits the changed password. Verify email authentication headers and expired/reused codes; do not infer them from signup success.
 4. Use two real accounts for cloud upload/restore and switching. SQL isolation checks do not replace client tests. Restore replaces a workspace; export a backup first.
 5. On phones, verify upgrade from0.1.2 preserves trips/gear/favorites/packing, session background/foreground, camera denial/manual entry/known and unknown barcode, offline force-close/reopen/reconnect, and saved feedback receipt/retry. Do not uninstall to update.
@@ -29,9 +29,9 @@ Builds run in Expo's cloud independently of the laptop. Do not submit duplicate 
 
 ## Distribution
 
-Use EAS CLI24.7 or a reviewed compatible version. After the current iOS build finishes and inspection passes:
+Use EAS CLI24.7 or a reviewed compatible version. iOS7 is already uploaded and processed. Do not submit it again. Check submission55a9ba86-0413-4f80-ad57-bd9d295c70d5 and Apple build84e5adb9-2ce7-498e-b4fc-66e6810a6919. For a future inspected candidate, use its own new ID:
 
-    npx eas-cli@24.7.0 submit --platform ios --profile production --id a190877d-119b-4ecd-93e6-cbe79070e039
+    npx eas-cli@24.7.0 submit --platform ios --profile production --id FUTURE_BUILD_ID
 
 Android preview produces an APK installed over the existing app. Later fixes require a new APK link/install; Google Play automatic updates are not configured. iPhone fixes appear in TestFlight after processing/review; testers can enable TestFlight automatic updates. EAS Update is not configured.
 
@@ -43,4 +43,4 @@ Finish account deletion and its verified server-side process, privacy/support UR
 
 ## Google Play setup in progress
 
-The owner requested Play Store automatic updates for Android family testers. A separate 0.4.1/code7 AAB is queued: 99481e0b-b094-4fcb-8c0e-36552fa6a804. The business Google account has two-step verification enabled; legal account type and developer registration remain pending. GOOGLE-PLAY.md records account, signing continuity, tester opt-in and auto-update requirements. No Play release or payment is completed. Original APK6 and iOS7 jobs are preserved.
+The owner requested Play Store automatic updates for Android family testers. A separate 0.4.1/code7 AAB is queued: 99481e0b-b094-4fcb-8c0e-36552fa6a804. The business Google account has two-step verification enabled and personal GetHunterOS developer registration completed by the owner. Google blocks Create app until identity, physical Android and contact-phone verification complete. GOOGLE-PLAY.md records account, signing continuity, tester opt-in and auto-update requirements. No Play app or release is created. Owner completed registration; a separate fee receipt was not inspected. Original APK6 and iOS7 jobs are preserved.

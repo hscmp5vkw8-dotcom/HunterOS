@@ -4,7 +4,7 @@ Prepared September 25, 2026. Google Play distribution is requested but is not li
 
 ## Current build
 
-- Version 0.4.1, Android version code 7: AAB build requested using the existing EAS production profile; still queued at 19:06 UTC.
+- Version 0.4.1, Android version code 7: AAB build requested using the existing EAS production profile; still queued at 19:24 UTC.
 - EAS job: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/99481e0b-b094-4fcb-8c0e-36552fa6a804
 - Source before counter increment: 40fe9075d4b8dd891ba2dfb27bec7b8f75b9ce15. The code includes private saved feedback and the Account Back fallback.
 - Existing APK preview build 6 is a separate fallback route. Do not upload an APK as the new Play app's bundle or rebuild an already successful AAB just to download it.
@@ -12,9 +12,13 @@ Prepared September 25, 2026. Google Play distribution is requested but is not li
 
 ## Account and release work still required
 
-The owner chose the HunterOS business Google account. Two-step verification is now enabled and verified in Google; Play Console has advanced to legal account-type selection. Legal account type is still unconfirmed; do not infer a registered organization from a business email/domain. Registration has a one-time US$25 fee, identity checks and a Developer Distribution Agreement. Obtain the owner's needed details and leave any required credential entry, agreement acceptance and payment decisions to the owner. No fee has been paid by this task.
+The owner completed registration for personal developer account GetHunterOS, ID5829532387748741859, under jacob@gethunteros.com. Two-step verification is enabled. Owner explicitly confirmed no registered company. HunterOS as a public developer name was already taken; GetHunterOS was accepted. The app's intended name remains HunterOS.
 
-After registration, create HunterOS as an English app with free tester access and select the internal testing track. Each family tester needs their own Google/Workspace account, with that exact address on the tester list, and must opt in through the actual generated test link. Android family Google addresses are still required; do not use the iPhone tester's Hotmail address as an assumed Android login. The owner can join for setup, but that does not authorize making family members account administrators.
+Verified September25 at19:24UTC: Play Console has Create app disabled until account verifications complete. It requires a government photo ID plus valid address document, a real Android device check, then contact-phone verification after identity approval. The identity window and device instructions are open for the owner. No ID/address documents or payment credentials are copied into project records. Registration was completed by the owner outside automation; no separate fee receipt was inspected and the agent did not make a payment. Do not ask the owner to register or pay again.
+
+Device verification is performed by the account owner: open the Google Play Console app on a non-rooted Android10+ physical phone, sign in as jacob@gethunteros.com, choose GetHunterOS and follow Verify. A family phone can be used; this does not require permanently owning it. Follow the actual dashboard gates. Photo ID/address upload remains directly between the owner and Google.
+
+After account verification unlocks app creation, create HunterOS as an English app with free tester access and select the internal testing track. Each family tester needs their own Google/Workspace account, with that exact address on the tester list, and must opt in through the actual generated test link. Android family Google addresses are still required; do not use the iPhone tester's Hotmail address as an assumed Android login. The owner can join for setup, but that does not authorize making family members account administrators.
 
 Google Play requires a signed AAB for this new app. The production EAS profile builds that format. The existing production submit profile deliberately targets internal with releaseStatus draft. Complete the first release through Play Console, or later connect a narrowly scoped Google service account for EAS submissions. Current Expo documentation permits a first release through EAS Submit once its prerequisites are met; a manual first upload is optional. No new service account/key is created or connected yet.
 
