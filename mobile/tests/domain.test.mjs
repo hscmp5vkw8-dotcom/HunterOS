@@ -21,7 +21,7 @@ test('owned gear excluded from unowned budget',()=>{const a={...newGear('Owned')
 test('food calories use package counts and preserve missing data',()=>{const a={...newGear('Meal','Food & nutrition'),quantity:3,calories:600},b=newGear('Snack','Food & nutrition');const x=totals([a,b]);assert.equal(x.calories,1800);assert.equal(x.unknownCalories,1);});
 test('filters combine brand and query',()=>{const result=filterProducts(products,{brand:'SITKA',query:'rain'});assert.ok(result.length);assert.ok(result.every(p=>p.brand==='SITKA'));});
 test('weight sorting puts unknowns after known weights',()=>{const a=filterProducts(products,{sort:'weight'}),firstUnknown=a.findIndex(p=>p.weightGrams===null);assert.ok(firstUnknown>0);assert.ok(a.slice(firstUnknown).every(p=>p.weightGrams===null));});
-test('favorites filter does not pollute ordinary searches',()=>{const a=filterProducts(products,{favorites:[]});assert.equal(a.length,0);assert.equal(filterProducts(products,{}).length,131);});
+test('favorites filter does not pollute ordinary searches',()=>{const a=filterProducts(products,{favorites:[],scannedProducts:[]});assert.equal(a.length,0);assert.equal(filterProducts(products,{}).length,131);});
 test('photo-only filter returns only configured photos',()=>{assert.ok(filterProducts(products,{photosOnly:true}).every(p=>p.photo));});
 test('valid state round trips and drops unknown root keys',()=>{const s=state();s.extra='untrusted';const out=validateWorkspace(JSON.parse(JSON.stringify(s)));assert.equal(out.trips.length,1);assert.equal(out.extra,undefined);});
 test('invalid quantities / NaN / negative weight rejected',()=>{for(const patch of [{quantity:0},{quantity:1.5},{grams:-2},{grams:NaN}])assert.throws(()=>validateGear({...newGear('Gear'),...patch}));});
