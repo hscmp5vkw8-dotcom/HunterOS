@@ -1,4 +1,4 @@
-# HunterOS mobile alpha 0.3
+# HunterOS mobile alpha 0.4
 
 A native React Native + Expo Router implementation, not an HTML wrapper. Preserves the dark forest/lime design of the prototype. No cloud credentials are required for offline/local use. Accounts and cloud sync activate when the owner's Supabase project variables are configured.
 
@@ -14,6 +14,10 @@ npm start
 On iPhone, open Expo Go and use the same Expo account as the terminal. Scan the generated QR code with Camera. Keep the computer online on the same Wi-Fi. On Windows, `start-windows.cmd` installs dependencies and starts the server. It does not alter the existing website. `npm run web` opens the same interface in a browser. Installing the Expo plugin alone does not start a device session; the project must be run on your computer.
 
 SDK 54 is intentionally targeted for the iPhone App Store version of Expo Go. The official Expo mismatch guide documents this constraint: https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/
+
+## Release preparation
+
+Store build profiles, release-day steps and a privacy/data inventory now live in `eas.json`, `RELEASE.md` and `PRIVACY-DATA-INVENTORY.md`. Store credentials and the actual Supabase project are intentionally not committed; those require the owner's authenticated accounts.
 
 ## Cloud setup
 
