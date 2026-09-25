@@ -3,7 +3,7 @@ export const CATEGORIES: Category[] = ['Pack system','Shelter & sleep','Clothing
 export const TRIP_TYPES: TripType[] = ['Hunting','Camping','Hunting + Camping','Backpacking'];
 export const STYLES = ['Backcountry','Base Camp','Day Hunt','Horseback'] as const;
 export const uid = () => `h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`;
-export const fresh = (): Workspace => ({schema:'hunteros.mobile',version:1,trips:[],gear:[],favorites:[]});
+export const fresh = (): Workspace => ({schema:'hunteros.mobile',version:1,trips:[],gear:[],favorites:[],scannedProducts:[]});
 export const weight = (g: number | null) => g === null ? 'Weight not entered' : `${(g / 453.59237).toFixed(2)} lb · ${Math.round(g)} g`;
 export const money = (v: number | null) => v === null ? 'Price not checked' : v.toLocaleString('en-US',{style:'currency',currency:'USD'});
 export const normalize = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[.×]/g,c=>c==='×'?'x':'').replace(/[^a-z0-9]+/g,' ').trim();
@@ -58,7 +58,7 @@ export function validateGear(v: any,locker=false): Gear {
 }
 export function validateWorkspace(v: any): Workspace {
   if(v?.schema!=='hunteros.mobile'||v.version!==1||!Array.isArray(v.trips)||v.trips.length>200||!Array.isArray(v.gear)||v.gear.length>3000||!Array.isArray(v.favorites)||v.favorites.length>5000)throw Error('Not a supported HunterOS mobile backup.');
-  const s=fresh();s.favorites=[...new Set<string>(v.favorites.map((x:unknown)=>txt(x,100)))];
+  const s=fresh();s.scannedProducts=Array.isArray(v.scannedProducts)?v.scannedProducts.slice(0,10000).map((x:any)=>({id:txt(x.id,100),code:txt(x.code,200),codeType:txt(x.codeType??'',40),firstScannedAt:txt(x.firstScannedAt??'',40),lastScannedAt:txt(x.lastScannedAt??'',40),scanCount:finite(x.scanCount??1,1,100000)! as number,product:x.product?validateGear({id:'scan-product',name:x.product.name||x.code,category:x.product.category||'Other',quantity:1,grams:x.product.weightGrams??null,price:x.product.priceUSD??null,calories:null,carry:x.product.carry||'packed',owned:true,packed:false,note:'',slot:'',product:x.product},true).product:null})):[];s.favorites=[...new Set<string>(v.favorites.map((x:unknown)=>txt(x,100)))];
   s.gear=v.gear.map((g:any)=>validateGear(g,true));
   s.trips=v.trips.map((t:any)=>{if(!TRIP_TYPES.includes(t.type)||!STYLES.includes(t.style)||!Array.isArray(t.items)||t.items.length>3000)throw Error('Invalid trip in backup.');const trip: Trip={id:txt(t.id,100),name:txt(t.name),type:t.type,region:txt(t.region),area:txt(t.area??'',300),date:txt(t.date??'',10),days:finite(t.days,1,90)! as number,people:finite(t.people??1,1,30)! as number,style:t.style,species:txt(t.species??'',80),low:finite(t.low,-80,150)! as number,high:finite(t.high,-80,150)! as number,notes:txt(t.notes??'',5000),items:t.items.map((g:any)=>validateGear(g))};if(!trip.id||!trip.name.trim()||!Number.isInteger(trip.days)||!Number.isInteger(trip.people)||trip.low>trip.high)throw Error('Invalid trip values.');if(trip.date&&!/^\d{4}-\d{2}-\d{2}$/.test(trip.date))throw Error('Use YYYY-MM-DD dates.');unique(trip.items);return trip;});unique(s.gear);unique(s.trips);return s;
 }

@@ -17,6 +17,8 @@ SDK 54 is intentionally targeted for the iPhone App Store version of Expo Go. Th
 
 ## Implemented
 
+- Gear scanner: UPC/EAN/Code/QR camera scanning plus manual UPC/SKU entry. Every scan is persisted in the workspace scan database with first/last scan timestamps and count. Known scans resolve locally first; packaged-food barcodes can resolve through Open Food Facts. Unknown codes still create an editable locker record so the scan is never lost. Product-photo/OCR recognition remains a later backend feature rather than guessing from appearance.
+
 - Native tabs, stacks and modal editor screens.
 - 131 model/configuration references extracted from the preserved `../Indexv1.0.html` by a non-executing JSON parser during install. No scraper runs in the app.
 - Photo-first catalog, brand/category filters, text search, favorites, known-weight filter, and price/weight sorting with missing values last.
