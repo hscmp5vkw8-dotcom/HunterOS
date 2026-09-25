@@ -15,3 +15,5 @@ credentials.json
 *.keystore
 *.p8
 *.p12
+
+dist-photos/
