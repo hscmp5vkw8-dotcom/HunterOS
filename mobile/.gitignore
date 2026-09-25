@@ -6,3 +6,6 @@ test-results/
 data/catalog.json
 *.log
 .env*
+
+.env
+.env.local

@@ -3,7 +3,7 @@
     "name": "HunterOS",
     "slug": "hunteros-mobile",
     "scheme": "hunteros",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "orientation": "default",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
@@ -26,7 +26,8 @@
         {
           "cameraPermission": "Allow HunterOS to scan gear barcodes and product labels."
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true

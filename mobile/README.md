@@ -1,6 +1,6 @@
-# HunterOS mobile alpha 0.1
+# HunterOS mobile alpha 0.3
 
-A native React Native + Expo Router implementation, not an HTML wrapper. Preserves the dark forest/lime design of the prototype. No account credentials, API keys or paid services are needed to run the first local build.
+A native React Native + Expo Router implementation, not an HTML wrapper. Preserves the dark forest/lime design of the prototype. No cloud credentials are required for offline/local use. Accounts and cloud sync activate when the owner's Supabase project variables are configured.
 
 ## Run
 
@@ -14,6 +14,12 @@ npm start
 On iPhone, open Expo Go and use the same Expo account as the terminal. Scan the generated QR code with Camera. Keep the computer online on the same Wi-Fi. On Windows, `start-windows.cmd` installs dependencies and starts the server. It does not alter the existing website. `npm run web` opens the same interface in a browser. Installing the Expo plugin alone does not start a device session; the project must be run on your computer.
 
 SDK 54 is intentionally targeted for the iPhone App Store version of Expo Go. The official Expo mismatch guide documents this constraint: https://docs.expo.dev/troubleshooting/expo-go-version-mismatch/
+
+## Cloud setup
+
+HunterOS is now cloud-ready while remaining offline-first. Create a Supabase project, run `supabase/schema.sql`, copy `.env.example` to `.env`, and fill in the project URL and publishable/anon key. The client key is intentionally a public client credential; row-level security in `schema.sql` prevents one account from reading another account's workspace. Do not put a service-role key in the app.
+
+Cloud sync is explicit in this alpha: upload this device, or download the cloud copy. This avoids silent last-write-wins conflicts while we build record-level sync. Scan submissions sync separately and are structured for later promotion into the shared reviewed product catalog. `trip_members` is provisioned for shared-trip membership; invitations/assignment UI is not complete yet.
 
 ## Implemented
 
