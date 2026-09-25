@@ -1,6 +1,7 @@
 node_modules/
 .expo/
 dist/
+dist-feedback-check/
 playwright-report/
 test-results/
 data/catalog.json

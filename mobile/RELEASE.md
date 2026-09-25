@@ -1,6 +1,8 @@
-# HunterOS v0.4 release checklist
+﻿# HunterOS v0.4 release checklist
 
-Status 2026-09-25: 0.4.0 native candidates are Android build 5 and iOS build 6; not yet submitted or distributed. Current family release remains 0.1.2 (3).
+Status 2026-09-25: source is now 0.4.1, with durable private feedback and the direct-entry Account Back fix. Both are tested in the local web preview; new native builds are required. Archived 0.4.0 Android build5 finished; iOS build6 is processed for internal TestFlight only. They lack these later fixes. External family release remains 0.1.2(3).
+
+Feedback intake is live in the HunterOS project. App users can submit bounded reports but cannot read/edit/delete the log. Server receipts, persisted failed-send retry, duplicate prevention and anonymous read denial are verified. 43 tests, TypeScript and all-platform exports pass. See FEEDBACK-OPERATIONS.md. Recovery, cloud restore/two-account client isolation and native device acceptance remain pending.
 
 - Android APK: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/235aaa09-c2f5-40c8-85af-2ed1c444e304
 - iOS TestFlight candidate: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/b1dd90dc-e651-45e8-90b8-867141b55e3f — build 6 queued September 25 at 16:44 UTC. Earlier build 5 completed but its artifact revealed unused default microphone/Face ID permission descriptions. Those descriptions are explicitly disabled; config introspection confirms only camera remains. Build 5 is superseded and must not be submitted.

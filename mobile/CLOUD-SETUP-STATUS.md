@@ -1,4 +1,4 @@
-# HunterOS cloud setup status — 2026-09-25
+﻿# HunterOS cloud setup status — 2026-09-25
 
 ## Live setup
 
@@ -10,7 +10,7 @@
 - Only user_workspaces grants authenticated client access, restricted to auth.uid() = user_id. The other three tables are private scaffolding, not shipped sharing features.
 - Live transaction test passed: own read/write, cross-account read/update/insert denied, ownership reassignment denied, anonymous privileges denied, reserved tables private. Test users and rows rolled back.
 - Public REST check returned 401 / 42501 for anonymous workspace reads.
-- Email authentication enabled; auto-confirm false. No persistent app test users were created.
+- Email authentication enabled; auto-confirm false. Owner completed signup, reached a signed-in browser session and saved a cloud backup. Reload preserved sign-in. Recovery, restore and two-account client isolation remain pending.
 - EAS development/preview/production environments now contain EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY. No database password or service-role key was used.
 
 ## Candidate validation
@@ -24,9 +24,11 @@
 
 ## Current blocker
 
-Custom SMTP is not yet saved. HunterOS's separate Resend sender auth.gethunteros.com has three publicly visible provider-issued DNS records; provider verification is pending. SMTP form is prepared with HunterOS <noreply@auth.gethunteros.com>, smtp.resend.com:465, username resend, interval 60 seconds; the password remains blank. Owner must enter the separate domain-scoped sending key. No service key belongs in the app or repository.
+Custom SMTP is saved and auth.gethunteros.com is verified. Sender HunterOS <noreply@auth.gethunteros.com>, smtp.resend.com:465, username resend, interval60seconds. Owner saved a separate sending-only key after a successful direct SMTP235 test. No SMTP or service key belongs in the app/repository.
 
-Confirmation and password reset now accept email codes inside the app. Templates in auth-templates/ must be saved after SMTP is enabled. Live signup -> received code -> confirmation -> sign-in/out -> reset -> sign-in and two-user upload/restore remain unverified. Do not publish the account feature before these pass. Supabase's old localhost Site URL is not used by the new code-only templates, but remains unsuitable for any future email-link flow.
+Confirmation and password reset accept email codes inside the app. Both templates in auth-templates/ are saved and verified after reload. Owner signup reached a signed-in session. Complete sign-in/out, recovery and two-user upload/restore acceptance remains pending. Supabase's old localhost Site URL is not used by these templates, but is unsuitable for future email-link flows.
+
+Private feedback intake is deployed separately in this project. submit_feedback accepts validated bounded reports with receipts, idempotency and intake limits. feedback_reports has RLS and no app-role table access. Rollback policy/validation/rate tests and live browser delivery/retry/persistence passed; anonymous REST read denied401. FEEDBACK-OPERATIONS.md documents later summaries. Native0.4.0 builds predate this0.4.1 feature.
 
 Email provider code length is 8 digits and expiration is 3600 seconds. Server password minimum was changed to 12 to match the app. Confirmation remains required, anonymous sign-in and manual identity linking remain disabled.
 

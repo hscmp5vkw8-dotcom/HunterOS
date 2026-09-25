@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { Text } from 'react-native';
 import type { User } from '@supabase/supabase-js';
 import { useRouter } from 'expo-router';
@@ -90,4 +90,3 @@ export default function Account() {
  <Text style={s.small}>Use your own account. Each account has its own cloud backup.</Text></Card>}
  <ErrorText message={message}/><Button secondary title="Back" disabled={busy} onPress={()=>{if(router.canGoBack())router.back();else router.replace('/');}}/></Page>;
 }
-
