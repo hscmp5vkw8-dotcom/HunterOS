@@ -1,48 +1,42 @@
-﻿# HunterOS v0.4 release checklist
+# HunterOS0.4.1 family beta release
 
-Status 2026-09-25: source is now 0.4.1, with durable private feedback and the direct-entry Account Back fix. Both are tested in the local web preview; new native builds are required. Archived 0.4.0 Android build5 finished; iOS build6 is processed for internal TestFlight only. They lack these later fixes. External family release remains 0.1.2(3).
+Status 2026-09-25T18:52:14.536Z: direct-entry Account Back and private saved feedback are implemented and browser-verified.43 tests, TypeScript and all-platform export pass. A final clean web export confirms0.4.1 metadata. Source is preserved in draft PR5; main remains unchanged. No public store release.
 
-Feedback intake is live in the HunterOS project. App users can submit bounded reports but cannot read/edit/delete the log. Server receipts, persisted failed-send retry, duplicate prevention and anonymous read denial are verified. 43 tests, TypeScript and all-platform exports pass. See FEEDBACK-OPERATIONS.md. Recovery, cloud restore/two-account client isolation and native device acceptance remain pending.
+## Current candidates
 
-- Android APK: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/235aaa09-c2f5-40c8-85af-2ed1c444e304
-- iOS TestFlight candidate: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/b1dd90dc-e651-45e8-90b8-867141b55e3f — build 6 queued September 25 at 16:44 UTC. Earlier build 5 completed but its artifact revealed unused default microphone/Face ID permission descriptions. Those descriptions are explicitly disabled; config introspection confirms only camera remains. Build 5 is superseded and must not be submitted.
-- TypeScript, 39 unit/data/auth-stub tests and clean iOS/Android/web exports pass. Browser checks confirm signup/reset validation and feedback preview/version. These do not prove real email delivery, cloud login or device behavior.
+- Android0.4.1(6), preview standalone APK: IN_QUEUE. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/8b5afdab-a17a-46a3-9c55-f2e095285a99
+- iOS0.4.1(7), production/TestFlight candidate: IN_PROGRESS. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/a190877d-119b-4ecd-93e6-cbe79070e039
+- Existing0.4.0 Android5/iOS6 archives do not contain the Back/feedback changes. iOS0.4.0(6) was processed for internal testing only. External family TestFlight remains0.1.2(3).
+- Earlier0.4.0 iOS5 is superseded for unused permission descriptions and must not be submitted.
+
+Builds run in Expo's cloud independently of the laptop. Do not submit duplicate jobs. EAS autoIncrement advanced local counters to Android6/iOS7. Check these exact job IDs and archive successful artifacts before sharing links.
 
 ## Completed
 
-- Supabase free project ejuzguancnrrrcdulixb created in the HunterOS organization.
-- supabase/schema.sql applied. Database owner-only policies tested live using supabase/verify-rls.sql; all test data rolled back.
-- Anonymous REST reads denied (HTTP 401, PostgreSQL 42501).
-- Email confirmation remains enabled.
-- Expo project hunteross-team/hunteros linked (be009c48-012c-4220-a8d7-764c090695aa).
-- Public client connection settings created in development, preview and production EAS environments.
-- iOS bundle and Android package remain com.totalfreedomindustries.hunteros. App Store Connect app remains 6815313376.
-- SDK 57 and the 0.1.2 persistence/recovery/feedback fixes preserved.
+- Existing HunterOS Supabase ejuzguancnrrrcdulixb and EAS project be009c48-012c-4220-a8d7-764c090695aa are linked. Public client URL/key are set in development, preview and production; backend secrets are not bundled.
+- Workspace owner-only policies passed rollback SQL tests and anonymous REST read denial. Feedback is a separate private table with bounded append-only RPC, receipts and idempotent retry; live intake/browser and denial checks passed. See FEEDBACK-OPERATIONS.md.
+- Custom SMTP is saved; auth.gethunteros.com verified; owner signup, code confirmation/sign-in and browser cloud upload succeeded. Confirmation remains required, anonymous sign-in disabled, minimum password12characters. Both code-only confirmation/recovery templates are saved; no localhost callback is required for their in-app code flow.
+- Package/bundle ID stays com.totalfreedomindustries.hunteros; Apple app6815313376. Existing signing credentials are reused. Android blocked audio/media permissions and camera-only iOS purpose text are configured.
 
-## Before another family release
+## Before family notification
 
-1. Configure an email sender (SMTP). Default Supabase mail only goes to project administrators, not family testers. Do not add testers as backend administrators or disable confirmation as a workaround.
-2. Save the confirmation and reset templates from auth-templates/ after custom SMTP is enabled. Use subjects "Confirm your HunterOS account" and "Reset your HunterOS password". Both use {{ .Token }}; users enter the code inside the app, so no web callback or localhost return is required. Keep email confirmation enabled, set minimum password length to 12, and verify the provider's code expiration. Test real confirmation/recovery, expired and reused codes. Recovery uses a separate in-memory client and must not switch the normal workspace account.
-3. Test two real accounts: signup, confirmation, sign-in, background/foreground session refresh, sign-out, cloud upload/restore and account switching. Live SQL tests validate policies, not the complete client auth flow.
-4. Test upgrade from 0.1.2 on iPhone and Android: existing trips, packing state, favorites and gear survive. Export a backup before updating.
-5. Test scanner permission denial, manual entry, a known barcode, an unknown SKU, unavailable network and duplicate callbacks on physical devices.
-6. Test force-close/reopen in airplane mode; then reconnect. Cloud backups are manual full-workspace replacements, not automatic merging.
-7. Review the candidate changes and preserve them in GitHub before distributing new builds.
+1. Inspect the completed0.4.1 APK/IPA for identity, counters, signer continuity and intended permissions. Preserve hashes and matching source. Old artifact checks do not verify these new files.
+2. Upload the valid iOS candidate to TestFlight, verify processing, add notes and complete required external beta review/Family Beta assignment.
+3. Test real recovery/code/new-password/sign-in. The owner enters and submits the changed password. Verify email authentication headers and expired/reused codes; do not infer them from signup success.
+4. Use two real accounts for cloud upload/restore and switching. SQL isolation checks do not replace client tests. Restore replaces a workspace; export a backup first.
+5. On phones, verify upgrade from0.1.2 preserves trips/gear/favorites/packing, session background/foreground, camera denial/manual entry/known and unknown barcode, offline force-close/reopen/reconnect, and saved feedback receipt/retry. Do not uninstall to update.
+6. Send the authorized family instructions only after the applicable route is available. No new family notification has been sent.
 
-## Build and distribution
+## Distribution
 
-Use EAS CLI 24.7.0 or a reviewed compatible version. Existing project signing credentials are reused. Build counters are Android 5 / iOS 6 and autoIncrement is enabled. Candidates can complete while email setup is pending; do not distribute them until the applicable gates pass. Download existing successful artifacts instead of rebuilding to install them.
+Use EAS CLI24.7 or a reviewed compatible version. After the current iOS build finishes and inspection passes:
 
-    npx eas-cli@24.7.0 build --platform android --profile preview
-    npx eas-cli@24.7.0 build --platform ios --profile production
-    npx eas-cli@24.7.0 submit --platform ios --profile production --id b1dd90dc-e651-45e8-90b8-867141b55e3f
+    npx eas-cli@24.7.0 submit --platform ios --profile production --id a190877d-119b-4ecd-93e6-cbe79070e039
 
-Android preview produces a standalone APK. Send testers the new install link; install over the existing app without uninstalling to preserve data. TestFlight distributes iOS updates after processing/review. EAS Update is not configured, so do not promise automatic over-the-air fixes.
+Android preview produces an APK installed over the existing app. Later fixes require a new APK link/install; Google Play automatic updates are not configured. iPhone fixes appear in TestFlight after processing/review; testers can enable TestFlight automatic updates. EAS Update is not configured.
 
-For source archives without Git, set EAS_NO_VCS=1 and EAS_PROJECT_ROOT to this mobile directory. The catalog importer is self-contained. Do not upload .env.local, database credentials, node_modules or generated build output; .easignore excludes them.
-
-Google Play production builds produce an AAB. Submission remains internal/draft and still needs the Play Console account/app/service account. Do not switch to public distribution as part of family testing.
+For source archives without Git, set EAS_NO_VCS=1 and EAS_PROJECT_ROOT to this mobile directory. Preserve the self-contained catalog importer. Exclude .env.local, credentials, node_modules, .expo, generated exports and test outputs. Google Play submission remains internal/draft and requires its own account/app/service account.
 
 ## Before public launch
 
-Finish account deletion in-app and the verified server-side deletion process, password recovery, final privacy/support URLs, Apple/Google privacy forms, physical-device testing, and manufacturer image rights. Review backup retention, email deliverability and free-tier hosting limits. A project being created does not make the public release ready.
+Finish account deletion and its verified server-side process, privacy/support URLs, store privacy forms, manufacturer image rights, device testing, feedback abuse controls and backup/email quota review. Family beta readiness does not mean public-store readiness.

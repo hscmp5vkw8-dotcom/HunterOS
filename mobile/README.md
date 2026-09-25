@@ -1,6 +1,6 @@
 ﻿# HunterOS v0.4 candidate
 
-Source is now 0.4.1, prepared from main0cd5b807da518a37f7d71c0abb75b41325603b2e with shipped0.1.2 fixes preserved. Private feedback intake is live and tested in the browser: server receipts, saved failed submissions and manual retry. Account Back falls back to Trips on direct entry. New native builds are required; prior0.4.0 Android5/iOS6 lack these changes. Source remains in draft PR5. See FEEDBACK-OPERATIONS.md and RELEASE.md for acceptance/distribution status. This is not a public-store release.
+Source is now 0.4.1, prepared from main0cd5b807da518a37f7d71c0abb75b41325603b2e with shipped0.1.2 fixes preserved. Private feedback intake is live and tested in the browser: server receipts, saved failed submissions and manual retry. Account Back falls back to Trips on direct entry. EAS candidates are now0.4.1 Android6/iOS7; completion and distribution are tracked in RELEASE.md. Prior0.4.0 Android5/iOS6 lack these changes. Source remains in draft PR5. See FEEDBACK-OPERATIONS.md and RELEASE.md for acceptance/distribution status. This is not a public-store release.
 
 ## What is ready
 
