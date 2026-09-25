@@ -1,15 +1,9 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 const root = new URL('../', import.meta.url);
-const html = readFileSync(new URL('../Indexv1.0.html',root),'utf8');
-const marker='const STARTER_CATALOG=';const start=html.indexOf(marker);
-if(start<0)throw Error('Legacy catalog marker not found. Website files were not modified.');
-// Balanced JSON extraction, never eval the old HTML or execute its scripts.
-let i=start+marker.length, depth=0, quoted=false,escaped=false,end=-1;
-for(let j=i;j<html.length;j++){const c=html[j];if(quoted){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c==='"')quoted=false;}else{if(c==='"')quoted=true;else if(c==='['||c==='{')depth++;else if(c===']'||c==='}'){depth--;if(depth===0){end=j+1;break;}}}}
-if(end<0)throw Error('Legacy catalog JSON is incomplete.');
-const legacy=JSON.parse(html.slice(i,end));
+// Kept inside the mobile package so clean EAS builds do not need the old website.
+const source = readFileSync(new URL('data/catalog-source.json',root),'utf8');
+const legacy=JSON.parse(source);
 const overrides=JSON.parse(readFileSync(new URL('data/photo-overrides.json',root),'utf8'));
 const categories=['Pack system','Shelter & sleep','Clothing','Water & food','Food & nutrition','Camp comfort','Electronics & power','Hunt essentials','Navigation & safety','Other'];
 const https=v=>{if(!v)return '';try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:'';}catch{return '';}};
@@ -24,4 +18,4 @@ const products=legacy.map(p=>{
 mkdirSync(new URL('data/',root),{recursive:true});
 writeFileSync(new URL('data/catalog.json',root),JSON.stringify(products,null,2)+'\n');
 console.log(`Imported ${products.length} legacy configurations; ${products.filter(p=>p.photo).length} photo references. Legacy specs are not relabeled verified.`);
-console.log('Source SHA256:',createHash('sha256').update(html).digest('hex'));
+console.log('Catalog source SHA256:',createHash('sha256').update(source).digest('hex'));

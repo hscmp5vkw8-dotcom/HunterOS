@@ -1,57 +1,46 @@
-# HunterOS release-day checklist
+﻿# HunterOS v0.4 release checklist
 
-The repository is prepared for Android + iOS builds, but store/account credentials must be supplied by the owner. Do not commit passwords, Apple credentials, Google service-account JSON, Supabase secrets, or EAS tokens.
+Status 2026-09-25: 0.4.0 (5) native candidates queued; not yet submitted or distributed. Current family release remains 0.1.2 (3).
 
-## 1. Supabase
-1. Create/open the HunterOS Supabase project.
-2. Run `supabase/schema.sql` in SQL Editor.
-3. Copy `.env.example` to `.env`.
-4. Put the project URL and **publishable/anon client key** in `.env`. Never use the service-role key in the app.
-5. In EAS, create production/preview environment variables with the same two public values.
-6. Test: create two accounts and confirm each cannot read the other's workspace.
+- Android APK: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/235aaa09-c2f5-40c8-85af-2ed1c444e304
+- iOS TestFlight candidate: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/2423bc73-c67d-46c6-8604-5d11dbb84640 — native build completed September 25 at 16:38 UTC.
+- TypeScript, 39 unit/data/auth-stub tests and clean iOS/Android/web exports pass. Browser checks confirm signup/reset validation and feedback preview/version. These do not prove real email delivery, cloud login or device behavior.
 
-## 2. Expo / EAS
-From `mobile/`:
-```sh
-npm install
-npx eas-cli@latest login
-npx eas-cli@latest init
-npx eas-cli@latest build:configure
-```
-If `eas init` adds an `extra.eas.projectId` to app config, commit that generated project ID.
+## Completed
 
-Create a preview first:
-```sh
-npx eas-cli@latest build --platform all --profile preview
-```
-Install on real Android/iPhone devices and test account sign-up, cloud upload/download, camera barcode scan, offline edits, relaunch, reconnect, and backups.
+- Supabase free project ejuzguancnrrrcdulixb created in the HunterOS organization.
+- supabase/schema.sql applied. Database owner-only policies tested live using supabase/verify-rls.sql; all test data rolled back.
+- Anonymous REST reads denied (HTTP 401, PostgreSQL 42501).
+- Email confirmation remains enabled.
+- Expo project hunteross-team/hunteros linked (be009c48-012c-4220-a8d7-764c090695aa).
+- Public client connection settings created in development, preview and production EAS environments.
+- iOS bundle and Android package remain com.totalfreedomindustries.hunteros. App Store Connect app remains 6815313376.
+- SDK 57 and the 0.1.2 persistence/recovery/feedback fixes preserved.
 
-## 3. Apple
-- Active Apple Developer Program membership.
-- Create/confirm App Store Connect app for bundle ID `com.totalfreedomindustries.hunteros`.
-- Let EAS manage signing credentials unless existing production credentials must be preserved.
-- Add App Store privacy details, screenshots, support/privacy-policy URLs, age rating, category and description.
-- Production build: `npx eas-cli@latest build --platform ios --profile production`
-- Submit: `npx eas-cli@latest submit --platform ios --profile production`
-- First send to TestFlight. Production release still requires App Review.
+## Before another family release
 
-## 4. Android
-- Google Play Console developer account.
-- Create app with package `com.totalfreedomindustries.hunteros`.
-- Complete Data safety, content rating, privacy policy, screenshots/listing and testing requirements.
-- Configure Google Play service account only if using automated EAS Submit.
-- Production AAB: `npx eas-cli@latest build --platform android --profile production`
-- Submit: `npx eas-cli@latest submit --platform android --profile production`
-- The checked-in submit profile targets internal/draft first; promote only after testing.
+1. Configure an email sender (SMTP). Default Supabase mail only goes to project administrators, not family testers. Do not add testers as backend administrators or disable confirmation as a workaround.
+2. Save the confirmation and reset templates from auth-templates/ after custom SMTP is enabled. Use subjects "Confirm your HunterOS account" and "Reset your HunterOS password". Both use {{ .Token }}; users enter the code inside the app, so no web callback or localhost return is required. Keep email confirmation enabled, set minimum password length to 12, and verify the provider's code expiration. Test real confirmation/recovery, expired and reused codes. Recovery uses a separate in-memory client and must not switch the normal workspace account.
+3. Test two real accounts: signup, confirmation, sign-in, background/foreground session refresh, sign-out, cloud upload/restore and account switching. Live SQL tests validate policies, not the complete client auth flow.
+4. Test upgrade from 0.1.2 on iPhone and Android: existing trips, packing state, favorites and gear survive. Export a backup before updating.
+5. Test scanner permission denial, manual entry, a known barcode, an unknown SKU, unavailable network and duplicate callbacks on physical devices.
+6. Test force-close/reopen in airplane mode; then reconnect. Cloud backups are manual full-workspace replacements, not automatic merging.
+7. Review the candidate changes and preserve them in GitHub before distributing new builds.
 
-## 5. Release gate
-Do not promote to production until:
-- iPhone and Android physical-device tests pass.
-- Airplane-mode edits survive force-close/reopen.
-- Cloud upload/download is tested with intentionally conflicting copies.
-- Scanner permission denial/retry works.
-- Unknown barcode and known food barcode both work.
-- Account sign-out/sign-in restores the expected cloud copy.
-- RLS cross-account access test fails as intended.
-- Product-image commercial rights are resolved for images shipped/displayed in production.
-- Privacy policy accurately describes account, scan, trip and location-related data.
+## Build and distribution
+
+Use EAS CLI 24.7.0 or a reviewed compatible version. Existing project signing credentials are reused. Build counters are now 5 and autoIncrement is enabled. The build-5 candidates can complete while email setup is pending; do not distribute them until the applicable gates pass. Download existing successful artifacts instead of rebuilding to install them.
+
+    npx eas-cli@24.7.0 build --platform android --profile preview
+    npx eas-cli@24.7.0 build --platform ios --profile production
+    npx eas-cli@24.7.0 submit --platform ios --profile production --id 2423bc73-c67d-46c6-8604-5d11dbb84640
+
+Android preview produces a standalone APK. Send testers the new install link; install over the existing app without uninstalling to preserve data. TestFlight distributes iOS updates after processing/review. EAS Update is not configured, so do not promise automatic over-the-air fixes.
+
+For source archives without Git, set EAS_NO_VCS=1 and EAS_PROJECT_ROOT to this mobile directory. The catalog importer is self-contained. Do not upload .env.local, database credentials, node_modules or generated build output; .easignore excludes them.
+
+Google Play production builds produce an AAB. Submission remains internal/draft and still needs the Play Console account/app/service account. Do not switch to public distribution as part of family testing.
+
+## Before public launch
+
+Finish account deletion in-app and the verified server-side deletion process, password recovery, final privacy/support URLs, Apple/Google privacy forms, physical-device testing, and manufacturer image rights. Review backup retention, email deliverability and free-tier hosting limits. A project being created does not make the public release ready.

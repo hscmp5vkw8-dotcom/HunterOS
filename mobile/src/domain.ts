@@ -56,11 +56,27 @@ export function validateGear(v: any,locker=false): Gear {
   if(v.product){const p=v.product;i.product={id:txt(p.id,100),name:txt(p.name),brand:txt(p.brand,80),model:txt(p.model,100),variant:txt(p.variant??'',200),category:i.category,kind:txt(p.kind??'',80),weightGrams:finite(p.weightGrams,0,1000000,true),weightLabel:txt(p.weightLabel??'',200),weightCheckedAt:txt(p.weightCheckedAt??'',40),priceUSD:finite(p.priceUSD,0,10000000,true),priceCheckedAt:txt(p.priceCheckedAt??'',40),sourceURL:https(p.sourceURL),purchaseURL:https(p.purchaseURL),checkedAt:txt(p.checkedAt??'',40),note:txt(p.note??'',2000),tags:Array.isArray(p.tags)?p.tags.slice(0,50).map((x:unknown)=>txt(x,100)):[],carry:i.carry,photo:p.photo?{url:https(p.photo.url),sourceURL:https(p.photo.sourceURL),caption:txt(p.photo.caption??'',400),checkedAt:txt(p.photo.checkedAt??'',40),rights:'reference-preview'}:null,reviewStatus:p.reviewStatus==='source-checked'?'source-checked':'legacy-reference'};}
   return i;
 }
+export function validTripDate(value: string): boolean {
+  if (!value) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split('-').map(Number);
+  if (year < 1 || month < 1 || month > 12 || day < 1) return false;
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  return day <= days[month - 1];
+}
 export function validateWorkspace(v: any): Workspace {
   if(v?.schema!=='hunteros.mobile'||v.version!==1||!Array.isArray(v.trips)||v.trips.length>200||!Array.isArray(v.gear)||v.gear.length>3000||!Array.isArray(v.favorites)||v.favorites.length>5000)throw Error('Not a supported HunterOS mobile backup.');
-  const s=fresh();s.scannedProducts=Array.isArray(v.scannedProducts)?v.scannedProducts.slice(0,10000).map((x:any)=>({id:txt(x.id,100),code:txt(x.code,200),codeType:txt(x.codeType??'',40),firstScannedAt:txt(x.firstScannedAt??'',40),lastScannedAt:txt(x.lastScannedAt??'',40),scanCount:finite(x.scanCount??1,1,100000)! as number,product:x.product?validateGear({id:'scan-product',name:x.product.name||x.code,category:x.product.category||'Other',quantity:1,grams:x.product.weightGrams??null,price:x.product.priceUSD??null,calories:null,carry:x.product.carry||'packed',owned:true,packed:false,note:'',slot:'',product:x.product},true).product:null})):[];s.favorites=[...new Set<string>(v.favorites.map((x:unknown)=>txt(x,100)))];
+  if(v.scannedProducts!==undefined&&(!Array.isArray(v.scannedProducts)||v.scannedProducts.length>10000))throw Error('Invalid scan history in backup.');
+  const s=fresh();s.scannedProducts=Array.isArray(v.scannedProducts)?v.scannedProducts.map((x:any)=>({id:txt(x.id,100),code:txt(x.code,200),codeType:txt(x.codeType??'',40),firstScannedAt:txt(x.firstScannedAt??'',40),lastScannedAt:txt(x.lastScannedAt??'',40),scanCount:finite(x.scanCount??1,1,100000)! as number,product:x.product?validateGear({id:'scan-product',name:x.product.name||x.code,category:x.product.category||'Other',quantity:1,grams:x.product.weightGrams??null,price:x.product.priceUSD??null,calories:null,carry:x.product.carry||'packed',owned:true,packed:false,note:'',slot:'',product:x.product},true).product:null})):[];s.favorites=[...new Set<string>(v.favorites.map((x:unknown)=>txt(x,100)))];
+  unique(s.scannedProducts);
+  const codes=new Set<string>();
+  for(const scan of s.scannedProducts){
+    if(!scan.id.trim()||!scan.code.trim()||!Number.isInteger(scan.scanCount)||!Number.isFinite(Date.parse(scan.firstScannedAt))||!Number.isFinite(Date.parse(scan.lastScannedAt))||Date.parse(scan.lastScannedAt)<Date.parse(scan.firstScannedAt))throw Error('Invalid scan history in backup.');
+    const code=normalize(scan.code);if(codes.has(code))throw Error('Duplicate scan codes in backup.');codes.add(code);
+  }
   s.gear=v.gear.map((g:any)=>validateGear(g,true));
-  s.trips=v.trips.map((t:any)=>{if(!TRIP_TYPES.includes(t.type)||!STYLES.includes(t.style)||!Array.isArray(t.items)||t.items.length>3000)throw Error('Invalid trip in backup.');const trip: Trip={id:txt(t.id,100),name:txt(t.name),type:t.type,region:txt(t.region),area:txt(t.area??'',300),date:txt(t.date??'',10),days:finite(t.days,1,90)! as number,people:finite(t.people??1,1,30)! as number,style:t.style,species:txt(t.species??'',80),low:finite(t.low,-80,150)! as number,high:finite(t.high,-80,150)! as number,notes:txt(t.notes??'',5000),items:t.items.map((g:any)=>validateGear(g))};if(!trip.id||!trip.name.trim()||!Number.isInteger(trip.days)||!Number.isInteger(trip.people)||trip.low>trip.high)throw Error('Invalid trip values.');if(trip.date&&!/^\d{4}-\d{2}-\d{2}$/.test(trip.date))throw Error('Use YYYY-MM-DD dates.');unique(trip.items);return trip;});unique(s.gear);unique(s.trips);return s;
+  s.trips=v.trips.map((t:any)=>{if(!TRIP_TYPES.includes(t.type)||!STYLES.includes(t.style)||!Array.isArray(t.items)||t.items.length>3000)throw Error('Invalid trip in backup.');const trip: Trip={id:txt(t.id,100),name:txt(t.name),type:t.type,region:txt(t.region),area:txt(t.area??'',300),date:txt(t.date??'',10),days:finite(t.days,1,90)! as number,people:finite(t.people??1,1,30)! as number,style:t.style,species:txt(t.species??'',80),low:finite(t.low,-80,150)! as number,high:finite(t.high,-80,150)! as number,notes:txt(t.notes??'',5000),items:t.items.map((g:any)=>validateGear(g))};if(!trip.id||!trip.name.trim()||!Number.isInteger(trip.days)||!Number.isInteger(trip.people)||trip.low>trip.high)throw Error('Invalid trip values.');if(!validTripDate(trip.date))throw Error('Enter a real calendar date in YYYY-MM-DD format, or leave it blank.');unique(trip.items);return trip;});unique(s.gear);unique(s.trips);return s;
 }
 function unique(a:{id:string}[]){if(new Set(a.map(x=>x.id)).size!==a.length)throw Error('Duplicate identifiers in backup.');}
 export function importBackup(v:any): Workspace {

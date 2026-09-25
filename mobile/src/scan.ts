@@ -2,14 +2,15 @@ import type { Product, ScanRecord, Workspace } from './types';
 import { catalog } from './catalog';
 import { fromProduct, normalize, uid } from './domain';
 
-const digits=(s:string)=>s.replace(/[^0-9]/g,'');
+import { foodBarcode } from './identifier';
 function catalogMatch(code:string){const n=normalize(code);return catalog.find(p=>p.tags.some(t=>normalize(t)===n)||normalize(p.model)===n||normalize(p.variant)===n)||null;}
 export async function lookupIdentifier(code:string, saved:ScanRecord[]):Promise<Product|null>{
  const prior=saved.find(x=>normalize(x.code)===normalize(code)&&x.product);if(prior?.product)return prior.product;
  const local=catalogMatch(code);if(local)return local;
- const d=digits(code);
- if(d.length>=8&&d.length<=14){
-   try{const r=await fetch('https://world.openfoodfacts.org/api/v2/product/'+encodeURIComponent(d)+'.json?fields=code,product_name,brands,image_front_url,quantity');if(r.ok){const j=await r.json();if(j?.status===1&&j.product?.product_name){const p=j.product;return {id:'scan-food-'+d,name:[p.brands,p.product_name].filter(Boolean).join(' '),brand:String(p.brands||'').split(',')[0].trim()||'Unknown',model:String(p.product_name),variant:String(p.quantity||''),category:'Food & nutrition',kind:'Packaged food',weightGrams:null,weightLabel:'Enter package weight',weightCheckedAt:'',priceUSD:null,priceCheckedAt:'',sourceURL:'https://world.openfoodfacts.org/product/'+d,purchaseURL:'',checkedAt:new Date().toISOString().slice(0,10),note:'Identified from barcode via Open Food Facts. Confirm label details before trip calculations.',tags:['barcode',d],carry:'consumable',photo:p.image_front_url?{url:String(p.image_front_url),sourceURL:'https://world.openfoodfacts.org/product/'+d,caption:'Open Food Facts product image',checkedAt:new Date().toISOString().slice(0,10),rights:'reference-preview'}:null,reviewStatus:'legacy-reference'};}}}catch{}
+ const d=foodBarcode(code);
+ if(d){
+   const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8000);
+   try{const r=await fetch('https://world.openfoodfacts.org/api/v2/product/'+encodeURIComponent(d)+'.json?fields=code,product_name,brands,image_front_url,quantity',{signal:controller.signal});if(r.ok){const j=await r.json();if(j?.status===1&&j.product?.product_name){const p=j.product;return {id:'scan-food-'+d,name:[p.brands,p.product_name].filter(Boolean).join(' '),brand:String(p.brands||'').split(',')[0].trim()||'Unknown',model:String(p.product_name),variant:String(p.quantity||''),category:'Food & nutrition',kind:'Packaged food',weightGrams:null,weightLabel:'Enter package weight',weightCheckedAt:'',priceUSD:null,priceCheckedAt:'',sourceURL:'https://world.openfoodfacts.org/product/'+d,purchaseURL:'',checkedAt:new Date().toISOString().slice(0,10),note:'Identified from barcode via Open Food Facts. Confirm label details before trip calculations.',tags:['barcode',d],carry:'consumable',photo:p.image_front_url?{url:String(p.image_front_url),sourceURL:'https://world.openfoodfacts.org/product/'+d,caption:'Open Food Facts product image',checkedAt:new Date().toISOString().slice(0,10),rights:'reference-preview'}:null,reviewStatus:'legacy-reference'};}}}catch{}finally{clearTimeout(timeout);}
  }
  return null;
 }

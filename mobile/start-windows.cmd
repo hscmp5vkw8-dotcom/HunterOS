@@ -1,17 +1,20 @@
 @echo off
 setlocal
 cd /d "%~dp0"
+if exist "C:\Program Files\nodejs\node.exe" set "PATH=C:\Program Files\nodejs;%PATH%"
 where node >nul 2>nul
 if errorlevel 1 (
   echo Install Node.js LTS from https://nodejs.org first, then reopen this file.
   pause
   exit /b 1
 )
-echo HunterOS mobile - installing project dependencies. Your website is not changed.
-call npm install
-if errorlevel 1 goto failed
+if not exist "node_modules\expo\bin\cli" (
+  echo HunterOS mobile - installing project dependencies.
+  call npm ci
+  if errorlevel 1 goto failed
+)
 echo Sign into the same Expo account you use in Expo Go on your iPhone when prompted.
-call npx expo login
+call npx expo login --browser
 if errorlevel 1 goto failed
 echo Keep this window open. Use the iPhone Camera to scan the QR code.
 call npx expo start --go
