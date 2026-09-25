@@ -4,7 +4,7 @@ Status 2026-09-25T18:52:14.536Z: direct-entry Account Back and private saved fee
 
 ## Current candidates
 
-- Android0.4.1(6), preview standalone APK: IN_PROGRESS at19:24UTC. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/8b5afdab-a17a-46a3-9c55-f2e095285a99
+- Android0.4.1(6), preview standalone APK: FINISHED, archived and statically inspected for package/version/permissions and public signer continuity. Physical upgrade remains untested. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/8b5afdab-a17a-46a3-9c55-f2e095285a99
 - iOS0.4.1(7): FINISHED; IPA archived and inspected. EAS submission55a9ba86-0413-4f80-ad57-bd9d295c70d5 finished19:19:34UTC. Apple build84e5adb9-2ce7-498e-b4fc-66e6810a6919 is VALID, internal IN_BETA_TESTING, external READY_FOR_BETA_SUBMISSION as of19:25UTC. Owner test notes saved. https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/a190877d-119b-4ecd-93e6-cbe79070e039
 - Existing0.4.0 Android5/iOS6 archives do not contain the Back/feedback changes. iOS0.4.0(6) was processed for internal testing only. External family TestFlight remains0.1.2(3).
 - Earlier0.4.0 iOS5 is superseded for unused permission descriptions and must not be submitted.
@@ -43,4 +43,4 @@ Finish account deletion and its verified server-side process, privacy/support UR
 
 ## Google Play setup in progress
 
-The owner requested Play Store automatic updates for Android family testers. A separate 0.4.1/code7 AAB is queued: 99481e0b-b094-4fcb-8c0e-36552fa6a804. The business Google account has two-step verification enabled and personal GetHunterOS developer registration completed by the owner. Google blocks Create app until identity, physical Android and contact-phone verification complete. GOOGLE-PLAY.md records account, signing continuity, tester opt-in and auto-update requirements. No Play app or release is created. Owner completed registration; a separate fee receipt was not inspected. Original APK6 and iOS7 jobs are preserved.
+The owner requested Play Store automatic updates for Android family testers. The separate 0.4.1/code7 AAB is finished, archived and statically inspected: 99481e0b-b094-4fcb-8c0e-36552fa6a804. Registration and verification gates cleared. With explicit owner approval of the required declarations, HunterOS app4972291825989850904 was created under GetHunterOS. Google's default signing key differs from the existing EAS family APK key; the encrypted import form is prepared pending owner approval of that key transfer. No bundle upload or internal rollout is complete. Exact tester Google addresses were requested. GOOGLE-PLAY.md records signing, tester opt-in and auto-update requirements. No public release. Original APK6 and iOS7 jobs are preserved.
