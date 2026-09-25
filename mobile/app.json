@@ -3,16 +3,18 @@
     "name": "HunterOS",
     "slug": "hunteros-mobile",
     "scheme": "hunteros",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "orientation": "default",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.totalfreedomindustries.hunteros"
+      "bundleIdentifier": "com.totalfreedomindustries.hunteros",
+      "buildNumber": "1"
     },
     "android": {
-      "package": "com.totalfreedomindustries.hunteros"
+      "package": "com.totalfreedomindustries.hunteros",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
