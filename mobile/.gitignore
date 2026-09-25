@@ -12,3 +12,11 @@ data/catalog.json
 .env.local
 
 !.env.example
+
+credentials/
+credentials.json
+*service-account*.json
+*.jks
+*.keystore
+*.p8
+*.p12

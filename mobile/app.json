@@ -22,7 +22,7 @@
     },
     "android": {
       "package": "com.totalfreedomindustries.hunteros",
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0c100d"

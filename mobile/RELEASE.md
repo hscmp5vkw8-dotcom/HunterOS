@@ -40,3 +40,7 @@ For source archives without Git, set EAS_NO_VCS=1 and EAS_PROJECT_ROOT to this m
 ## Before public launch
 
 Finish account deletion and its verified server-side process, privacy/support URLs, store privacy forms, manufacturer image rights, device testing, feedback abuse controls and backup/email quota review. Family beta readiness does not mean public-store readiness.
+
+## Google Play setup in progress
+
+The owner requested Play Store automatic updates for Android family testers. A separate 0.4.1/code7 AAB is queued: 99481e0b-b094-4fcb-8c0e-36552fa6a804. The business Google account has two-step verification enabled; legal account type and developer registration remain pending. GOOGLE-PLAY.md records account, signing continuity, tester opt-in and auto-update requirements. No Play release or payment is completed. Original APK6 and iOS7 jobs are preserved.
