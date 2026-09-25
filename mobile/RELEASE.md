@@ -1,9 +1,9 @@
-﻿# HunterOS v0.4 release checklist
+# HunterOS v0.4 release checklist
 
-Status 2026-09-25: 0.4.0 (5) native candidates queued; not yet submitted or distributed. Current family release remains 0.1.2 (3).
+Status 2026-09-25: 0.4.0 native candidates are Android build 5 and iOS build 6; not yet submitted or distributed. Current family release remains 0.1.2 (3).
 
 - Android APK: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/235aaa09-c2f5-40c8-85af-2ed1c444e304
-- iOS TestFlight candidate: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/2423bc73-c67d-46c6-8604-5d11dbb84640 — native build completed September 25 at 16:38 UTC.
+- iOS TestFlight candidate: https://expo.dev/accounts/hunteross-team/projects/hunteros/builds/b1dd90dc-e651-45e8-90b8-867141b55e3f — build 6 queued September 25 at 16:44 UTC. Earlier build 5 completed but its artifact revealed unused default microphone/Face ID permission descriptions. Those descriptions are explicitly disabled; config introspection confirms only camera remains. Build 5 is superseded and must not be submitted.
 - TypeScript, 39 unit/data/auth-stub tests and clean iOS/Android/web exports pass. Browser checks confirm signup/reset validation and feedback preview/version. These do not prove real email delivery, cloud login or device behavior.
 
 ## Completed
@@ -29,11 +29,11 @@ Status 2026-09-25: 0.4.0 (5) native candidates queued; not yet submitted or dist
 
 ## Build and distribution
 
-Use EAS CLI 24.7.0 or a reviewed compatible version. Existing project signing credentials are reused. Build counters are now 5 and autoIncrement is enabled. The build-5 candidates can complete while email setup is pending; do not distribute them until the applicable gates pass. Download existing successful artifacts instead of rebuilding to install them.
+Use EAS CLI 24.7.0 or a reviewed compatible version. Existing project signing credentials are reused. Build counters are Android 5 / iOS 6 and autoIncrement is enabled. Candidates can complete while email setup is pending; do not distribute them until the applicable gates pass. Download existing successful artifacts instead of rebuilding to install them.
 
     npx eas-cli@24.7.0 build --platform android --profile preview
     npx eas-cli@24.7.0 build --platform ios --profile production
-    npx eas-cli@24.7.0 submit --platform ios --profile production --id 2423bc73-c67d-46c6-8604-5d11dbb84640
+    npx eas-cli@24.7.0 submit --platform ios --profile production --id b1dd90dc-e651-45e8-90b8-867141b55e3f
 
 Android preview produces a standalone APK. Send testers the new install link; install over the existing app without uninstalling to preserve data. TestFlight distributes iOS updates after processing/review. EAS Update is not configured, so do not promise automatic over-the-air fixes.
 

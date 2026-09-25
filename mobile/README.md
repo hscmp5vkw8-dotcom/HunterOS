@@ -1,6 +1,6 @@
-﻿# HunterOS v0.4 candidate
+# HunterOS v0.4 candidate
 
-Prepared on 2026-09-25 from main commit 0cd5b807da518a37f7d71c0abb75b41325603b2e, with the shipped 0.1.2 fixes carried forward. EAS native candidates are version 0.4.0 build 5. See RELEASE.md for build references and the remaining distribution gates. This is not a public-store release.
+Prepared on 2026-09-25 from main commit 0cd5b807da518a37f7d71c0abb75b41325603b2e, with the shipped 0.1.2 fixes carried forward. EAS native candidates are version 0.4.0, Android build 5 and iOS build 6. Source is preserved in draft PR #5. See RELEASE.md for build references and the remaining distribution gates. This is not a public-store release.
 
 ## What is ready
 

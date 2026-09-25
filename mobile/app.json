@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.totalfreedomindustries.hunteros",
-      "buildNumber": "5",
+      "buildNumber": "6",
       "config": {
         "usesNonExemptEncryption": false
       }
@@ -47,10 +47,16 @@
         "expo-camera",
         {
           "cameraPermission": "Allow HunterOS to scan gear barcodes and product labels.",
+          "microphonePermission": false,
           "recordAudioAndroid": false
         }
       ],
-      "expo-secure-store"
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
