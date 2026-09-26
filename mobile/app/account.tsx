@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Text } from 'react-native';
 import type { User } from '@supabase/supabase-js';
 import { useRouter } from 'expo-router';
@@ -56,14 +56,14 @@ export default function Account() {
  <Text style={s.h2}>{user.email}</Text><Text style={s.body}>Signing in or out does not clear local plans. If you switch accounts or share this device, review the workspace before uploading it.</Text>
  <Button title={busy?'Working...':'Upload this device to cloud'} disabled={disabled} onPress={()=>void run(async()=>{
   const before=JSON.stringify(state);
-  if (!await confirmAction('Replace your cloud backup?', `Upload ${state.trips.length} trips, ${state.gear.length} locker items and ${state.scannedProducts.length} scans to ${user.email}? This includes notes and locations. It replaces that account's previous cloud copy, including changes uploaded by another phone. Export a backup first if you want to keep another copy.`)) return;
+  if (!await confirmAction('Replace your cloud backup?', `Upload ${state.trips.length} trips, ${state.loadouts.length} loadouts, ${state.gear.length} locker items and ${state.scannedProducts.length} scans to ${user.email}? This includes notes and locations. It replaces that account's previous cloud copy, including changes uploaded by another phone. Export a backup first if you want to keep another copy.`)) return;
   await pushWorkspace(JSON.parse(before),user.id);
   return 'Cloud backup saved. Later edits stay on this device until you upload again.';
  })}/>
  <Button secondary title="Restore cloud copy to this device" disabled={disabled} onPress={()=>void run(async()=>{
   const before=JSON.stringify(state), remote=await pullWorkspace(user.id);
   if (!remote) throw Error('This account has no cloud backup yet.');
-  if (!await confirmAction('Replace this device workspace?', `Restore the backup from ${new Date(remote.updated_at).toLocaleString()} for ${user.email}? Its ${remote.workspace.trips.length} trips and ${remote.workspace.gear.length} locker items replace this device's trips, gear, favorites and scans. Export a backup from Settings first to keep the current workspace.`)) return;
+  if (!await confirmAction('Replace this device workspace?', `Restore the backup from ${new Date(remote.updated_at).toLocaleString()} for ${user.email}? Its ${remote.workspace.trips.length} trips, ${remote.workspace.loadouts.length} loadouts and ${remote.workspace.gear.length} locker items replace this device's trips, loadouts, gear, favorites and scans. Export a backup from Settings first to keep the current workspace.`)) return;
   if ((await session())?.user.id!==user.id) throw Error('Your account changed. Review the restore again.');
   await commit(current=>restoreUnchanged(current,before,remote.workspace));
   return 'Cloud copy restored to this device.';

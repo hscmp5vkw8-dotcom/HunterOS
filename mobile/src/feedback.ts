@@ -4,7 +4,7 @@ import { supabase } from './cloud';
 import { feedbackDelivery, type FeedbackPayload, type FeedbackReceipt } from './feedback-data';
 import { readFeedbackSaved, writeFeedbackSaved } from './feedback-storage';
 
-export const appVersion = Constants.expoConfig?.version ?? '0.4.1';
+export const appVersion = Constants.expoConfig?.version ?? '0.5.0';
 export const supportEmail = 'support@gethunteros.com';
 export const submitFeedback=feedbackDelivery({read:readFeedbackSaved,write:writeFeedbackSaved,send:async(payload:FeedbackPayload)=>{
  if(!supabase)throw Error('Feedback sending is not available in this build. Your report is saved on this device.');
