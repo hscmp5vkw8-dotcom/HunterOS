@@ -1,4 +1,4 @@
-# HunterOS 0.5.0 candidate — outdoor loadouts and four-wheeling
+# HunterOS 0.5.0 — outdoor loadouts and four-wheeling
 
 This branch builds on `codex/product-photos-20260925` (the 0.4.2 source), not the older main branch.
 
@@ -30,9 +30,8 @@ Loadout-to-trip and duplicate operations copy product/photo snapshots, assign fr
 
 ## Release state
 
-Both 0.5.0 (9) native builds finished and passed static artifact checks. The iOS upload is VALID, assigned to Team (Expo) and private Family Beta, and waiting for external beta review with automatic notifications enabled. Android's inspected AAB is archived and Google Play release 3 has prepared notes, but file attachment remains blocked by the connected Chrome extension's file-access check. The active Android release remains 0.4.2 (8). Do not describe Android 0.5.0 as available until the new bundle is uploaded and published. See [the release record](RELEASE-0.5.0.md).
+Both 0.5.0 (9) native builds finished and passed static artifact checks. The iOS upload is VALID, assigned to Team (Expo) and private Family Beta, and still waiting for external beta review with automatic notifications enabled as of September 26, 2026, 03:00:21 UTC. Android **0.5.0 (9)** is published as Google Play internal release 3 and **Available to internal testers**, verified after reloading Play Console at approximately September 26, 03:01 UTC. Play displays the release time as September 25, 8:59 PM MDT (September 26, 02:59 UTC). Existing testers use the unchanged [opt-in link](https://play.google.com/apps/internaltest/4701644933804462998). Physical installations, automatic update delivery and preservation of device data remain unverified. See [the release record](RELEASE-0.5.0.md).
 
 The product-import Edge Function was deployed to HunterOS with the new categories and observed manufacturer/image hosts. The persisted source matches the reviewed bundle; JWT verification, confirmed-user checks and rate limits remain enabled. Anonymous catalog reads and denial of unauthenticated imports/private metadata reads passed. No database migration or new secrets were needed.
 
 Manufacturer pictures remain external reference previews. No new affiliate relationship or commercial image license is claimed. Unknown prices and weights remain blank, and vehicle tags describe discovery rather than certified fitment.
-

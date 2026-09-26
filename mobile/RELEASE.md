@@ -1,6 +1,6 @@
 ## Current outdoor update: 0.5.0 (9)
 
-The iPhone build is uploaded, processed and assigned to private Family Beta, with automatic notifications enabled and external beta review pending. Android's signed AAB is built and verified; Play release 3 is prepared, but Chrome file-access restrictions blocked attaching it. Android 0.5.0 is not published; the active Play release remains 0.4.2 (8). See [RELEASE-0.5.0.md](RELEASE-0.5.0.md) for exact jobs, artifacts and remaining upload steps.
+Android 0.5.0 (9), internal release 3, is published and **Available to internal testers**, verified in Play Console at approximately September 26, 2026, 03:01 UTC. Play displays the release time as September 25, 8:59 PM MDT (September 26, 02:59 UTC). Existing testers use the same [opt-in link](https://play.google.com/apps/internaltest/4701644933804462998). The iPhone build is uploaded, VALID and assigned to private Family Beta, with automatic notifications enabled; external beta review was still pending at September 26, 03:00:21 UTC. Physical installation and upgrade preservation remain unverified. See [RELEASE-0.5.0.md](RELEASE-0.5.0.md) for exact jobs, artifacts and release evidence.
 
 The entries below are historical snapshots.
 
