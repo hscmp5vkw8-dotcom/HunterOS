@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ProductSocial } from '@/product-social';
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { Linking, Text, View } from 'react-native';
 import { useCatalog } from '@/use-catalog';
@@ -32,7 +33,7 @@ export default function ProductDetail(){
    <Button secondary title={owned?'Already in your locker':'I own this — add to locker'} onPress={()=>void add('locker')} disabled={owned||saving}/>
   </Card>
   <Card><Text style={s.small}>Reference weight</Text><Text selectable style={s.h2}>{weight(p.weightGrams)}</Text><Text selectable style={s.body}>{p.weightLabel}</Text><Text style={s.small}>{p.weightCheckedAt?`Weight checked against source ${p.weightCheckedAt}.`:'Enter your measured weight after adding it to your equipment.'}</Text><Text selectable style={s.h2}>{money(p.priceUSD)}</Text><Text style={s.small}>{p.priceUSD===null?'Check the product website for current pricing.':`Reference price (${p.priceCheckedAt||p.checkedAt||'date unknown'}). Confirm the exact option, taxes and shipping with the seller.`}</Text></Card>
-  <Body>{p.note}</Body>{p.photo?<Card><Label>PICTURE SOURCE</Label><Body>{p.photo.caption}</Body><Button secondary title="Manufacturer picture source" onPress={()=>void open(p.photo!.sourceURL)}/><Text style={s.small}>Reference linked {p.photo.checkedAt}. Photos load from the source and may show another option or accessories. No affiliation is implied.</Text></Card>:null}
+  <ProductSocial key={p.id} productId={p.id}/><Body>{p.note}</Body>{p.photo?<Card><Label>PICTURE SOURCE</Label><Body>{p.photo.caption}</Body><Button secondary title="Manufacturer picture source" onPress={()=>void open(p.photo!.sourceURL)}/><Text style={s.small}>Reference linked {p.photo.checkedAt}. Photos load from the source and may show another option or accessories. No affiliation is implied.</Text></Card>:null}
   {variants.length?<View style={{gap:12}}><Text style={s.h2}>Other configurations</Text>{variants.map(v=><Link key={v.id} href={{pathname:'/product/[id]',params:{id:v.id,...(tripId?{tripId}:{}),...(loadoutId?{loadoutId}:{})}}} style={{padding:14,borderWidth:1,borderColor:C.line,borderRadius:12,color:C.lime}}>{v.variant||v.name} →</Link>)}</View>:null}
  </Page>;
 }

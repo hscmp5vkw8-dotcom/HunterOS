@@ -4,6 +4,18 @@
     "appVersionSource": "local"
   },
   "build": {
+    "candidate": {
+      "extends": "production",
+      "autoIncrement": false
+    },
+    "beta-apk": {
+      "extends": "candidate",
+      "distribution": "internal",
+      "autoIncrement": false,
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "preview": {
       "distribution": "internal",
       "developmentClient": false,

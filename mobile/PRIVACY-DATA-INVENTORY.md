@@ -2,6 +2,8 @@
 
 This engineering inventory is not the final public privacy policy.
 
+For 0.6.0, optional social profiles, friend codes, requests, blocks, private groups/memberships and explicitly shared product notes are stored in separate Supabase tables. Only accepted friends or accepted members of the selected group can view those posts. Invited users see their invitation before joining. Product-like/use choices are account-linked privately and contribute to public anonymous totals once at least three distinct users picked the product. Recommendations stay on-device. Report links prefill only a post identifier into the existing feedback form. Details and deletion behavior are in SOCIAL-BETA.md and the in-app Privacy screen. None of these features publishes the private workspace backup.
+
 Accounts use Supabase Auth (email, password authentication and account identifier). Native session credentials use SecureStore; web previews use browser storage. Signing out does not erase the device workspace.
 
 On explicit Upload, the complete workspace is sent to the user's private Supabase backup: trips, entered region/area/location notes, gear, packing, favorites and scan records with codes, timestamps, counts and product matches. Restore replaces the device copy after confirmation. Backups do not automatically merge across devices. There is no separate scan-submission publication or shared-trip implementation; reserved tables have no client permissions.
