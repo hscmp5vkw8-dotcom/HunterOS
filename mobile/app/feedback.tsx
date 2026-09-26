@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Platform, Text } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 import { Button, Card, Chips, ErrorText, Field, Label, Page, s } from '@/ui';
 import { appVersion, emailFeedback, feedbackReport, shareFeedback, submitFeedback, supportEmail } from '@/feedback';
 import { feedbackId, feedbackKinds, readFeedbackJournal, validateFeedback, type FeedbackEntry, type FeedbackPayload } from '@/feedback-data';
 import { readFeedbackSaved } from '@/feedback-storage';
 
 export default function Feedback() {
+  const {post}=useLocalSearchParams<{post?:string}>();
   const [kind,setKind]=useState('Something broke');
   const [details,setDetails]=useState(''),[steps,setSteps]=useState(''),[expected,setExpected]=useState('');
   const [contact,setContact]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false);
@@ -13,6 +15,7 @@ export default function Feedback() {
   const active=useRef(false),draft=useRef<{signature:string;payload:FeedbackPayload}|null>(null);
   async function refresh(){try{setEntries(readFeedbackJournal(await readFeedbackSaved()));setStorageError(false);}catch(e){setStorageError(true);setMessage((e as Error).message);}}
   useEffect(()=>{void refresh();},[]);
+  useEffect(()=>{if(typeof post==='string'&&/^[0-9a-f-]{36}$/i.test(post))setDetails(`Report a shared gear post\nPost reference: ${post}\n\nReason: `);},[post]);
   function payload(){
     const fields={kind,details,steps,expected,contact_email:contact,app_version:appVersion,platform:Platform.OS,os_version:String(Platform.Version??'')};
     const signature=JSON.stringify(fields);
