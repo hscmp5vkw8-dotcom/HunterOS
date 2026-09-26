@@ -1,3 +1,11 @@
+## Current outdoor update: 0.5.0 (9)
+
+Android 0.5.0 (9), internal release 3, is published and **Available to internal testers**, verified in Play Console at approximately September 26, 2026, 03:01 UTC. Play displays the release time as September 25, 8:59 PM MDT (September 26, 02:59 UTC). Existing testers use the same [opt-in link](https://play.google.com/apps/internaltest/4701644933804462998). The iPhone build is uploaded, VALID and assigned to private Family Beta, with automatic notifications enabled; external beta review was still pending at September 26, 03:00:21 UTC. Physical installation and upgrade preservation remain unverified. See [RELEASE-0.5.0.md](RELEASE-0.5.0.md) for exact jobs, artifacts and release evidence.
+
+The entries below are historical snapshots.
+
+---
+
 ## Current product-picture update: 0.4.2 (8)
 
 Android release 2 is Active / Available to internal testers on the existing private Google Play track. iOS: Uploaded successfully; Apple processing pending. Family Beta assignment and review still need completion. Both cloud builds finished and their archived artifacts passed static identity/permission checks. Runtime source commit: 31ed1a717a055dd682876810666501eec843f4d6. See PRODUCT-PHOTOS.md for the shared catalog, data separation and validation.

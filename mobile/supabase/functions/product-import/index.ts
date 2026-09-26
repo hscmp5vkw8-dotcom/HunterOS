@@ -1,5 +1,5 @@
 import { fetchManufacturer, manufacturerURL, type ManufacturerPreview } from './source.ts';
-const categories=['Pack system','Shelter & sleep','Clothing','Water & food','Food & nutrition','Camp comfort','Electronics & power','Hunt essentials','Navigation & safety','Other'];
+const categories=['Pack system','Shelter & sleep','Clothing','Water & food','Food & nutrition','Camp comfort','Electronics & power','Hunt essentials','Navigation & safety','Recovery & towing','Tools & tires','Vehicle storage','Riding protection','Other'];
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, apikey, content-type, x-client-info','Access-Control-Allow-Methods':'POST, OPTIONS','Content-Type':'application/json','Cache-Control':'no-store'};
 const cache=new Map<string,{at:number;value:ManufacturerPreview}>();
 const reply=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:cors});

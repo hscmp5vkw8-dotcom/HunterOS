@@ -1,0 +1,697 @@
+{
+  "checkedAt": "2026-09-26T02:12:11.148Z",
+  "products": [
+    {
+      "id": "x-exo-mtn-gear-k4-5000",
+      "url": "https://exomtngear.com/products/k4-5000-pack-system",
+      "resolvedURL": "https://exomtngear.com/products/k4-5000-pack-system",
+      "status": 200,
+      "title": "\n    K4 5000 Pack System &ndash; Exo Mtn Gear\n  ",
+      "checkedAt": "2026-09-26T02:09:46.474Z"
+    },
+    {
+      "id": "x-exo-mtn-gear-k4-7200",
+      "url": "https://exomtngear.com/products/k4-7200-pack-system",
+      "resolvedURL": "https://exomtngear.com/products/k4-7200-pack-system",
+      "status": 200,
+      "title": "\n    K4 7200 Pack System &ndash; Exo Mtn Gear\n  ",
+      "checkedAt": "2026-09-26T02:09:46.493Z"
+    },
+    {
+      "id": "x-therm-a-rest-neoair-xlite-nxt",
+      "url": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+      "resolvedURL": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+      "status": 200,
+      "title": "\n      NeoAir XLite NXT Ultralight Sleeping Pad | Therm-a-Rest\n &ndash; Cascade Designs",
+      "checkedAt": "2026-09-26T02:09:46.528Z"
+    },
+    {
+      "id": "x-nemo-tensor-all-season",
+      "url": "https://www.nemoequipment.com/products/tensor-all-season-insulated-sleeping-pad",
+      "resolvedURL": "https://www.nemoequipment.com/products/tensor-all-season-insulated-sleeping-pad",
+      "status": 200,
+      "title": "Tensor All-Season Sleeping Pad - NEMO Equipment",
+      "checkedAt": "2026-09-26T02:09:46.596Z"
+    },
+    {
+      "id": "x-kenetrek-mountain-extreme-400",
+      "url": "https://kenetrek.com/products/mountain-extreme-400",
+      "resolvedURL": "https://kenetrek.com/products/mountain-extreme-400",
+      "status": 200,
+      "title": "\n      \n        Mountain Extreme 400 Boots for Harsh Terrain and Cold - Kenetrek Boots\n      \n    ",
+      "checkedAt": "2026-09-26T02:09:47.082Z"
+    },
+    {
+      "id": "x-goal-zero-yeti-300",
+      "url": "https://goalzero.com/products/yeti-300-portable-power-station-lifepo4-battery",
+      "resolvedURL": "https://goalzero.com/products/yeti-300-portable-power-station-lifepo4-battery",
+      "status": 200,
+      "title": "\n    Goal Zero YETI 300 Portable Power Station 297Wh LiFePo4 Battery\n    \n    \n    \n  ",
+      "checkedAt": "2026-09-26T02:09:47.200Z"
+    },
+    {
+      "id": "x-grayl-geopress-24-oz",
+      "url": "https://grayl.com/products/24oz-geopress-filter-purifier-water-bottle-nature-edition",
+      "resolvedURL": "https://grayl.com/products/24oz-geopress-filter-purifier-water-bottle-nature-edition",
+      "status": 200,
+      "title": "24 fl oz GeoPress® Filter &amp; Purifier Bottle - Nature Edition\n&ndash; GRAYL®\n",
+      "checkedAt": "2026-09-26T02:09:47.257Z"
+    },
+    {
+      "id": "x-snow-peak-titanium-single-450",
+      "url": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+      "resolvedURL": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+      "status": 200,
+      "title": "Ti-Single 450 Cup | Snow Peak",
+      "checkedAt": "2026-09-26T02:09:47.511Z"
+    },
+    {
+      "id": "x-goal-zero-lighthouse-600",
+      "url": "https://goalzero.com/products/lighthouse-600-lantern-usb-power-hub",
+      "resolvedURL": "https://goalzero.com/products/lighthouse-600-lantern-usb-power-hub",
+      "status": 200,
+      "title": "\n    Lighthouse 600 Camping Lantern, Hand Crank &amp; USB Power Hub | Goal Zero\n    \n    \n    \n  ",
+      "checkedAt": "2026-09-26T02:09:47.872Z"
+    },
+    {
+      "id": "x-argali-high-country-game-bags",
+      "url": "https://argalioutdoors.com/products/high-country-pack",
+      "resolvedURL": "https://argalioutdoors.com/products/high-country-pack",
+      "status": 200,
+      "title": "\n      Argali High Country Pack Ultralight Game Bags | argalioutdoors.com\n",
+      "checkedAt": "2026-09-26T02:09:48.001Z"
+    },
+    {
+      "id": "x-biolite-campstove-2",
+      "url": "https://www.bioliteenergy.com/products/campstove-2-plus",
+      "resolvedURL": "https://www.bioliteenergy.com/products/campstove-2-plus",
+      "status": 200,
+      "title": "BioLite CampStove 2+ - Wood-Burning Camping Stove",
+      "checkedAt": "2026-09-26T02:09:48.105Z"
+    },
+    {
+      "id": "x-aeropress-go",
+      "url": "https://aeropress.com/products/aeropress-go-travel-coffee-press",
+      "resolvedURL": "https://aeropress.com/products/aeropress-go-travel-coffee-press",
+      "status": 200,
+      "title": "\n      AeroPress Go Travel Coffee Press | Camping Coffee Maker\n    ",
+      "checkedAt": "2026-09-26T02:09:48.405Z"
+    },
+    {
+      "id": "x-osprey-aether-65",
+      "url": "https://www.osprey.com/aether-trade-65-aether65f20-550",
+      "checkedAt": "2026-09-26T02:12:01.779Z",
+      "status": 403,
+      "resolvedURL": "https://www.osprey.com/aether-trade-65-aether65f20-550",
+      "title": "Just a moment...",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-osprey-atmos-ag-65",
+      "url": "https://www.osprey.com/atmos-ag-65-atmos65s22-415",
+      "checkedAt": "2026-09-26T02:12:01.780Z",
+      "status": 403,
+      "resolvedURL": "https://www.osprey.com/atmos-ag-65-atmos65s22-415",
+      "title": "Just a moment...",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-mystery-ranch-metcalf-75",
+      "url": "https://www.mysteryranch.com/metcalf-pack",
+      "checkedAt": "2026-09-26T02:12:01.746Z",
+      "status": 200,
+      "resolvedURL": "https://www.mysteryranch.com/metcalf-pack",
+      "title": "Metcalf 75 Pack | MYSTERY RANCH Backpacks"
+    },
+    {
+      "id": "x-nemo-disco-15",
+      "url": "https://www.nemoequipment.com/products/disco-mens-endless-promise-down-sleeping-bag",
+      "checkedAt": "2026-09-26T02:12:01.781Z",
+      "status": 200,
+      "resolvedURL": "https://www.nemoequipment.com/products/disco-mens-endless-promise-down-sleeping-bag",
+      "title": "Disco Men's Down Sleeping Bag - NEMO Equipment",
+      "imageURL": "https://cdn.shopify.com/s/files/1/0582/1136/9133/files/kapguo5ilgtrwp3yzj3h.jpg?v=1776198382",
+      "imageMime": "image/jpeg",
+      "imageBytes": 76036
+    },
+    {
+      "id": "x-kuiu-chugach-tr-rain-jacket",
+      "url": "https://www.kuiu.com/products/chugach-tr-rain-jacket-black",
+      "checkedAt": "2026-09-26T02:12:01.778Z",
+      "status": 200,
+      "resolvedURL": "https://www.kuiu.com/products/chugach-tr-rain-jacket-black",
+      "title": "Chugach TR Rain Jacket | Black",
+      "imageURL": "https://www.kuiu.com/cdn/shop/files/2025_ChugachTRJacket_50043_BL_FrontMannequin_1024x1024.png?v=1744389610",
+      "imageMime": "image/png",
+      "imageBytes": 363234,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-hilleberg-allak-2",
+      "url": "https://hilleberg.com/eng/products/tent/Allak",
+      "checkedAt": "2026-09-26T02:12:01.780Z",
+      "status": 200,
+      "resolvedURL": "https://hilleberg.com/eng/products/tent/Allak",
+      "title": "Hilleberg Allak 4-Season Freestanding Backpacking Tent"
+    },
+    {
+      "id": "x-leupold-bx-4-pro-guide-hd-gen-2-10x42",
+      "url": "https://www.leupold.com/bx-4-pro-guide-hd-gen-2-10x42mm-binocular",
+      "checkedAt": "2026-09-26T02:12:03.488Z",
+      "status": 200,
+      "resolvedURL": "https://www.leupold.com/bx-4-pro-guide-hd-gen-2-10x42mm-binocular",
+      "title": "BX-4&#x20;Pro&#x20;Guide&#x20;HD&#x20;Gen&#x20;2&#x20;10x42mm",
+      "imageURL": "https://www.leupold.com/media/catalog/product/cache/222d5a9c458cc44685647af6e815b080/b/x/bx-4_pro_guide_hd_gen_2_10x42_184761_a-1.png",
+      "imageMime": "image/png",
+      "imageBytes": 60241,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-sitka-kelvin-aerolite-jacket",
+      "url": "https://www.sitkagear.com/products/kelvin-aerolite-jacket/earth",
+      "checkedAt": "2026-09-26T02:12:03.487Z",
+      "status": 200,
+      "resolvedURL": "https://www.sitkagear.com/products/kelvin-aerolite-jacket/earth",
+      "title": "Sitka Logo",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-sea-to-summit-spark-15",
+      "url": "https://seatosummit.com/products/spark-down-sleeping-bag",
+      "checkedAt": "2026-09-26T02:12:03.485Z",
+      "status": 200,
+      "resolvedURL": "https://seatosummit.com/products/spark-down-sleeping-bag",
+      "title": "Spark Ultralight Down Sleeping Bag for Camping Backpacking | Sea to Summit",
+      "imageURL": "https://seatosummit.com/cdn/shop/files/SparkDownSleepingBag-18C-0FRegular_ASL041072-050108_PRIMARY_WBG.webp?v=1719262172",
+      "imageMime": "image/jpeg",
+      "imageBytes": 79993,
+      "imageReview": "replaced: default image showed0F rather than15F"
+    },
+    {
+      "id": "x-sitka-ambient-100-hoody",
+      "url": "https://www.sitkagear.com/products/ambient-100-hooded-jacket/sitka-black",
+      "checkedAt": "2026-09-26T02:12:03.487Z",
+      "status": 200,
+      "resolvedURL": "https://www.sitkagear.com/products/ambient-100-hooded-jacket/sitka-black",
+      "title": "Ambient 100 Hooded Jacket | Sitka Black | SITKA Gear"
+    },
+    {
+      "id": "x-enlightened-equipment-revelation-20-f",
+      "url": "https://enlightenedequipment.com/revelation-sleeping-quilt/",
+      "checkedAt": "2026-09-26T02:12:03.486Z",
+      "status": 200,
+      "resolvedURL": "https://enlightenedequipment.com/revelation-sleeping-quilt/",
+      "title": "Revelation Sleeping Quilt",
+      "imageURL": "https://cdn11.bigcommerce.com/s-japp2/products/425/images/36367/Revelation_AT_Badge__95556.1771273195.500.500.jpg?c=2",
+      "imageMime": "image/jpeg",
+      "imageBytes": 51625,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-first-lite-corrugate-foundry-pant",
+      "url": "https://www.firstlite.com/products/corrugate-foundry-pant.html?lang=en_US",
+      "checkedAt": "2026-09-26T02:12:03.487Z",
+      "status": 200,
+      "resolvedURL": "https://firstlite.com/products/corrugate-foundry-pant?lang=en_US",
+      "title": "Men's Corrugate Foundry Pant",
+      "imageURL": "https://firstlite.com/cdn/shop/files/corrugate-foundry-pant_color_dry-earth.jpg?v=1748460672&width=1024",
+      "imageMime": "image/jpeg",
+      "imageBytes": 47568,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-jetboil-minimo",
+      "url": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/minimo-cooking-system/mnmcb",
+      "checkedAt": "2026-09-26T02:12:04.716Z",
+      "status": 200,
+      "resolvedURL": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/minimo-cooking-system/mnmcb",
+      "title": "",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-jetboil-flash",
+      "url": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/flash-cooking-system",
+      "checkedAt": "2026-09-26T02:12:04.715Z",
+      "status": 200,
+      "resolvedURL": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/flash-cooking-system",
+      "title": "",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-vortex-diamondback-hd-10x42",
+      "url": "https://vortexoptics.com/vortex-diamondback-hd-10x42-binocular.html",
+      "checkedAt": "2026-09-26T02:12:04.713Z",
+      "status": 200,
+      "resolvedURL": "https://vortexoptics.com/vortex-diamondback-hd-10x42-binocular.html",
+      "title": "Diamondback&#x20;HD&#x20;10x42",
+      "imageURL": "https://vortexoptics.com/media/catalog/product/v/t/vtx_bin_diamondback2_42_f_w.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "imageMime": "image/jpeg",
+      "imageBytes": 4177,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-vortex-razor-hd-10x42",
+      "url": "https://vortexoptics.com/vortex-razor-hd-10x42-binocular.html",
+      "checkedAt": "2026-09-26T02:12:04.711Z",
+      "status": 200,
+      "resolvedURL": "https://vortexoptics.com/vortex-razor-hd-10x42-binocular.html",
+      "title": "Razor&#x20;HD&#x20;10x42",
+      "imageURL": "https://vortexoptics.com/media/catalog/product/v/t/vtx_bin_razorhd_42_f_w.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=265&width=265&canvas=265:265",
+      "imageMime": "image/jpeg",
+      "imageBytes": 3659,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-maven-s-1a-25-50x80",
+      "url": "https://mavenbuilt.com/products/s1-2s-25-50x80",
+      "checkedAt": "2026-09-26T02:12:04.714Z",
+      "status": 200,
+      "resolvedURL": "https://mavenbuilt.com/products/s1-2s-25-50x80",
+      "title": "S1.2S -  25-50 / 30-65x80",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-platypus-quickdraw",
+      "url": "https://cascadedesigns.com/products/quickdraw-filter",
+      "checkedAt": "2026-09-26T02:12:04.715Z",
+      "status": 200,
+      "resolvedURL": "https://cascadedesigns.com/products/quickdraw-filter",
+      "title": "QuickDraw Filter | Squeeze Water Filter | Platypus",
+      "imageURL": "https://cdn.shopify.com/s/files/1/0574/0642/3174/files/cascade-designs-logo-og.png?v=1761594894",
+      "imageMime": "image/png",
+      "imageBytes": 115452,
+      "imageReview": "rejected: generic Cascade Designs logo"
+    },
+    {
+      "id": "x-coleman-cascade-3-in-1",
+      "url": "https://www.coleman.com/grills-stoves/camping-stoves/cascade-3-in-1-camping-stove/SAP_2157356.html",
+      "checkedAt": "2026-09-26T02:12:05.210Z",
+      "status": 403,
+      "resolvedURL": "https://www.coleman.com/grills-stoves/camping-stoves/cascade-3-in-1-camping-stove/SAP_2157356.html",
+      "title": "Just a moment...",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-garmin-montana-700i",
+      "url": "https://www.garmin.com/en-US/p/699779/",
+      "checkedAt": "2026-09-26T02:12:05.208Z",
+      "status": 200,
+      "resolvedURL": "https://www.garmin.com/en-US/p/699779/",
+      "title": "Montana® 700i",
+      "imageURL": "https://res.garmin.com/en/products/010-02347-10/v/cf-lg-8ebb6adb-1d73-4216-aeac-a1acd5e804b8.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 23791,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-msr-windburner-personal",
+      "url": "https://cascadedesigns.com/products/windburner-personal-stove-system",
+      "checkedAt": "2026-09-26T02:12:05.208Z",
+      "status": 200,
+      "resolvedURL": "https://cascadedesigns.com/products/windburner-personal-stove-system",
+      "title": "WindBurner Personal Backpacking Stove System | MSR",
+      "imageURL": "https://cdn.shopify.com/s/files/1/0574/0642/3174/files/cascade-designs-logo-og.png?v=1761594894",
+      "imageMime": "image/png",
+      "imageBytes": 115452,
+      "imageReview": "rejected: generic Cascade Designs logo"
+    },
+    {
+      "id": "x-garmin-etrex-solar",
+      "url": "https://www.garmin.com/en-US/p/869859/pn/010-02782-00/",
+      "checkedAt": "2026-09-26T02:12:05.209Z",
+      "status": 200,
+      "resolvedURL": "https://www.garmin.com/en-US/p/869859/pn/010-02782-00/",
+      "title": "eTrex® Solar",
+      "imageURL": "https://res.garmin.com/en/products/010-02782-00/v/cf-lg.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 16494,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-gerber-vital-pocket-folder",
+      "url": "https://gerbergear.com/products/vital-pocket-folder-31-002736n",
+      "checkedAt": "2026-09-26T02:12:05.210Z",
+      "status": 200,
+      "resolvedURL": "https://gerbergear.com/products/vital-pocket-folder-31-002736n",
+      "title": "Vital Pocket Folder",
+      "imageURL": "https://gerbergear.com/cdn/shop/files/resource_gerberamericas_31-002736.jpg?v=1779344344",
+      "imageMime": "image/jpeg",
+      "imageBytes": 31616,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-camp-chef-everest-2x",
+      "url": "https://www.campchef.com/products/everest-2x",
+      "checkedAt": "2026-09-26T02:12:05.211Z",
+      "status": 200,
+      "resolvedURL": "https://www.campchef.com/products/everest-2x",
+      "title": "Everest 2X Camping Stove Camp Chef",
+      "imageURL": "https://www.campchef.com/cdn/shop/files/b1835a4b0ede6d513c9508b4f29531896573d9d1.jpg?v=1768053691",
+      "imageMime": "image/jpeg",
+      "imageBytes": 65051,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-rtic-52-qt-ultra-light",
+      "url": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "checkedAt": "2026-09-26T02:12:06.717Z",
+      "status": 403,
+      "resolvedURL": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "title": "Just a moment...",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-garmin-inreach-messenger",
+      "url": "https://www.garmin.com/en-US/p/793265/",
+      "checkedAt": "2026-09-26T02:12:06.718Z",
+      "status": 200,
+      "resolvedURL": "https://www.garmin.com/en-US/p/793265/",
+      "title": "inReach® Messenger",
+      "imageURL": "https://res.garmin.com/en/products/010-02672-00/v/cf-lg.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 12556,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-yeti-tundra-45",
+      "url": "https://www.yeti.com/coolers/hard-coolers/tundra/10045020000.html",
+      "checkedAt": "2026-09-26T02:12:06.716Z",
+      "status": 403,
+      "resolvedURL": "https://www.yeti.com/coolers/hard-coolers/tundra/10045020000.html",
+      "title": "Access to this page has been denied",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-sol-emergency-bivvy",
+      "url": "https://www.surviveoutdoorslonger.com/products/emergency-bivvy-with-rescue-whistle",
+      "checkedAt": "2026-09-26T02:12:06.717Z",
+      "status": 200,
+      "resolvedURL": "https://www.surviveoutdoorslonger.com/products/emergency-bivvy-with-rescue-whistle",
+      "title": "Emergency Bivvy with Rescue Whistle",
+      "imageURL": "https://www.surviveoutdoorslonger.com/cdn/shop/products/Emergency_Bivvy_Orange_in_box_white_background.jpg?v=1680120919",
+      "imageMime": "image/jpeg",
+      "imageBytes": 74057,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-biolite-headlamp-425",
+      "url": "https://www.bioliteenergy.com/products/headlamp-425",
+      "checkedAt": "2026-09-26T02:12:06.718Z",
+      "status": 200,
+      "resolvedURL": "https://www.bioliteenergy.com/collections/headlamps",
+      "title": "BioLite Rechargeable Headlamps - Hiking &amp; Running Headlamps",
+      "error": "Product title/status needs manual review"
+    },
+    {
+      "id": "x-leatherman-arc",
+      "url": "https://www.leatherman.com/products/arc",
+      "checkedAt": "2026-09-26T02:12:06.718Z",
+      "status": 200,
+      "resolvedURL": "https://www.leatherman.com/products/arc",
+      "title": "Leatherman ARC Multi-tool | Official Site",
+      "imageURL": "https://www.leatherman.com/cdn/shop/files/arc_20260402201530_u9uh.jpg?crop=center&height=1200&v=1777553914&width=1200",
+      "imageMime": "image/jpeg",
+      "imageBytes": 72111,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-leki-makalu-lite",
+      "url": "https://www.leki.com/fr/en/Makalu-Lite/65621081S",
+      "checkedAt": "2026-09-26T02:12:07.556Z",
+      "status": 200,
+      "resolvedURL": "https://www.leki.com/fr/en/Makalu-Lite/65621081S",
+      "title": "Makalu Lite | LEKI",
+      "imageURL": "https://res.cloudinary.com/leki-lenhart-gmbh/image/upload/s--DhFetNF2--/media/35/7d/b6/1772027364/65621081S.png?_a=BAAHWXH8",
+      "imageMime": "image/png",
+      "imageBytes": 327652,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-rumpl-original-puffy-blanket",
+      "url": "https://www.rumpl.com/products/original-puffy-blanket-born-to-be-wild",
+      "checkedAt": "2026-09-26T02:12:07.556Z",
+      "status": 200,
+      "resolvedURL": "https://www.rumpl.com/products/original-puffy-blanket-born-to-be-wild",
+      "title": "Original Puffy Blanket: Born To Be Wild | Rumpl. Set. Go.",
+      "imageURL": "https://www.rumpl.com/cdn/shop/files/rumpl-printed-original-1-person-original-puffy-blanket-born-to-be-wild-ru01012081p-1250005886.png?v=1784539328",
+      "imageMime": "image/png",
+      "imageBytes": 640695,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-thermacell-mr450",
+      "url": "https://www.thermacell.com/products/mr450-armored-portable-mosquito-repeller",
+      "checkedAt": "2026-09-26T02:12:07.555Z",
+      "status": 200,
+      "resolvedURL": "https://www.thermacell.com/products/mr450-armored-portable-mosquito-repeller",
+      "title": "Fuel-ZoneGuard Extreme + Mosquito Repeller (MR450)",
+      "imageURL": "https://optimise2.assets-servd.host/no-moz/production/products/FZone-Extreme-MR450-2026/Fuel-ZoneGuard_Extreme_Plus_01.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1774384195&s=578ceaf8bf174351faa7fbf1ae213f67",
+      "imageMime": "image/jpeg",
+      "imageBytes": 78437,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-coleman-cascade-3-in-1",
+      "url": "https://www.coleman.com/grills-stoves/camping-stoves/cascade-3-in-1-camping-stove/SAP_2157356.html",
+      "resolvedURL": "https://www.coleman.com/grills-stoves/camping-stoves/cascade-3-in-1-camping-stove/SAP_2157356.html",
+      "title": "Cascade 3-in-1 Camping Stove",
+      "checkedAt": "2026-09-26T02:13:17.602Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete."
+    },
+    {
+      "id": "x-osprey-atmos-ag-65",
+      "url": "https://www.osprey.com/atmos-ag-65-atmos65s22-415",
+      "resolvedURL": "https://www.osprey.com/atmos-ag-65-atmos65s22-415",
+      "title": "Atmos AG 65",
+      "checkedAt": "2026-09-26T02:13:17.602Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://www.osprey.com/media/catalog/product/cache/b2f1ce2dfe10d3d31bf2056bf6e0d10f/A/t/AtmosAG65_S22_Side_MythicalGreen-resized.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 32974,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-osprey-aether-65",
+      "url": "https://www.osprey.com/aether-trade-65-aether65f20-550",
+      "resolvedURL": "https://www.osprey.com/aether-trade-65-aether65f20-550",
+      "title": "Aether 65 Men’s Backpacking Pack",
+      "checkedAt": "2026-09-26T02:13:17.572Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://www.osprey.com/media/catalog/product/cache/b2f1ce2dfe10d3d31bf2056bf6e0d10f/A/e/Aether65F20_S21_Side_Black-resized.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 26958,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-yeti-tundra-45",
+      "url": "https://www.yeti.com/coolers/hard-coolers/tundra/10045020000.html",
+      "resolvedURL": "https://www.yeti.com/coolers/hard-coolers/tundra/10045020000.html",
+      "title": "YETI Tundra 45 Hard Cooler",
+      "checkedAt": "2026-09-26T02:13:17.602Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://yeti-webmedia.imgix.net/asset/6158b771-7d6f-4793-b6b9-faa0ebb5c325/W/Tundra_45_White_Front_3347_B.png?auto=format%2Ccompress&bg=0fff&h=846&w=846",
+      "imageMime": "image/png",
+      "imageBytes": 70251,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-rtic-52-qt-ultra-light",
+      "url": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "resolvedURL": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "title": "RTIC 52 QT Ultra-Light Cooler",
+      "checkedAt": "2026-09-26T02:13:17.603Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://static.rticoutdoors.com/cdn-cgi/image/format%3Dauto%2Cwidth%3D600%2Cheight%3D600%2Cfit%3Dcontain/i/items/599358983.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 41882
+    },
+    {
+      "id": "x-jetboil-flash",
+      "url": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/flash-10l-fast-boil-system",
+      "resolvedURL": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/flash-10l-fast-boil-system",
+      "title": "Flash 1.0L Fast Boil System",
+      "checkedAt": "2026-09-26T02:13:17.604Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://johnsonoutdoors.widen.net/content/lk3sumo0jk/webp/1122526_primary.webp?w=640",
+      "imageMime": "image/webp",
+      "imageBytes": 29922,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-jetboil-minimo",
+      "url": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/minimo-cooking-system/mnmcb",
+      "resolvedURL": "https://jetboil.johnsonoutdoors.com/us/shop/stoves-systems/minimo-cooking-system/mnmcb",
+      "title": "MiniMo Cooking System - Carbon",
+      "checkedAt": "2026-09-26T02:13:17.604Z",
+      "method": "Official product page opened through web retrieval; raw HTML fetch blocked or incomplete.",
+      "imageURL": "https://johnsonoutdoors.widen.net/content/t2enh9hcqw/webp/1090953_primary.webp?w=640",
+      "imageMime": "image/webp",
+      "imageBytes": 24560,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-platypus-quickdraw",
+      "url": "https://cascadedesigns.com/products/quickdraw-filter",
+      "resolvedURL": "https://cascadedesigns.com/products/quickdraw-filter",
+      "title": "Platypus QuickDraw Filter in blue. Manufacturer product image; confirm color and included accessories.",
+      "checkedAt": "2026-09-26T02:15:59.675Z",
+      "method": "JSON-LD ProductGroup.hasVariant image: QuickDraw Filter - Blue, SKU11695",
+      "imageURL": "https://cascadedesigns.com/cdn/shop/files/11695-platypus-quickdraw-filter-blue-closed.jpg?v=1724820266&width=1920",
+      "imageMime": "image/jpeg",
+      "imageBytes": 77584,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-msr-windburner-personal",
+      "url": "https://cascadedesigns.com/products/windburner-personal-stove-system",
+      "resolvedURL": "https://cascadedesigns.com/products/windburner-personal-stove-system",
+      "title": "MSR WindBurner Personal Stove System in black. Manufacturer product image of system contents.",
+      "checkedAt": "2026-09-26T02:15:59.953Z",
+      "method": "JSON-LD ProductGroup.hasVariant image: WindBurner Personal Stove System - Black, SKU14040",
+      "imageURL": "https://cascadedesigns.com/cdn/shop/files/06464-msr-windbuner-personal-stove-system-black-contents.jpg?v=1724820295&width=1920",
+      "imageMime": "image/jpeg",
+      "imageBytes": 354211,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-sea-to-summit-spark-15",
+      "url": "https://seatosummit.com/products/spark-down-sleeping-bag",
+      "resolvedURL": "https://seatosummit.com/products/spark-down-sleeping-bag",
+      "title": "Sea to Summit Spark15F Regular product image. Confirm length and temperature option before purchase.",
+      "checkedAt": "2026-09-26T02:16:00.212Z",
+      "method": "Shopify product variant42585352175789 featured_image, 15F / Regular, SKU S2133",
+      "imageURL": "https://seatosummit.com/cdn/shop/files/Spark-9CReg_WHITE.jpg?v=1719262610",
+      "imageMime": "image/jpeg",
+      "imageBytes": 96701,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-nemo-disco-15",
+      "url": "https://www.nemoequipment.com/products/disco-mens-endless-promise-down-sleeping-bag",
+      "resolvedURL": "https://www.nemoequipment.com/products/disco-mens-endless-promise-down-sleeping-bag",
+      "title": "NEMO Disco15F Mens Regular product image. Confirm length and temperature option before purchase.",
+      "checkedAt": "2026-09-26T02:16:52.339Z",
+      "method": "JSON-LD ProductGroup.hasVariant: Mens15F Regular, SKU811666037237",
+      "imageURL": "https://www.nemoequipment.com/cdn/shop/files/kchnholf1rotc0tnsbsq_10f1e2cb-8a4c-4ef4-9da3-fca820d16ae5.jpg?v=1776198382&width=1920",
+      "imageMime": "image/jpeg",
+      "imageBytes": 65770,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    },
+    {
+      "id": "x-rtic-52-qt-ultra-light",
+      "url": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "resolvedURL": "https://rticoutdoors.com/Ultra-Light-Cooler",
+      "title": "RTIC52QT Ultra-Light Cooler in Trailblazer. Product-only manufacturer gallery image; confirm color.",
+      "checkedAt": "2026-09-26T02:16:52.467Z",
+      "method": "Official product gallery image18, visually inspected product-only view",
+      "imageURL": "https://static.rticoutdoors.com/cdn-cgi/image/format%3Dauto%2Cwidth%3D600%2Cheight%3D600%2Cfit%3Dcontain/i/items/976561595.jpg",
+      "imageMime": "image/jpeg",
+      "imageBytes": 19849,
+      "visualReview": {
+        "checkedAt": "2026-09-26T02:16:52.467Z",
+        "result": "Product identity reviewed against catalog name and official product page. Not a generic brand logo.",
+        "method": "Local diagnostic contact sheets plus manufacturer Product/variant metadata."
+      }
+    }
+  ]
+}

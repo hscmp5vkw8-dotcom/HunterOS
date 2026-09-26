@@ -10,6 +10,11 @@ export const manufacturers:Record<string,string>={
  'aeropress.com':'AeroPress','gsioutdoors.com':'GSI Outdoors','darntough.com':'Darn Tough',
  'expedusa.com':'EXPED','rumpl.com':'Rumpl','backpackerspantry.com':"Backpacker's Pantry",
  'goodto-go.com':'Good To-Go','heatherschoice.com':"Heather's Choice",
+ 'enlightenedequipment.com':'Enlightened Equipment','firstlite.com':'First Lite','gerbergear.com':'Gerber',
+ 'jetboil.johnsonoutdoors.com':'Jetboil','rticoutdoors.com':'RTIC','vortexoptics.com':'Vortex',
+ 'campchef.com':'Camp Chef','kuiu.com':'KUIU','leatherman.com':'Leatherman','leki.com':'LEKI',
+ 'leupold.com':'Leupold','osprey.com':'Osprey','surviveoutdoorslonger.com':'SOL','thermacell.com':'Thermacell','yeti.com':'YETI',
+ 'rhinousainc.com':'Rhino USA','us.leatt.com':'Leatt','seatosummit.com':'Sea to Summit',
 };
 const host=(u:URL)=>u.hostname.replace(/^www\./,'');
 export function manufacturerURL(raw:unknown):URL{
@@ -30,7 +35,8 @@ export function imageURL(raw:unknown,source:URL):string{
  if(typeof raw!=='string'||raw.length>2048)return '';
  try{const u=new URL(raw,source);if(u.protocol==='http:')u.protocol='https:';
  const own=host(u)===host(source);
- const cdn=['cdn.shopify.com','cdn11.bigcommerce.com','res.garmin.com','cdn.prod.website-files.com','www.petzl.com'].includes(u.hostname);
+ const brandCDNs:Record<string,string[]>={'jetboil.johnsonoutdoors.com':['johnsonoutdoors.widen.net'],'rticoutdoors.com':['static.rticoutdoors.com'],'yeti.com':['yeti-webmedia.imgix.net'],'leki.com':['res.cloudinary.com'],'thermacell.com':['optimise2.assets-servd.host']};
+ const cdn=(brandCDNs[host(source)]||[]).includes(u.hostname)||['cdn.shopify.com','cdn11.bigcommerce.com','res.garmin.com','cdn.prod.website-files.com','www.petzl.com'].includes(u.hostname);
  if(u.protocol!=='https:'||u.port||u.username||u.password||(!own&&!cdn)||/logo|placeholder|favicon|icon[-_.]/i.test(u.pathname)||/\.(?:svg|html|js)$/i.test(u.pathname))return '';
  if(u.pathname.includes('/cdn/shop/'))u.searchParams.set('width','1000');return u.href;
  }catch{return '';}

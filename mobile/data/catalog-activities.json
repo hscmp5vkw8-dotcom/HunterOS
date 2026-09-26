@@ -1,0 +1,700 @@
+{
+  "sitka-dew-point-pant-600521": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sitka-dew-point-jacket-600520": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sitka-jetstream-jacket-600496": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "kifaru-bedlam-bag": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "kifaru-44-mag-bag": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "kifaru-44-mag-ark-medium": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "kifaru-stryker-xl-bag": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "kifaru-ark-frame": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "kifaru-kutthroat": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "maven-b6-10x50": [
+    "hunting"
+  ],
+  "maven-b6-12x50": [
+    "hunting"
+  ],
+  "maven-b12-8x42": [
+    "hunting"
+  ],
+  "maven-b12-10x42": [
+    "hunting"
+  ],
+  "maven-c1-8x42": [
+    "hunting"
+  ],
+  "maven-c1-10x42": [
+    "hunting"
+  ],
+  "maven-c1-12x42": [
+    "hunting"
+  ],
+  "kifaru-hoodlum-ark-medium": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "sitka-core-lightweight-hoodie": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sitka-intercept-pant": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sitka-ambient-100": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "durston-xmid2-2026": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sawyer-squeeze-filter": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "petzl-actik-core-625": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "msr-pocketrocket-2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "thermarest-xlite-nxt-regular": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "thermarest-xlite-nxt-wide": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "wm-versalite-6ft": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "wm-versalite-56": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "wm-versalite-66": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "sawyer-micro-squeeze": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "thermarest-xtherm-nxt-regular": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "garmin-inreach-mini2": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "garmin-gpsmap67i": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "jetboil-stash": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "bigagnes-copper-spur-ul1": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "bigagnes-copper-spur-ul2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "bigagnes-copper-spur-ul3": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "nemo-dragonfly-osmo2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "nemo-hornet-osmo2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "rei-trailmade2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "rei-halfdome2plus": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "mh-mineral-king3": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "helinox-chair-zero-lt": [
+    "backpacking",
+    "camping"
+  ],
+  "helinox-chair-zero-l": [
+    "backpacking",
+    "camping"
+  ],
+  "helinox-chair-zero-highback": [
+    "backpacking",
+    "camping"
+  ],
+  "helinox-table-zero-lt": [
+    "backpacking",
+    "camping"
+  ],
+  "nemo-fillo-elite": [
+    "backpacking",
+    "camping"
+  ],
+  "nemo-fillo": [
+    "backpacking",
+    "camping"
+  ],
+  "mh-beef-stroganoff": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-chicken-dumplings": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-chicken-fajita": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-lasagna": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-tikka": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-chili-mac": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-beef-stew": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-breakfast-skillet": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-biscuits-gravy": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "mh-granola-blueberry": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "peak-thai-curry": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-mystery-ranch-metcalf-75": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "x-exo-mtn-gear-k4-5000": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "x-exo-mtn-gear-k4-7200": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "x-kuiu-pro-6000": [
+    "hunting",
+    "backpacking",
+    "camping"
+  ],
+  "x-osprey-aether-65": [
+    "hiking",
+    "backpacking",
+    "camping"
+  ],
+  "x-osprey-atmos-ag-65": [
+    "hiking",
+    "backpacking",
+    "camping"
+  ],
+  "x-hilleberg-allak-2": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-seek-outside-cimarron": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-seek-outside-redcliff": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-nemo-disco-15": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-sea-to-summit-spark-15": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-enlightened-equipment-revelation-20-f": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-therm-a-rest-neoair-xlite-nxt": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-nemo-tensor-all-season": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-sitka-kelvin-aerolite-jacket": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-sitka-ambient-100-hoody": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-sitka-mountain-pant": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-first-lite-corrugate-foundry-pant": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-kuiu-peloton-97-fleece-zip-t": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-kuiu-chugach-tr-rain-jacket": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-kenetrek-mountain-extreme-400": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-lowa-tibet-gtx": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-leupold-bx-4-pro-guide-hd-gen-2-10x42": [
+    "hunting"
+  ],
+  "x-vortex-razor-hd-10x42": [
+    "hunting"
+  ],
+  "x-vortex-diamondback-hd-10x42": [
+    "hunting"
+  ],
+  "x-swarovski-optik-nl-pure-10x42": [
+    "hunting"
+  ],
+  "x-maven-s-1a-25-50x80": [
+    "hunting"
+  ],
+  "x-platypus-quickdraw": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "x-grayl-geopress-24-oz": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "x-cnoc-outdoors-vecto-2-l": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "x-jetboil-flash": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-jetboil-minimo": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-msr-windburner-personal": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-snow-peak-titanium-single-450": [
+    "backpacking",
+    "hunting",
+    "camping",
+    "hiking"
+  ],
+  "x-garmin-montana-700i": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-garmin-etrex-solar": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-nitecore-nb10000-gen-3": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-goal-zero-yeti-300": [
+    "camping",
+    "off-road"
+  ],
+  "x-havalon-piranta": [
+    "hunting"
+  ],
+  "x-gerber-vital-pocket-folder": [
+    "hunting"
+  ],
+  "x-argali-high-country-game-bags": [
+    "hunting"
+  ],
+  "x-coleman-cascade-3-in-1": [
+    "camping",
+    "off-road"
+  ],
+  "x-camp-chef-everest-2x": [
+    "camping",
+    "off-road"
+  ],
+  "x-yeti-tundra-45": [
+    "camping",
+    "off-road"
+  ],
+  "x-rtic-52-qt-ultra-light": [
+    "camping",
+    "off-road"
+  ],
+  "x-sol-emergency-bivvy": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-leatherman-arc": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-garmin-inreach-messenger": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-biolite-headlamp-425": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "x-biolite-campstove-2": [
+    "camping",
+    "off-road"
+  ],
+  "x-goal-zero-lighthouse-600": [
+    "camping",
+    "off-road"
+  ],
+  "x-thermacell-mr450": [
+    "camping",
+    "off-road"
+  ],
+  "x-exped-megamat-10": [
+    "camping",
+    "off-road"
+  ],
+  "x-rumpl-original-puffy-blanket": [
+    "camping",
+    "off-road"
+  ],
+  "x-aeropress-go": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-gsi-outdoors-pinnacle-dualist-hs": [
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-darn-tough-hunter-boot-midweight": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-crispi-nevada": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-schnee-s-beartooth": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping"
+  ],
+  "x-leki-makalu-lite": [
+    "hiking",
+    "backpacking",
+    "hunting"
+  ],
+  "food-big-0": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-1": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-2": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-3": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-4": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-5": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-6": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-7": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-8": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-9": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-10": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ],
+  "food-big-11": [
+    "hiking",
+    "backpacking",
+    "hunting",
+    "camping",
+    "off-road"
+  ]
+}

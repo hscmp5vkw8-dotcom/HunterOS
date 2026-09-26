@@ -9,8 +9,9 @@ const catalog=JSON.parse(readFileSync(new URL('../data/catalog.json',import.meta
 const page='https://kifaru.net/products/test-pack';
 const html=(data)=>'<script type="application/ld+json">'+JSON.stringify(data)+'</script>';
 const data={ '@type':'Product',name:'Test Pack',brand:{name:'Kifaru'},image:'https://kifaru.net/cdn/shop/files/test-pack.jpg'};
-test('photo expansion preserves all 131 catalog configurations and their provenance',()=>{
- assert.equal(catalog.length,131);assert.ok(catalog.filter(p=>p.photo).length>=60);
+test('photo expansion preserves original configurations and source provenance',()=>{
+ const original=JSON.parse(readFileSync(new URL('../data/catalog-source.json',import.meta.url),'utf8'));
+ for(const product of original)assert.ok(catalog.some(p=>p.id===product.id));assert.ok(catalog.filter(p=>p.photo).length>=103);
  for(const p of catalog.filter(p=>p.photo)){assert.ok(manufacturerURL(p.photo.sourceURL));assert.ok(imageURL(p.photo.url,new URL(p.photo.sourceURL)));assert.ok(p.photo.checkedAt);}
 });
 test('only known manufacturer HTTPS URLs can be fetched',()=>{
@@ -75,4 +76,17 @@ test('publishing accepts only manufacturer data and never leaks client private f
 test('rate limiting stops outbound manufacturer lookup',async()=>{
  let manufacturerCalls=0;const request=async url=>{if(String(url).endsWith('/auth/v1/user'))return Response.json({id:'test',email_confirmed_at:'2026-01-01'});if(String(url).includes('reserve_product_import'))return Response.json(false);manufacturerCalls++;throw Error('not allowed')};
  const r=await handleProductImport(new Request('https://fn.example',{method:'POST',headers:{Authorization:'Bearer test'},body:JSON.stringify({url:page,category:'Other',action:'preview'})}),env,request);assert.equal(r.status,429);assert.equal(manufacturerCalls,0);
+});
+
+test('new outdoor categories import without publishing personal fields',async()=>{
+ for(const category of ['Recovery & towing','Tools & tires','Vehicle storage','Riding protection']){
+  const request=async url=>String(url).endsWith('/auth/v1/user')?Response.json({id:'test',email_confirmed_at:'2026-01-01'}):String(url).includes('reserve_product_import')?Response.json(true):new Response(html(data),{headers:{'content-type':'text/html'}});
+  const r=await handleProductImport(new Request('https://fn.example',{method:'POST',headers:{Authorization:'Bearer test'},body:JSON.stringify({url:page,category,action:'preview'})}),env,request);
+  assert.equal(r.status,200);assert.equal((await r.json()).product.category,category);
+ }
+});
+test('additional image CDNs are restricted to their observed manufacturer',()=>{
+ assert.ok(imageURL('https://res.cloudinary.com/leki/image/upload/poles.jpg',new URL('https://www.leki.com/products/poles')));
+ assert.equal(imageURL('https://res.cloudinary.com/leki/image/upload/poles.jpg',new URL(page)),'');
+ assert.throws(()=>manufacturerURL('https://us.leatt.com.evil.test/products/helmet'));
 });
