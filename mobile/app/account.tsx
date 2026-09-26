@@ -6,6 +6,7 @@ import { useStore } from '@/store';
 import { accountAuth, cloudConfigured, pullWorkspace, pushWorkspace, session, signIn, signOut, signUp, supabase } from '@/cloud';
 import { accountEmail, newPassword } from '@/account-auth';
 import { restoreUnchanged } from '@/cloud-data';
+import { AccountDataLinks, PolicyLink } from '@/policy-links';
 import { confirmAction } from '@/dialogs';
 import { Button, Card, ErrorText, Field, Label, Page, s } from '@/ui';
 export default function Account() {
@@ -33,7 +34,10 @@ export default function Account() {
  async function authenticate(create:boolean) {
   const address=accountEmail(email);
   if (!password) throw Error('Enter your password.');
-  if(create)newPassword(password,repeat);
+  if(create){
+   newPassword(password,repeat);
+   if(!await confirmAction('Create a HunterOS account?', 'HunterOS is intended for ages 13 and older. By continuing, you confirm you are at least 13 and agree to the Community guidelines linked on this screen. Your email and password will be sent securely to our account provider.'))return;
+  }
   const {data,error} = await (create ? signUp(address,password) : signIn(address,password));
   if (error) {if(error.code==='email_not_confirmed'){setMode('confirm');setPassword('');}throw error;}
   setPassword('');setRepeat('');setEmail(address);
@@ -76,7 +80,7 @@ export default function Account() {
  {mode!=='signin'&&<><Text style={s.small}>Use at least 12 characters. A few unrelated words work well.</Text><Field label="Repeat password" value={repeat} onChangeText={setRepeat} secureTextEntry autoCapitalize="none" autoCorrect={false} autoComplete="new-password" editable={!busy}/></>}
  </>}
  {mode==='signin'&&<><Button title="Sign in" disabled={disabled} onPress={()=>void run(()=>authenticate(false))}/><Button secondary title="Create account" disabled={disabled} onPress={()=>changeMode('create')}/><Button secondary title="Forgot password?" disabled={disabled} onPress={()=>changeMode('recover')}/></>}
- {mode==='create'&&<Button title="Send confirmation code" disabled={disabled} onPress={()=>void run(()=>authenticate(true))}/>}
+ {mode==='create'&&<><PolicyLink title="Read Community guidelines before creating an account" path="/community/"/><Button title="Send confirmation code" disabled={disabled} onPress={()=>void run(()=>authenticate(true))}/></>}
  {(mode==='confirm'||(mode==='recover'&&codeSent))&&<>
  <Text style={s.body}>Enter the code from your latest HunterOS email. If it has expired, request another below.</Text>
  <Field label="Email code" value={code} onChangeText={setCode} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" autoCorrect={false} maxLength={16} editable={!busy}/>
@@ -88,5 +92,5 @@ export default function Account() {
  {mode==='reset'&&<Button title="Save new password" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.finishRecovery(password,repeat);changeMode('signin');return 'Password updated. Sign in with your new password. Your local plans have not changed.';})}/>}
  {mode!=='signin'&&<Button secondary title="Return to sign in" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.cancelRecovery();changeMode('signin');return '';})}/>}
  <Text style={s.small}>Use your own account. Each account has its own cloud backup.</Text></Card>}
- <ErrorText message={message}/><Button secondary title="Back" disabled={busy} onPress={()=>{if(router.canGoBack())router.back();else router.replace('/');}}/></Page>;
+ <ErrorText message={message}/><AccountDataLinks/><Button secondary title="Back" disabled={busy} onPress={()=>{if(router.canGoBack())router.back();else router.replace('/');}}/></Page>;
 }

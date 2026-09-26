@@ -1,5 +1,6 @@
 import { Text } from 'react-native';
 import { Body, Card, Label, Page, s } from '@/ui';
+import { AccountDataLinks } from '@/policy-links';
 export default function Privacy() {
  return <Page><Label>HUNTEROS / PRIVACY & DATA</Label><Text style={s.title}>Your plans and your choices.</Text>
  <Card><Text style={s.h2}>Use it without an account</Text><Body>Trips, gear, packing status, favorites and scan history are saved on this device. An account is optional. Signing out leaves this device's workspace in place.</Body></Card>
@@ -13,6 +14,7 @@ export default function Privacy() {
  <Card><Text style={s.h2}>Backups and feedback you share</Text><Body>Exported files include your workspace, including notes, locations and scan history. Choose where to save or share them carefully. Send feedback stores your notes, optional reply email, app version, device platform and signed-in account identifier in HunterOS's private Supabase feedback log. No account is required. The owner and tools they authorize can review and summarize reports to improve the app. Trips, gear and passwords are not included. A received report can also be copied into email or text; screenshots added there stay in that separate message.</Body></Card>
  <Card><Text style={s.h2}>Feedback records</Text><Body>Unsent reports are kept on this device for manual retry; the app does not send them in the background. Up to 50 recent report records stay here. Received reports stay in the private feedback log for review and fix tracking. You can request removal at support@gethunteros.com using the report reference. Removing this app's data does not remove a received server report.</Body></Card>
  <Card><Text style={s.h2}>Keeping and removing data</Text><Body>Local data remains until you edit it, replace it with an import or restore, or remove the app's data. Uninstalling can erase local plans but does not delete your cloud account or backup. Manage exported copies and operating-system backups separately. During this private beta, contact support@gethunteros.com to request removal of your cloud account and data.</Body></Card>
- <Card><Text style={s.h2}>Questions during the beta</Text><Body>Open Settings, then Send feedback. You can review your notes before sending them to HunterOS. This screen describes the private beta; the public release privacy policy is still being prepared.</Body></Card>
+ <Card><Text style={s.h2}>Questions during the beta</Text><Body>Open Settings, then Send feedback. You can review your notes before sending them to HunterOS. The full privacy policy below explains retention, service providers and account deletion. Verified deletion requests have a 30-day completion target; a minimal request record may remain for up to 90 days.</Body></Card>
+ <AccountDataLinks/>
  </Page>;
 }
