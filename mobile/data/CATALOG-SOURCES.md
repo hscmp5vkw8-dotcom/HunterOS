@@ -4,7 +4,7 @@ Checked on September 25, 2026. The generated catalog contains **171 products**: 
 
 ## Reproducible sources
 
-- `catalog-source.json` is the untouched original source. SHA-256: `142405863194d6bc18b6f6294e2d99413a1e955ac704d58e6ab8d7731b50dd4c`.
+- `catalog-source.json` is the untouched original source. SHA-256 with canonical LF line endings: `db0289500cabf3ab36847efaec64046b285ea96373b1080f73494d4cd879cf42`. A Windows CRLF checkout has SHA-256 `142405863194d6bc18b6f6294e2d99413a1e955ac704d58e6ab8d7731b50dd4c`; the preservation test ignores only this checkout line-ending conversion.
 - `photo-overrides.json` retains the existing picture and weight corrections.
 - `catalog-activities.json` adds curated browsing tags to original records without changing their original source, identity, pictures, specifications, or prices.
 - `catalog-additions.json` holds 40 stable, separately named product records. Their `sourceURL` and `purchaseURL` point directly to official product pages. No affiliate identifiers have been added.

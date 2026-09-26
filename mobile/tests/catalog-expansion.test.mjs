@@ -17,7 +17,9 @@ const audit=read('catalog-source-audit.json');
 
 test('catalog expansion preserves every existing configuration and photo reference',()=>{
   assert.equal(original.length,131);
-  assert.equal(createHash('sha256').update(readFileSync(new URL('data/catalog-source.json',root))).digest('hex'),'142405863194d6bc18b6f6294e2d99413a1e955ac704d58e6ab8d7731b50dd4c');
+  // Git may check out CRLF on Windows; only line-ending conversion is ignored.
+  const source=readFileSync(new URL('data/catalog-source.json',root),'utf8').replace(/\r\n/g,'\n');
+  assert.equal(createHash('sha256').update(source).digest('hex'),'db0289500cabf3ab36847efaec64046b285ea96373b1080f73494d4cd879cf42');
   for(const p of original){
     const generated=products.find(row=>row.id===p.id);
     assert.ok(generated,p.id);
