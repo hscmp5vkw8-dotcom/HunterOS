@@ -30,9 +30,9 @@ Loadout-to-trip and duplicate operations copy product/photo snapshots, assign fr
 
 ## Release state
 
-Source and local preview are ready for review. This branch has not been uploaded to TestFlight, Google Play or a public website. Native build counters remain at the prior baseline; the existing EAS profiles increment them for the next build. Check current store counters before submitting.
+Both 0.5.0 (9) native builds finished and passed static artifact checks. The iOS upload is VALID, assigned to Team (Expo) and private Family Beta, and waiting for external beta review with automatic notifications enabled. Android's inspected AAB is archived and Google Play release 3 has prepared notes, but file attachment remains blocked by the connected Chrome extension's file-access check. The active Android release remains 0.4.2 (8). Do not describe Android 0.5.0 as available until the new bundle is uploaded and published. See [the release record](RELEASE-0.5.0.md).
 
-The product-import Edge Function includes the new categories and observed manufacturer/image hosts. Deploy that function with the app release to enable URL imports for the added brands/categories. No database migration or new secrets are required, and no live backend changes were made here.
+The product-import Edge Function was deployed to HunterOS with the new categories and observed manufacturer/image hosts. The persisted source matches the reviewed bundle; JWT verification, confirmed-user checks and rate limits remain enabled. Anonymous catalog reads and denial of unauthenticated imports/private metadata reads passed. No database migration or new secrets were needed.
 
 Manufacturer pictures remain external reference previews. No new affiliate relationship or commercial image license is claimed. Unknown prices and weights remain blank, and vehicle tags describe discovery rather than certified fitment.
 

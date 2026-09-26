@@ -1,3 +1,11 @@
+## Current outdoor update: 0.5.0 (9)
+
+The iPhone build is uploaded, processed and assigned to private Family Beta, with automatic notifications enabled and external beta review pending. Android's signed AAB is built and verified; Play release 3 is prepared, but Chrome file-access restrictions blocked attaching it. Android 0.5.0 is not published; the active Play release remains 0.4.2 (8). See [RELEASE-0.5.0.md](RELEASE-0.5.0.md) for exact jobs, artifacts and remaining upload steps.
+
+The entries below are historical snapshots.
+
+---
+
 ## Current product-picture update: 0.4.2 (8)
 
 Android release 2 is Active / Available to internal testers on the existing private Google Play track. iOS: Uploaded successfully; Apple processing pending. Family Beta assignment and review still need completion. Both cloud builds finished and their archived artifacts passed static identity/permission checks. Runtime source commit: 31ed1a717a055dd682876810666501eec843f4d6. See PRODUCT-PHOTOS.md for the shared catalog, data separation and validation.
