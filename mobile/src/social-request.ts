@@ -1,7 +1,7 @@
 import type { Session, SupabaseClient } from '@supabase/supabase-js';
 
 export async function socialRpc<T>(supabase: SupabaseClient | null, readSession: () => Promise<Session | null>, name: string, args: Record<string, unknown>, expectedUser?: string): Promise<T> {
-  if (!supabase) throw Error('Connect to your HunterOS account to use friends and groups.');
+  if (!supabase) throw Error('Connect to your HunterOS account to use friends and messages.');
   const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15000);
   try {
     const signed = expectedUser ? await readSession() : null;
@@ -12,8 +12,8 @@ export async function socialRpc<T>(supabase: SupabaseClient | null, readSession:
     if (signed) request.setHeader('Authorization', `Bearer ${signed.access_token}`);
     const {data, error} = await request;
     if (error) {
-      if (error.code === 'PGRST202' || error.code === '42883') throw Error('Friends and feeds are not available on the server yet. Your saved trips and gear still work.');
-      throw Error('Could not update friends and feeds. Check your connection and try again.');
+      if (error.code === 'PGRST202' || error.code === '42883') throw Error('This feature is not available yet. Your saved trips and gear still work.');
+      throw Error('Could not connect. Check your connection and try again.');
     }
     if (expectedUser && (await readSession())?.user.id !== expectedUser) throw Error('Your account changed. Please try again.');
     if (data?.error) throw Error(String(data.error));

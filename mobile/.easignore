@@ -17,3 +17,4 @@ credentials.json
 *.p12
 
 dist-photos/
+dist-social-test/

@@ -9,20 +9,20 @@
       }
     },
     "scheme": "hunteros",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "orientation": "default",
     "userInterfaceStyle": "dark",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.totalfreedomindustries.hunteros",
-      "buildNumber": "12",
+      "buildNumber": "13",
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
       "package": "com.totalfreedomindustries.hunteros",
-      "versionCode": 12,
+      "versionCode": 13,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0c100d"

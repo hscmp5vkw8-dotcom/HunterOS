@@ -7,12 +7,14 @@ const {PGlite}=await import(process.argv[2]?pathToFileURL(process.argv[2]).href:
 const db=new PGlite();let checks=0;
 const ids=[1,2,3,4,5].map(n=>'00000000-0000-4000-8000-'+String(n).padStart(12,'0'));
 await db.exec(`create role anon; create role authenticated; create schema auth;
-create table auth.users(id uuid primary key,email_confirmed_at timestamptz);
+create table auth.users(id uuid primary key,email_confirmed_at timestamptz,email text unique);
 create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
 grant usage on schema auth to anon,authenticated; grant execute on function auth.uid() to anon,authenticated;`);
-for(const id of ids)await db.query('insert into auth.users values($1,now())',[id]);
+for(const id of ids)await db.query('insert into auth.users values($1,now(),$2)',[id,`${id}@example.test`]);
 const migration=await readFile(new URL('../migrations/20260926_private_social.sql',import.meta.url),'utf8');
 await db.exec(migration);await db.exec(migration); // Safe rerun.
+const messagesMigration=await readFile(new URL('../migrations/20260928_user_ids_messages.sql',import.meta.url),'utf8');
+await db.exec(messagesMigration);await db.exec(messagesMigration);
 async function as(id,sql,params=[]) {
  await db.exec('reset role');await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id??'']);await db.exec('set role '+(id?'authenticated':'anon'));
  try{return (await db.query(sql,params)).rows;}finally{await db.exec('reset role');}

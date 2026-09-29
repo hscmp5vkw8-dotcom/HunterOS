@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
+import { AppState } from 'react-native';
 import { session, supabase } from './cloud';
 import { emptySocial, fetchSocial, socialAction } from './social';
 
@@ -7,9 +8,12 @@ export function useSocial() {
   const [userId, setUserId] = useState<string | null>(null);
   const [data, setData] = useState(emptySocial), [loading, setLoading] = useState(true), [busy, setBusy] = useState(false), [error, setError] = useState('');
   const generation = useRef(0), active = useRef(false), mounted = useRef(true), focused = useRef(false), currentUser = useRef<string|null>(null);
-  const refresh = useCallback(async () => {
+  const fetching = useRef(0);
+  const refresh = useCallback(async (silent = false) => {
+    if (silent && fetching.current) return;
+    fetching.current++;
     const current = ++generation.current;
-    setLoading(true); setError('');
+    if (!silent) setLoading(true); setError('');
     try {
       const signed = await session();
       if (current !== generation.current || !mounted.current) return;
@@ -18,7 +22,7 @@ export function useSocial() {
       const next = await fetchSocial(signed.user.id);
       if (current === generation.current && mounted.current) setData(next);
     } catch (e) { if (current === generation.current && mounted.current) {setData(emptySocial); setError(e instanceof Error ? e.message : String(e));} }
-    finally { if (current === generation.current && mounted.current) setLoading(false); }
+    finally { fetching.current--; if (current === generation.current && mounted.current) setLoading(false); }
   }, []);
   useEffect(() => {
     mounted.current = true;
@@ -29,7 +33,14 @@ export function useSocial() {
     }).data.subscription;
     return () => {mounted.current = false; ++generation.current; sub?.unsubscribe();};
   }, [refresh]);
-  useFocusEffect(useCallback(() => {focused.current=true;void refresh(); return () => {focused.current=false;++generation.current; setData(emptySocial);};}, [refresh]));
+  useFocusEffect(useCallback(() => {
+    focused.current=true; void refresh();
+    const visible = () => AppState.currentState !== 'background' && AppState.currentState !== 'inactive' &&
+      (typeof document === 'undefined' || document.visibilityState !== 'hidden');
+    const poll = setInterval(() => {if (!active.current && visible()) void refresh(true);}, 10000);
+    const subscription = AppState.addEventListener('change', () => {if (visible()) void refresh(true);});
+    return () => {focused.current=false;++generation.current;setData(emptySocial);clearInterval(poll);subscription.remove();};
+  }, [refresh]));
   async function act(action: string, payload: Record<string, unknown>) {
     if (!userId || active.current) return false;
     active.current = true; setBusy(true); setError('');
