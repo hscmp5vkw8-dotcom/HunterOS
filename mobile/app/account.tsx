@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import type { User } from '@supabase/supabase-js';
 import { useRouter } from 'expo-router';
 import { useStore } from '@/store';
+import { useSocial } from '@/use-social';
 import { accountAuth, cloudConfigured, pullWorkspace, pushWorkspace, session, signIn, signOut, signUp, supabase } from '@/cloud';
 import { accountEmail, newPassword } from '@/account-auth';
 import { restoreUnchanged } from '@/cloud-data';
@@ -10,7 +11,7 @@ import { AccountDataLinks, PolicyLink } from '@/policy-links';
 import { confirmAction } from '@/dialogs';
 import { Button, Card, ErrorText, Field, Label, Page, s } from '@/ui';
 export default function Account() {
- const {state, commit, saving} = useStore(), router = useRouter();
+ const {state, commit, saving} = useStore(), router = useRouter(), social = useSocial();
  const [email,setEmail] = useState(''), [password,setPassword] = useState('');
  const [user,setUser] = useState<User|null>(null), [ready,setReady] = useState(false);
  const [message,setMessage] = useState(''), [busy,setBusy] = useState(false);
@@ -57,7 +58,9 @@ export default function Account() {
  return <Page><Label>CLOUD + OFFLINE</Label><Text style={s.title}>HunterOS account.</Text>
  <Text style={s.body}>An account is optional. This device keeps its own working copy. Cloud backup saves a separate copy when you choose to upload; it does not automatically merge changes between phones.</Text>
  {!cloudConfigured ? <Card><Text style={s.h2}>Cloud backup is not available yet</Text><Text style={s.body}>Your trips and gear still work on this device. Use Settings to export a backup you can keep or transfer.</Text></Card> : !ready ? <Text style={s.body}>Checking your account...</Text> : user ? <Card>
- <Text style={s.h2}>{user.email}</Text><Button title="Friends & groups" onPress={()=>router.push('/friends')}/><Text style={s.body}>Signing in or out does not clear local plans. If you switch accounts or share this device, review the workspace before uploading it.</Text>
+ <Text style={s.h2}>{user.email}</Text>
+ {social.userId===user.id&&social.data.profile?<><Label>YOUR USER ID</Label><Text selectable style={s.stat}>{social.data.profile.user_code}</Text><Text style={s.small}>Your permanent 8-digit ID. Friends can use it to send you a request.</Text></>:null}
+ <Button title="Friends & groups" onPress={()=>router.push('/friends')}/><Button secondary title="Messages" onPress={()=>router.push('/messages')}/><Text style={s.body}>Signing in or out does not clear local plans. If you switch accounts or share this device, review the workspace before uploading it.</Text>
  <Button title={busy?'Working...':'Upload this device to cloud'} disabled={disabled} onPress={()=>void run(async()=>{
   const before=JSON.stringify(state);
   if (!await confirmAction('Replace your cloud backup?', `Upload ${state.trips.length} trips, ${state.loadouts.length} loadouts, ${state.gear.length} locker items and ${state.scannedProducts.length} scans to ${user.email}? This includes notes and locations. It replaces that account's previous cloud copy, including changes uploaded by another phone. Export a backup first if you want to keep another copy.`)) return;

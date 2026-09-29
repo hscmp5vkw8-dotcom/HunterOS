@@ -15,4 +15,6 @@ Inbox: support@gethunteros.com. Monitor this inbox during the beta. Aim to compl
 
 Current Supabase Free project does not include scheduled project backups (verified in Database > Backups). If plan, backup strategy, providers, retention practices or app collection changes, revise the public privacy/deletion pages and Play Data safety before rollout. Provider operational records are governed separately; accessible log history is not proof of backend retention duration.
 
+User-ID/messaging addition: verify cascades for social_messages (either participant), social_message_reads (reader or peer), and social_message_limits. The permanent eight-digit user code lives on the social profile and is deleted with it. Removing a friendship or blocking is not a deletion request: the active database retains message history until account deletion or a verified selected-data request is fulfilled. Include message text and reading records when verifying a full account deletion.
+
 Moderation: Review in-app reports and support requests, remove violating posts, and restrict abusive accounts as appropriate. The public Community guidelines prohibit harassment, hate, sexual content, graphic violence, illegal transactions, privacy violations and spam. Reporting is not an emergency service.
