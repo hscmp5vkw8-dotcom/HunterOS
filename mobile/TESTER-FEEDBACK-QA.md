@@ -12,6 +12,7 @@ The parent actually inspected screenshot pixels for the supplied Library IMG_359
 
 - Public manufacturer and retailer links import available name, brand, explicit model/SKU/category, source price and currency, image, product/net/pack weight and unit, source attribution and original/selected URL. Structured product graphs, microdata and metadata fallbacks are supported. Explicit variant selection precedes variant-specific values; unknown fields stay blank. Non-USD source prices never become USD silently.
 - Review, apply to private editable gear, and explicitly share server-derived source details are separate actions. Existing entered values survive applying. Canonical and variant duplicates, repeated taps, login interruptions, Back navigation, URL changes and account changes are handled. Blocked sites still allow a manual item with its source link.
+- A late sign-in or email-confirmation response no longer redirects a user away after the account screen loses focus. A delayed-auth browser regression verifies Back retains the gear draft when authentication completes. The completed-auth case explicitly waits for its profile transition before testing Back, separating the two timings.
 - Food imports retain source-stated brand/manufacturer/seller/explicit parent, pack and serving basis, ingredients, allergens and nutrition separately. Serving grams/calories are not package totals. Private corrections survive backups and never alter published source facts.
 - Saving a reviewed import collects deduplicated source brand/maker candidates in a private review queue. Retailers are not assumed to make the product; unknown identities stay unresolved. No outreach is sent, affiliate relationship claimed, or commission invented.
 - Home exposes the friend inbox and unread count; the inbox has search and All/Unread filters. Existing participant authorization, bilateral blocking and account-change clearing remain in use.
@@ -34,7 +35,7 @@ All listed local verification commands exited 0. Logs and screenshot evidence ar
 | Existing profile browser regressions | 13 passed, clean process exit |
 | Existing core browser regression | 1 passed, clean process exit |
 | Existing message browser regressions | 10 passed, clean process exit |
-| Final feedback regressions, mobile and desktop Chrome | 24 passed, clean process exit |
+| Feedback regressions, mobile and desktop Chrome | Prior 24 passed; expanded to 26 with deterministic pending-auth Back coverage; final rerun recorded in follow-up evidence |
 | Offline Android/iOS/web exports | Passed, final application source |
 | Synthetic-service Android/iOS/web exports | Passed, final application source; separate from deliverable offline export |
 | Local EAS source archive inspection | Passed; generated exports/test evidence/credentials absent from file contents |
