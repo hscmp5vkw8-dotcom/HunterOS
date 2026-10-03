@@ -20,7 +20,7 @@ The parent actually inspected screenshot pixels for the supplied Library IMG_359
 
 ## Verification evidence
 
-All completed commands exited 0. Logs and screenshot evidence are in the accompanying review bundle.
+All listed local verification commands exited 0. Logs and screenshot evidence are in the accompanying review bundle.
 
 | Check | Result |
 | --- | --- |
@@ -50,6 +50,8 @@ Three live public-page imports passed using native Deno's pinned TCP/TLS path:
 3. `https://shop.equalexchange.coop/collections/chocolate-bars/products/organic-dark-chocolate-almond-sea-salt-55-cacao`: selected 10 Pack, SKU 18209, USD 39.60, image, ingredients/allergens/nutrition; quoted approximately 3.5 servings per container and 29 g serving remain separate from the 10-pack. Total package weight/calories remain unknown.
 
 These are time-stamped source observations, not price promises. Sites may change, block requests, omit fields or require JavaScript. There is no access-control bypass or paid scraper. The safe fallback is manual entry. DNS validation covers all returned addresses and redirects; native TCP pins the validated public IP, TLS verifies the original hostname, and time/redirect/raw/decompressed-size limits are enforced. Untrusted page content is treated only as data.
+
+The first hosted PR check exposed an existing CI export-cache issue: its offline and synthetic account web bundles had the identical hash, leaving account configuration unavailable and failing 13 profile cases before subsequent suites could run. CI now clears Metro's transform cache when changing backend environment and verifies the synthetic service URL is present before browser tests. The final hosted outcome is recorded separately in the review evidence; local configured profile checks passed.
 
 ## Concrete release plan and remaining gates
 
