@@ -34,7 +34,7 @@ test('catalog expansion preserves every existing configuration and photo referen
 
 test('new products have unique direct manufacturer links and audited real images',()=>{
   assert.equal(additions.length,40);
-  assert.equal(products.length,original.length+additions.length);
+  assert.equal(products.length,original.length+additions.length+read('discovery-references.json').length);
   assert.equal(new Set(products.map(p=>p.id)).size,products.length);
   assert.equal(new Set(additions.map(p=>p.sourceURL)).size,additions.length);
   for(const p of additions){

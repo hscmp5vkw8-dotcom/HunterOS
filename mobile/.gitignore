@@ -24,6 +24,7 @@ credentials.json
 dist-photos/
 dist-social-test/
 dist-profile-test/
+dist-feedback-test/
 profile-native-config.json
 playwright.local-regressions.config.ts
 supabase/.temp/

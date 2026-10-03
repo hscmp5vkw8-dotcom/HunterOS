@@ -15,11 +15,11 @@ import { Button, C, Chips, ErrorText, Field, Label, ProductCard, s } from '@/ui'
 export default function Catalog() {
   const { products: catalog, loading, error, refresh } = useCatalog();
   const router = useRouter();
-  const { tripId, loadoutId, activity, vehicle, category } = useLocalSearchParams<{
-    tripId?: string; loadoutId?: string; activity?: string; vehicle?: string; category?: string;
+  const { tripId, loadoutId, activity, vehicle, category, query } = useLocalSearchParams<{
+    tripId?: string; loadoutId?: string; activity?: string; vehicle?: string; category?: string; query?:string;
   }>();
   const { state } = useStore();
-  const [filters, setFilters] = useState<CatalogFilters>(() => ({ query: '', sort: 'featured', activity: catalogActivity(activity), vehicle: catalogVehicle(vehicle), category }));
+  const [filters, setFilters] = useState<CatalogFilters>(() => ({ query: query||'', sort: 'featured', activity: catalogActivity(activity), vehicle: catalogVehicle(vehicle), category }));
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [ranges, setRanges] = useState(emptyCatalogRanges);
   const [showFilters, setShowFilters] = useState(false);
@@ -32,11 +32,11 @@ export default function Catalog() {
   // A scoped browse link starts a new search. Merely switching tabs leaves
   // these route parameters unchanged and preserves the user's current filters.
   useEffect(() => {
-    setFilters(current => ({ query: '', sort: current.sort, activity: catalogActivity(activity), vehicle: catalogVehicle(vehicle), category }));
+    setFilters(current => ({ query: query||'', sort: current.sort, activity: catalogActivity(activity), vehicle: catalogVehicle(vehicle), category }));
     setFavoritesOnly(false);
     setRanges(emptyCatalogRanges());
     setOptionQuery('');
-  }, [activity, vehicle, category, tripId, loadoutId]);
+  }, [activity, vehicle, category, query, tripId, loadoutId]);
 
   const targetLoadout = loadoutId ? state.loadouts.find(item => item.id === loadoutId) : undefined;
   const targetTrip = !loadoutId && tripId ? state.trips.find(item => item.id === tripId) : undefined;

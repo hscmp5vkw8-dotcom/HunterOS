@@ -1,11 +1,13 @@
 import type { Carry, Category, Filters, Gear, Loadout, Product, Trip, TripType, Vehicle, Workspace } from './types.ts';
+import { readImported, readProductFacts, privateProductURL } from './product-import-data.ts';
+import { readCandidates } from './outreach-candidates.ts';
 export const CATEGORIES: Category[] = ['Pack system','Shelter & sleep','Clothing','Water & food','Food & nutrition','Camp comfort','Electronics & power','Hunt essentials','Navigation & safety','Recovery & towing','Tools & tires','Vehicle storage','Riding protection','Other'];
 export const TRIP_TYPES: TripType[] = ['Hunting','Camping','Hunting + Camping','Backpacking','Hiking','Four-wheeling'];
 export const STYLES = ['Backcountry','Base Camp','Day Hunt','Horseback','Day Hike','Trail Ride','Overlanding'] as const;
 export const VEHICLES: Vehicle[] = ['ATV','UTV','4x4'];
 export const uid = () => `h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`;
 // Version 2 prevents older clients that only understand v1 from dropping loadouts on restore.
-export const fresh = (): Workspace => ({schema:'hunteros.mobile',version:2,trips:[],gear:[],favorites:[],scannedProducts:[],loadouts:[]});
+export const fresh = (): Workspace => ({schema:'hunteros.mobile',version:2,trips:[],gear:[],favorites:[],scannedProducts:[],loadouts:[],outreachCandidates:[]});
 export const weight = (g: number | null) => g === null ? 'Weight not entered' : `${(g / 453.59237).toFixed(2)} lb · ${Math.round(g)} g`;
 export const money = (v: number | null) => v === null ? 'Price not checked' : v.toLocaleString('en-US',{style:'currency',currency:'USD'});
 export const normalize = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[.×]/g,c=>c==='×'?'x':'').replace(/[^a-z0-9]+/g,' ').trim();
@@ -73,7 +75,11 @@ export function validateGear(v: any,locker=false): Gear {
   if(!v||typeof v!=='object'||!CATEGORIES.includes(v.category))throw Error('Invalid gear entry.');
   const i: Gear={id:txt(v.id,100),name:txt(v.name),category:v.category,quantity:finite(v.quantity,1,999)! as number,grams:finite(v.grams,0,1000000,true),price:finite(v.price,0,10000000,true),calories:finite(v.calories??null,0,100000,true),carry:v.carry,owned:locker?true:v.owned,packed:locker?false:v.packed,note:txt(v.note??'',2000),slot:txt(v.slot??'',80),product:null};
   if(!i.id.trim()||!i.name.trim()||!Number.isInteger(i.quantity)||!['packed','worn','consumable'].includes(i.carry)||typeof i.owned!=='boolean'||typeof i.packed!=='boolean')throw Error('Invalid gear details.');
-  if(v.product){const p=v.product;i.product={id:txt(p.id,100),name:txt(p.name),brand:txt(p.brand,80),model:txt(p.model,100),variant:txt(p.variant??'',200),category:i.category,kind:txt(p.kind??'',80),weightGrams:finite(p.weightGrams,0,1000000,true),weightLabel:txt(p.weightLabel??'',200),weightCheckedAt:txt(p.weightCheckedAt??'',40),priceUSD:finite(p.priceUSD,0,10000000,true),priceCheckedAt:txt(p.priceCheckedAt??'',40),sourceURL:https(p.sourceURL),purchaseURL:https(p.purchaseURL),checkedAt:txt(p.checkedAt??'',40),note:txt(p.note??'',2000),tags:Array.isArray(p.tags)?p.tags.slice(0,50).map((x:unknown)=>txt(x,100)):[],carry:i.carry,photo:p.photo?{url:https(p.photo.url),sourceURL:https(p.photo.sourceURL),caption:txt(p.photo.caption??'',400),checkedAt:txt(p.photo.checkedAt??'',40),rights:'reference-preview'}:null,reviewStatus:p.reviewStatus==='source-checked'?'source-checked':p.reviewStatus==='community'?'community':'legacy-reference'};}
+  if(v.product){const p=v.product;i.product={id:txt(p.id,100),name:txt(p.name),brand:txt(p.brand,80),model:txt(p.model,100),variant:txt(p.variant??'',200),category:i.category,kind:txt(p.kind??'',80),weightGrams:finite(p.weightGrams,0,1000000,true),weightLabel:txt(p.weightLabel??'',200),weightCheckedAt:txt(p.weightCheckedAt??'',40),priceUSD:finite(p.priceUSD,0,10000000,true),priceCheckedAt:txt(p.priceCheckedAt??'',40),sourceURL:p.imported?privateProductURL(p.sourceURL):https(p.sourceURL),purchaseURL:p.imported?privateProductURL(p.purchaseURL):https(p.purchaseURL),checkedAt:txt(p.checkedAt??'',40),note:txt(p.note??'',2000),tags:Array.isArray(p.tags)?p.tags.slice(0,50).map((x:unknown)=>txt(x,100)):[],carry:i.carry,photo:p.photo?{url:https(p.photo.url),sourceURL:p.imported?privateProductURL(p.photo.sourceURL):https(p.photo.sourceURL),caption:txt(p.photo.caption??'',400),checkedAt:txt(p.photo.checkedAt??'',40),rights:'reference-preview'}:null,reviewStatus:p.reviewStatus==='source-checked'?'source-checked':p.reviewStatus==='community'?'community':'legacy-reference'};}
+  if(i.product&&v.product.imported)i.product.imported=readImported(v.product.imported);
+  if(v.sourceURL)i.sourceURL=privateProductURL(txt(v.sourceURL,2048));
+  if(v.details)i.details={brand:txt(v.details.brand,80),model:txt(v.details.model,100),sku:txt(v.details.sku,100)};
+  if(v.facts)i.facts=readProductFacts(v.facts);
   return i;
 }
 export function validTripDate(value: string): boolean {
@@ -108,6 +114,7 @@ export function validateWorkspace(v: any): Workspace {
     if(!scan.id.trim()||!scan.code.trim()||!Number.isInteger(scan.scanCount)||!Number.isFinite(Date.parse(scan.firstScannedAt))||!Number.isFinite(Date.parse(scan.lastScannedAt))||Date.parse(scan.lastScannedAt)<Date.parse(scan.firstScannedAt))throw Error('Invalid scan history in backup.');
     const code=normalize(scan.code);if(codes.has(code))throw Error('Duplicate scan codes in backup.');codes.add(code);
   }
+  s.outreachCandidates=v.outreachCandidates===undefined?[]:readCandidates(v.outreachCandidates);
   s.gear=v.gear.map((g:any)=>validateGear(g,true));
   s.trips=v.trips.map((t:any)=>{if(!TRIP_TYPES.includes(t.type)||!STYLES.includes(t.style)||!Array.isArray(t.items)||t.items.length>3000)throw Error('Invalid trip in backup.');const trip: Trip={id:txt(t.id,100),name:txt(t.name),type:t.type,region:txt(t.region),area:txt(t.area??'',300),date:txt(t.date??'',10),days:finite(t.days,1,90)! as number,people:finite(t.people??1,1,30)! as number,style:t.style,...vehicleFields(t),species:txt(t.species??'',80),low:finite(t.low,-80,150)! as number,high:finite(t.high,-80,150)! as number,notes:txt(t.notes??'',5000),items:t.items.map((g:any)=>validateGear(g))};if(!trip.id||!trip.name.trim()||!Number.isInteger(trip.days)||!Number.isInteger(trip.people)||trip.low>trip.high)throw Error('Invalid trip values.');if(!validTripDate(trip.date))throw Error('Enter a real calendar date in YYYY-MM-DD format, or leave it blank.');unique(trip.items);return trip;});unique(s.gear);unique(s.trips);return s;
 }

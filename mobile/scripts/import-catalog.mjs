@@ -6,6 +6,7 @@ const source = readFileSync(new URL('data/catalog-source.json',root),'utf8');
 const legacy=JSON.parse(source);
 const overrides=JSON.parse(readFileSync(new URL('data/photo-overrides.json',root),'utf8'));
 const additions=JSON.parse(readFileSync(new URL('data/catalog-additions.json',root),'utf8'));
+const references=JSON.parse(readFileSync(new URL('data/discovery-references.json',root),'utf8'));
 const activityTags=JSON.parse(readFileSync(new URL('data/catalog-activities.json',root),'utf8'));
 const linkOverrides=JSON.parse(readFileSync(new URL('data/catalog-link-overrides.json',root),'utf8'));
 const categories=['Pack system','Shelter & sleep','Clothing','Water & food','Food & nutrition','Camp comfort','Electronics & power','Hunt essentials','Navigation & safety','Recovery & towing','Tools & tires','Vehicle storage','Riding protection','Other'];
@@ -37,6 +38,10 @@ for(const p of additions){
   products.push({id:p.id,name:text(p.name,200),brand:text(p.brand,80),model:text(p.model,100),variant:text(p.variant,200),category:p.category,kind:text(p.kind,80),weightGrams:number(p.weightGrams),weightLabel:text(p.weightLabel,200),weightCheckedAt:text(p.weightCheckedAt,40),priceUSD:number(p.priceUSD),priceCheckedAt:text(p.priceCheckedAt,40),sourceURL:https(p.sourceURL),purchaseURL:https(p.purchaseURL),checkedAt:text(p.checkedAt,40),note:text(p.note),tags:[...new Set(p.tags)].slice(0,50).map(t=>text(t,100)),carry:['packed','worn','consumable'].includes(p.carry)?p.carry:'packed',photo:{url:https(p.photo.url),sourceURL:https(p.photo.sourceURL),caption:text(p.photo.caption,500),checkedAt:text(p.photo.checkedAt,40),rights:'reference-preview'},reviewStatus:p.weightCheckedAt?'source-checked':'legacy-reference'});
 }
 mkdirSync(new URL('data/',root),{recursive:true});
+for(const p of references){
+ if(!p.id||ids.has(p.id)||!p.name||!p.brand||!categories.includes(p.category)||!https(p.sourceURL)||p.purchaseURL!==p.sourceURL||p.photo!==null||p.weightGrams!==null||p.priceUSD!==null)throw Error('Invalid discovery reference.');
+ ids.add(p.id);products.push({...p,tags:p.tags.slice(0,50),reviewStatus:'legacy-reference'});
+}
 writeFileSync(new URL('data/catalog.json',root),JSON.stringify(products,null,2)+'\n');
-console.log(`Imported ${legacy.length} preserved configurations + ${additions.length} additions = ${products.length} products; ${products.filter(p=>p.photo).length} photo references. Unknown specs remain unknown.`);
+console.log(`Imported ${legacy.length} preserved configurations + ${additions.length} additions + ${references.length} discovery references = ${products.length} products; ${products.filter(p=>p.photo).length} photo references. Unknown specs remain unknown.`);
 console.log('Catalog source SHA256:',createHash('sha256').update(source).digest('hex'));
