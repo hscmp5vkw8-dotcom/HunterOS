@@ -6,6 +6,7 @@ import { useCatalog } from '@/use-catalog';
 import { totals } from '@/domain';
 import { Button, C, Card, Chips, Label, Page, ProductCard, s } from '@/ui';
 import type { Vehicle } from '@/types';
+import { offroadEssentials } from '@/outdoor-ideas';
 
 const profiles:Record<Vehicle,{name:string;lead:string;mark:string;focus:string[]}> = {
  ATV:{name:'ATV',lead:'Travel light. Keep your trail essentials secured and within reach.',mark:'01',focus:['Riding protection','Tools & tires','Recovery & towing']},
@@ -28,7 +29,8 @@ export default function Offroad(){
   </View>
   <View style={[s.row,{alignItems:'stretch'}]}><View style={[s.card,{flex:1,minWidth:125}]}><Text style={s.stat}>{loadouts.length}</Text><Text style={s.small}>saved loadouts</Text></View><View style={[s.card,{flex:1,minWidth:125}]}><Text style={s.stat}>{trips.length}</Text><Text style={s.small}>trail trips</Text></View></View>
   <Card><Label>SET UP ONCE. PACK AGAIN.</Label><Text style={s.h2}>Loadouts for your ride.</Text><Text style={s.body}>Start with a trail-day or overnight kit, then tailor the equipment and quantities to your vehicle.</Text><Button title="Explore four-wheeling loadouts" onPress={()=>router.push({pathname:'/loadouts',params:{activity:'Four-wheeling',vehicle}})}/>{loadouts.slice(0,3).map(l=><Link key={l.id} href={{pathname:'/loadout/[id]',params:{id:l.id}}} style={{color:C.lime,paddingVertical:10}}>{l.name} · {l.items.length} items →</Link>)}</Card>
-  <Text style={s.h2}>Equip your vehicle</Text><Text style={s.body}>Browse by use, then confirm the exact size, ratings and fit on the manufacturer’s website.</Text>
+  <Card><Label>10 SUGGESTED FOUR-WHEEL ESSENTIALS</Label><Text style={s.h2}>A starting checklist</Text><Text style={s.body}>Suggestions for planning, not a popularity or usage ranking. Tailor your kit to the route, conditions and vehicle.</Text>{offroadEssentials.map(item=><View key={item.name} style={{gap:6}}><Text style={s.h2}>{item.name}</Text><Text style={s.small}>{item.note}</Text><Button secondary title={'Find '+item.name} onPress={()=>router.push({pathname:'/catalog',params:{category:item.category,query:item.query}})}/></View>)}<Button secondary title="Food & snack ideas" onPress={()=>router.push('/food')}/></Card>
+  <Text style={s.h2}>Equip your vehicle</Text><Text style={s.body}>Browse by use, then confirm the exact size, ratings and fit on the manufacturer's website.</Text>
   {profile.focus.map((category,i)=><Pressable key={category} accessibilityRole="button" accessibilityLabel={`Browse ${category}`} onPress={()=>router.push({pathname:'/catalog',params:{tripId:'',loadoutId:'',activity:'off-road',vehicle:vehicle.toLowerCase(),category}})} style={[s.card,{flexDirection:'row',alignItems:'center',gap:16}]}><Text style={{fontSize:25,color:C.lime,fontWeight:'700'}}>0{i+1}</Text><View style={{flex:1}}><Text style={s.h2}>{category}</Text><Text style={s.small}>Explore products and direct links</Text></View><Text style={{color:C.lime,fontSize:22}}>→</Text></Pressable>)}
   <Button secondary title="Browse all four-wheeling gear" onPress={()=>router.push({pathname:'/catalog',params:{tripId:'',loadoutId:'',activity:'off-road',vehicle:vehicle.toLowerCase()}})}/>
   {gear.slice(0,2).map(p=><ProductCard key={p.id} product={p}/>)}

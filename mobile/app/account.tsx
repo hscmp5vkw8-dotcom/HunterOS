@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Text } from 'react-native';
 import type { User } from '@supabase/supabase-js';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { useStore } from '@/store';
 import { useSocial } from '@/use-social';
 import { accountAuth, cloudConfigured, pullWorkspace, pushWorkspace, session, signIn, signOut, signUp, supabase } from '@/cloud';
@@ -19,6 +19,8 @@ export default function Account() {
  const [code,setCode] = useState(''), [repeat,setRepeat] = useState(''), [codeSent,setCodeSent] = useState(false);
  const [resendAt,setResendAt] = useState(0), [now,setNow] = useState(Date.now());
  const active = useRef(false);
+ const focused = useRef(true);
+ useFocusEffect(useCallback(()=>{focused.current=true;return()=>{focused.current=false;};},[]));
  useEffect(()=>{if(!resendAt)return;const timer=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(timer);},[resendAt]);
  useEffect(() => {
   let mounted = true, receivedAuthEvent=false;
@@ -43,7 +45,7 @@ export default function Account() {
   if (error) {if(error.code==='email_not_confirmed'){setMode('confirm');setPassword('');}throw error;}
   setPassword('');setRepeat('');setEmail(address);
   if(create&&!data.session){setMode('confirm');setCode('');setResendAt(Date.now()+60000);return 'Check your email (including spam) for a HunterOS confirmation code. Already have an account? Return to sign in or reset your password.';}
-  setMode('signin');router.replace('/profile');return 'Signed in. Your device workspace has not changed.';
+  setMode('signin');if(focused.current)router.replace('/profile');return 'Signed in. Your device workspace has not changed.';
  }
  function changeMode(next:typeof mode) {setMode(next);setPassword('');setRepeat('');setCode('');setCodeSent(false);setMessage('');}
  async function sendCode(recovery:boolean) {
@@ -90,7 +92,7 @@ export default function Account() {
  <Field label="Email code" value={code} onChangeText={setCode} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" autoCorrect={false} maxLength={16} editable={!busy}/>
  <Button title={mode==='recover'?'Verify reset code':'Confirm email'} disabled={disabled} onPress={()=>void run(async()=>{
   if(mode==='recover'){await accountAuth!.verifyRecovery(email,code);setMode('reset');setCode('');return 'Code verified. Choose a new password.';}
-  await accountAuth!.confirmEmail(email,code);setMode('signin');setCode('');router.replace('/profile');return 'Email confirmed. Your device workspace has not changed.';
+  await accountAuth!.confirmEmail(email,code);setMode('signin');setCode('');if(focused.current)router.replace('/profile');return 'Email confirmed. Your device workspace has not changed.';
  })}/></>}
  {(mode==='confirm'||mode==='recover')&&<Button secondary title={wait?`Send another code in ${wait}s`:mode==='recover'&&!codeSent?'Send reset code':'Send another code'} disabled={disabled||wait>0} onPress={()=>void run(()=>sendCode(mode==='recover'))}/>}
  {mode==='reset'&&<Button title="Save new password" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.finishRecovery(password,repeat);changeMode('signin');return 'Password updated. Sign in with your new password. Your local plans have not changed.';})}/>}

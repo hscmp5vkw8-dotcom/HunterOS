@@ -7,7 +7,7 @@ export function readProduct(value:unknown):Product {
  return validateGear(fromProduct(p)).product!;
 }
 export function productKey(url:string):string {
- try{const u=new URL(url);u.hostname=u.hostname.replace(/^www\./,'');u.hash='';u.pathname=u.pathname.replace(/\/collections\/[^/]+\/products\//,'/products/').replace(/\/$/,'');for(const k of [...u.searchParams.keys()])if(!['variant','color','size','style'].includes(k))u.searchParams.delete(k);u.searchParams.sort();return u.href;}catch{return '';}
+ try{const u=new URL(url);u.hostname=u.hostname.replace(/^www\./,'');u.hash='';u.pathname=u.pathname.replace(/\/collections\/[^/]+\/products\//,'/products/').replace(/\/$/,'');for(const k of [...u.searchParams.keys()])if(/^utm_|^(?:fbclid|gclid|affiliate|aff_id|ref)$/i.test(k))u.searchParams.delete(k);u.searchParams.sort();return u.href;}catch{return '';}
 }
 export function mergeCatalog(bundled:Product[],shared:Product[]):Product[]{
  const ids=new Set(bundled.map(p=>p.id)),sources=new Set(bundled.map(p=>productKey(p.photo?.sourceURL||p.sourceURL)).filter(Boolean));

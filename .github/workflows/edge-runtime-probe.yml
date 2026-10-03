@@ -1,0 +1,17 @@
+name: HunterOS isolated Edge Runtime probe
+on:
+  pull_request:
+    paths: ['mobile/supabase/functions/product-import/**', 'mobile/supabase/tests/edge-probe/**', '.github/workflows/edge-runtime-probe.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Run the isolated production importer in the pinned official runtime
+        run: bash mobile/supabase/tests/edge-probe/run.sh

@@ -4,6 +4,7 @@ import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 import { useStore } from './store';
 import { useCatalog } from './use-catalog';
 import { useSocial } from './use-social';
+import { useInbox } from './use-messages';
 import { fetchPublicFeed } from './social';
 import { FEEDS, popularProducts, recommendedProducts, releasedProducts, type Feed, type ProductRelease, type ProductSignal } from './feed';
 import { Body, Button, Card, C, Chips, ErrorText, Label, Page, ProductPhoto, s } from './ui';
@@ -19,17 +20,19 @@ const tools: {title:string; description:string; route:Href; mark:string}[] = [
   {title:'Friends & groups',description:'Connect with your own outdoor crew',route:'/friends',mark:'07'},
   {title:'Messages',description:'Make plans with your accepted friends',route:'/messages',mark:'08'},
   {title:'Your profile',description:'Your screen name, avatar and outdoor crew',route:'/profile',mark:'09'},
+  {title:'Brand outreach candidates',description:'Private source identities to review',route:'/outreach',mark:'10'},
 ];
 
 function GearPreview({product,detail}:{product:Product;detail?:string}) {
   const router=useRouter();
   return <Pressable onPress={()=>router.push({pathname:'/product/[id]',params:{id:product.id}})} accessibilityRole="button" accessibilityLabel={`View ${product.name}`} style={({pressed})=>[s.card,{padding:12,width:'100%',opacity:pressed?.8:1}]}>
-    <ProductPhoto product={product} height={126}/><Label>{product.brand}</Label><Text numberOfLines={2} style={[s.h2,{fontSize:18}]}>{product.model}</Text><Text style={s.small}>{detail||product.category}</Text>
+    <ProductPhoto product={product} height={126}/><Label>{product.brand}</Label><Text numberOfLines={2} style={[s.h2,{fontSize:18}]}>{product.model||product.name}</Text><Text style={s.small}>{detail||product.category}</Text>
   </Pressable>;
 }
 
 export default function Home() {
-  const router=useRouter(),{state}=useStore(),{products}=useCatalog(),social=useSocial();
+  const router=useRouter(),{state}=useStore(),{products}=useCatalog(),social=useSocial(),inbox=useInbox();
+  const unread=inbox.data.conversations.reduce((n,c)=>n+c.unread_count,0);
   const [feed,setFeed]=useState<Feed>('Recommended'),[group,setGroup]=useState<string|null>(null);
   const [publicFeed,setPublicFeed]=useState<{popular:ProductSignal[];releases:ProductRelease[]}>({popular:[],releases:[]});
   const [loading,setLoading]=useState(false),[error,setError]=useState(''),[refresh,setRefresh]=useState(0);
@@ -44,6 +47,8 @@ export default function Home() {
   const posts=social.data.posts.filter(p=>group?p.group_id===group:p.group_id===null);
   return <Page>
     <View style={{paddingVertical:8,gap:7}}><Label>MAKE ROOM FOR OUTSIDE</Label><Text style={[s.title,{fontSize:32}]}>Your next adventure starts here.</Text><Body>Good gear. Your people. A plan to get out there.</Body></View>
+    <Card><Label>YOUR FRIEND MESSAGE INBOX</Label><Text style={s.h2}>{unread?`${unread} unread ${unread===1?'message':'messages'}`:'All your friend conversations'}</Text><Body>One place for messages from your friends and planning together.</Body><Button title="Open message inbox" onPress={()=>router.push('/messages')}/></Card>
+    <View style={s.row}><Button secondary title="Food & snack ideas" onPress={()=>router.push('/food')}/><Button secondary title="Find first-aid kits" onPress={()=>router.push({pathname:'/catalog',params:{category:'Navigation & safety',query:'first aid'}})}/></View>
     <View style={[s.row,{justifyContent:'space-between'}]}><View style={{flex:1}}><Button title="Build a trip" onPress={()=>router.push('/trip/new')}/></View><Link href="/friends" style={{color:C.lime,padding:12,fontWeight:'700'}}>Your crew →</Link></View>
     <View style={{gap:10}}><View style={[s.row,{justifyContent:'space-between'}]}><Text style={s.h2}>Discover</Text><Link href="/catalog" style={{color:C.lime,padding:8}}>All gear →</Link></View>
     <Chips values={[...FEEDS]} value={feed} onChange={value=>setFeed(value as Feed)}/>

@@ -1,4 +1,9 @@
-import type { DirectMessage } from './social';
+import type { DirectMessage, ConversationSummary } from './social';
+
+export function filterInbox(conversations:ConversationSummary[],query:string,unreadOnly=false) {
+ const q=query.trim().toLocaleLowerCase();
+ return conversations.filter(c=>(!unreadOnly||c.unread_count>0)&&(!q||(c.name+' '+c.user_code).toLocaleLowerCase().includes(q)));
+}
 
 export const MESSAGE_LIMIT = 2000;
 

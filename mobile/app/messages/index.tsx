@@ -1,7 +1,9 @@
 import { Stack, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { useInbox } from '@/use-messages';
-import { Body, Button, Card, C, ErrorText, Label, Page, s } from '@/ui';
+import { Body, Button, Card, C, Chips, ErrorText, Field, Label, Page, s } from '@/ui';
+import { filterInbox } from '@/message-data';
 
 function timestamp(value: string | null) {
   if (!value) return '';
@@ -12,6 +14,9 @@ function timestamp(value: string | null) {
 export default function Messages() {
   const router = useRouter(), inbox = useInbox();
   const {data, userId, loading, error, refresh} = inbox;
+  const [query,setQuery]=useState(''),[filter,setFilter]=useState('All');
+  useEffect(()=>{setQuery('');setFilter('All');},[userId]);
+  const visible=filterInbox(data.conversations,query,filter==='Unread');
   const unread = data.conversations.reduce((total, conversation) => total + conversation.unread_count, 0);
   return <Page>
     <Stack.Screen options={{title:'Messages'}}/>
@@ -26,11 +31,14 @@ export default function Messages() {
         <Text style={s.h2}>Your conversations</Text>
         {unread > 0 ? <Text accessibilityLabel={`${unread} unread messages`} style={{color:C.lime,fontWeight:'800'}}>{unread} unread</Text> : null}
       </View>
+      <Field label="Search friends in messages" value={query} onChangeText={setQuery} placeholder="Name or user ID" maxLength={100}/>
+      <Chips values={['All','Unread']} value={filter} onChange={setFilter}/>
+      {data.conversations.length&&!visible.length?<Body>No conversations match this filter.</Body>:null}
       {!data.conversations.length && !error ? <Card>
         <Text style={s.h2}>Say hello to your crew.</Text>
         <Body>Add a friend by user ID or email. After they accept, open their conversation to send your first message.</Body>
         <Button title="Find your friends" onPress={() => router.push('/friends')}/>
-      </Card> : data.conversations.map(conversation => <Pressable
+      </Card> : visible.map(conversation => <Pressable
         key={conversation.user_id} accessibilityRole="button" accessibilityLabel={`Open conversation with ${conversation.name}`}
         onPress={() => router.push({pathname:'/messages/[userId]',params:{userId:conversation.user_id}})}
         style={({pressed}) => [s.card,{gap:8,opacity:pressed ? .75 : 1}]}
