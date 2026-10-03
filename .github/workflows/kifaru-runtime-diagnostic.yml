@@ -1,0 +1,90 @@
+name: HunterOS Kifaru import diagnosis
+on:
+  push:
+    branches: [codex/kifaru-import-diagnostic]
+    paths: [.github/workflows/kifaru-runtime-diagnostic.yml]
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 94047740ac94530f371f6d43da8a1ffa04a7cb68
+          persist-credentials: false
+      - name: Diagnose unchanged importer in official isolated user workers
+        run: |
+          set -euo pipefail
+          image='supabase/edge-runtime@sha256:fded42ff725708990b1a0803633c2659453259d075c4bec6b4d01dfb82dc055e'
+          container='hunteros-kifaru-diagnostic'
+          fixture_pid=''
+          cleanup() { docker logs "$container" 2>/dev/null || true; docker rm -f "$container" >/dev/null 2>&1 || true; if [[ -n "$fixture_pid" ]]; then kill "$fixture_pid" 2>/dev/null || true; fi; }
+          trap cleanup EXIT
+          export HUNTEROS_FIXTURE_HOST="$(docker network inspect bridge --format '{{(index .IPAM.Config 0).Gateway}}')"
+          export HUNTEROS_TEST_COMMIT="$(git rev-parse HEAD)"
+          printf 'Testing unchanged release source %s\n' "$HUNTEROS_TEST_COMMIT"
+          node mobile/supabase/tests/edge-probe/fixture.mjs &
+          fixture_pid=$!
+          cp -R mobile/supabase/tests/edge-probe "$RUNNER_TEMP/hunteros-kifaru-probe"
+          cat > "$RUNNER_TEMP/hunteros-kifaru-probe/worker/index.ts" <<'WORKER'
+          import { fetchManufacturer, manufacturerURL, publicAddress } from '../../../functions/product-import/source.ts';
+          import { pinnedPageRequest } from '../../../functions/product-import/network.ts';
+          Deno.serve(async () => {
+          
+          const urls = [
+            { name: 'product without selector', url: 'https://kifaru.net/products/bino-harness' },
+            { name: 'exact clean variant', url: 'https://kifaru.net/products/bino-harness?variant=49974753132846' },
+            { name: 'supplied tracking URL', url: 'https://kifaru.net/products/bino-harness?media_type=image&variant=49974753132846&utm_source=meta&utm_medium=Facebook_Mobile_Feed&utm_campaign=ASC%2B+-+Retargeting' },
+            { name: 'user-reported working Scheels comparison', url: 'https://www.scheels.com/p/84010782300?queryID=282f025e500a1763' },
+          ];
+          const results = [];
+          for (const item of urls) {
+            const started = Date.now(), dns = new Map<string, string[]>(), requests: unknown[] = [];
+            const resolve = async (hostname: string) => {
+              const answers = await Promise.allSettled([Deno.resolveDns(hostname, 'A'), Deno.resolveDns(hostname, 'AAAA')]);
+              const addresses = answers.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+              dns.set(hostname, addresses);
+              return addresses;
+            };
+            const request: typeof fetch = async (input, init) => {
+              const target = new URL(String(input));
+              const addresses = dns.get(target.hostname)!;
+              if (!addresses?.length || !addresses.every(publicAddress)) throw Error('Nonpublic address in reproduction');
+              const r = await pinnedPageRequest(target, addresses, init!.signal!);
+              requests.push({ url: target.href, status: r.status, server: r.headers.get('server'),
+                contentType: r.headers.get('content-type'), cfMitigated: r.headers.get('cf-mitigated'),
+                cfCacheStatus: r.headers.get('cf-cache-status'), location: r.headers.get('location') });
+              return r;
+            };
+            try {
+              const preview = await fetchManufacturer(item.url, request, resolve);
+              results.push({ ...item, normalized: manufacturerURL(item.url).href, elapsedMs: Date.now() - started, requests,
+                outcome: 'preview', preview: { name: preview.name, brand: preview.brand, sku: preview.sku,
+                  price: preview.price, currency: preview.currency, weightValue: preview.weightValue, weightUnit: preview.weightUnit,
+                  sourceURL: preview.sourceURL, selectedVariant: preview.selectedVariant, variants: preview.variants, missing: preview.missing } });
+            } catch (e) {
+              results.push({ ...item, normalized: manufacturerURL(item.url).href, elapsedMs: Date.now() - started, requests,
+                outcome: 'error', error: e instanceof Error ? e.message : String(e) });
+            }
+          }
+          const evidence = { checkedAt: new Date().toISOString(), runtime: Deno.version,
+            source: 'a134c76a0b17a205aa6b1b72f25a926aacd49c7b (same four importer source files deployed as production v3)',
+            transport: 'Production pinned DNS/TCP/TLS implementation; transparent response logging only. No browser cookies, caller auth, UA changes, proxy switching, challenges or alternate endpoints.',
+            inputLimit: 'The delegation supplied the URL above; the unspecified remaining Facebook tracking string was not received and was not invented.', results };
+          
+          return Response.json(evidence);
+          });
+          WORKER
+          docker pull "$image"
+          docker image inspect "$image" --format '{{json .RepoDigests}}'
+          docker run -d --name "$container" --cap-drop ALL --security-opt no-new-privileges --memory 512m --cpus 2 --pids-limit 256 --add-host host.docker.internal:host-gateway -p 127.0.0.1:9000:9000 -v "$PWD/mobile/supabase/functions:/app/functions:ro" -v "$RUNNER_TEMP/hunteros-kifaru-probe:/app/tests/edge-probe:ro" "$image" start --main-service /app/tests/edge-probe/main --port 9000
+          node --input-type=module <<'CLIENT'
+          import assert from 'node:assert/strict';
+          const base='http://127.0.0.1:9000';for(let i=0;i<30;i++){try{const r=await fetch(base+'/health');if(r.ok){console.log(JSON.stringify({health:await r.json()}));break;}}catch{}if(i===29)throw Error('Worker startup failed');await new Promise(r=>setTimeout(r,1000));}
+          const targets=[{name:'clean Kifaru variant',url:'https://kifaru.net/products/bino-harness?variant=49974753132846',category:'Pack system'},{name:'supplied Kifaru tracking',url:'https://kifaru.net/products/bino-harness?media_type=image&variant=49974753132846&utm_source=meta&utm_medium=Facebook_Mobile_Feed&utm_campaign=ASC%2B+-+Retargeting',category:'Pack system'},{name:'user-reported working Scheels comparison',url:'https://www.scheels.com/p/84010782300?queryID=282f025e500a1763',category:'Hunt essentials'}];
+          for(const target of targets){const r=await fetch(base+'/product-import',{method:'POST',headers:{Authorization:'Bearer verified-fixture','Content-Type':'application/json'},body:JSON.stringify({...target,action:'preview'}),signal:AbortSignal.timeout(25000)});const body=await r.json();const p=body.product;console.log(JSON.stringify({productionHandler:target.name,url:target.url,status:r.status,error:body.error,product:p?{name:p.name,brand:p.brand,sku:p.imported.sku,price:p.imported.price,currency:p.imported.currency,weight:p.imported.weightValue,unit:p.imported.weightUnit,sourceURL:p.sourceURL,selectedVariant:p.imported.selectedVariant,variants:p.imported.variants.length,missing:p.imported.missing}:null}));assert(r.status===200||(r.status===400&&body.error==='This website blocked the lookup. Open the product page and enter its details manually.'),'Unexpected importer failure: '+JSON.stringify(body));if(r.status===200&&target.name.includes('Kifaru'))assert.equal(p.imported.sku,'DBNB-BMC-MD-YOK');}
+          const probe=await fetch(base+'/probe',{signal:AbortSignal.timeout(60000)});const report=await probe.json();assert.equal(probe.status,200);console.log(JSON.stringify({pinnedTransportDiagnostic:{...report,results:report.results.map(r=>({...r,...(r.preview?{preview:{...r.preview,variants:r.preview.variants.length}}:{})}))}}));
+          const state=await(await fetch('http://'+process.env.HUNTEROS_FIXTURE_HOST+':9100/state')).json();assert.deepEqual(state.violations,[]);assert.equal(state.published.length,0);console.log(JSON.stringify({testedSource:process.env.HUNTEROS_TEST_COMMIT,realAccountsOrProductsWritten:false,syntheticStateOnly:true}));
+          CLIENT
