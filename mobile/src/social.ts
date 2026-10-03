@@ -1,7 +1,6 @@
 import { socialRpc } from './social-request';
 import { session, supabase } from './cloud';
 import type { ProductRelease, ProductSignal } from './feed';
-
 export interface Friend { id: string; user_id: string; user_code: string; name: string; status: 'pending' | 'accepted'; incoming: boolean }
 export interface Group { id: string; name: string; owner_id: string; status: 'invited' | 'accepted'; members: {user_id: string; name: string; status: string}[] }
 export interface SharedPost { id: string; user_id: string; name: string; product_id: string; message: string; group_id: string | null; group_name: string | null; created_at: string }

@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { Share, Text, View } from 'react-native';
 import { useSocial } from '@/use-social';
 import type { Friend } from '@/social';
+import { ProfileAvatar } from '@/profile-avatar';
 import { confirmAction } from '@/dialogs';
 import { Body, Button, Card, C, Chips, ErrorText, Field, Label, Page, s } from '@/ui';
 
 export default function Friends() {
+  const params=useLocalSearchParams<{view?:string}>();
   const router = useRouter(), social = useSocial();
   const {data, userId, loading, busy, error, act} = social;
   const [name, setName] = useState(''), [identifier, setIdentifier] = useState(''), [groupName, setGroupName] = useState('');
-  const [view, setView] = useState('Friends'), [notice, setNotice] = useState(''), [shareError, setShareError] = useState('');
+  const [view, setView] = useState(params.view==='Groups'?'Groups':'Friends'), [notice, setNotice] = useState(''), [shareError, setShareError] = useState('');
   useEffect(() => {setName(data.profile?.name ?? '');}, [userId, data.profile?.name]);
-  useEffect(() => {setIdentifier('');setNotice('');setShareError('');setGroupName('');setView('Friends');}, [userId]);
+  useEffect(() => {setIdentifier('');setNotice('');setShareError('');setGroupName('');setView(params.view==='Groups'?'Groups':'Friends');}, [userId,params.view]);
   async function change(action: string, payload: Record<string, unknown>, message = '') {
     setNotice('');
     if (await act(action, payload)) {setNotice(message);return true;}
@@ -33,7 +35,7 @@ export default function Friends() {
   const blockDetail = 'This removes your friendship, stops messages and new friend requests, and hides your posts from each other, including in shared groups. Your previous conversation will no longer appear.';
   function friendCard(friend: Friend) {
     return <Card key={friend.id}>
-      <Text style={s.h2}>{friend.name}</Text>
+      <View style={s.row}>{friend.status==='accepted'&&userId?<ProfileAvatar name={friend.name} size={46}/>:null}<Text style={[s.h2,{flex:1}]}>{friend.name}</Text></View>
       <Text selectable style={s.small}>ID {friend.user_code}</Text>
       {friend.status === 'accepted' ? <Button title={`Message ${friend.name}`} onPress={() => router.push({pathname:'/messages/[userId]',params:{userId:friend.user_id}})}/> : <Body>{friend.incoming ? 'Wants to be your friend.' : 'Waiting for them to accept.'}</Body>}
       {friend.status === 'pending' && friend.incoming ? <Button title={`Accept ${friend.name}`} disabled={busy} onPress={() => void change('accept', {id:friend.id}, 'You are now friends. You can message each other.')}/> : null}
@@ -85,12 +87,12 @@ export default function Friends() {
           {!data.groups.length ? <Body>Your groups and invitations will appear here.</Body> : data.groups.map(group => <Card key={group.id}>
             <Text style={s.h2}>{group.name}</Text><Label>{group.status === 'invited' ? 'INVITATION' : group.owner_id === userId ? 'YOUR GROUP' : 'PRIVATE GROUP'}</Label>
             {group.status === 'invited' ? <>
-              <Body>Joining shares your display name with group members and lets you view and share gear posts in this group.</Body>
+              <Body>Joining shares your display name with members and lets you view and share gear posts in this group.</Body>
               <Button title={`Join ${group.name}`} disabled={busy} onPress={() => void change('accept_group', {group_id:group.id})}/>
               <Button secondary title="Decline invitation" disabled={busy} onPress={() => void change('leave_group', {group_id:group.id})}/>
             </> : <>
               {group.members.map(member => <View key={member.user_id} style={{gap:8}}>
-                <Text selectable style={s.body}>{member.name}{member.user_id === group.owner_id ? ' · owner' : ''}{member.status === 'invited' ? ' · invited' : ''}</Text>
+                <View style={s.row}>{member.status==='accepted'&&userId?<ProfileAvatar name={member.name} size={46}/>:null}<Text selectable style={[s.body,{flex:1}]}>{member.name}{member.user_id === group.owner_id ? ' · owner' : ''}{member.status === 'invited' ? ' · invited' : ''}</Text></View>
                 {member.user_id !== userId ? <Button secondary title={`Block ${member.name}`} disabled={busy} onPress={() => void confirm('Block this person?', blockDetail, 'block', {user_id:member.user_id})}/> : null}
                 {group.owner_id === userId && member.user_id !== userId ? <Button secondary title={`Remove ${member.name}`} disabled={busy} onPress={() => void confirm('Remove group member?', 'They will lose access to this group. Their posts in this group will be removed.', 'remove_member', {group_id:group.id,user_id:member.user_id})}/> : null}
               </View>)}

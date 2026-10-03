@@ -18,7 +18,7 @@ const tools: {title:string; description:string; route:Href; mark:string}[] = [
   {title:'Scan gear',description:'Add equipment with a barcode',route:'/gear/scan',mark:'06'},
   {title:'Friends & groups',description:'Connect with your own outdoor crew',route:'/friends',mark:'07'},
   {title:'Messages',description:'Make plans with your accepted friends',route:'/messages',mark:'08'},
-  {title:'Your account',description:'Your user ID, sign-in and cloud backup',route:'/account',mark:'09'},
+  {title:'Your profile',description:'Your screen name, avatar and outdoor crew',route:'/profile',mark:'09'},
 ];
 
 function GearPreview({product,detail}:{product:Product;detail?:string}) {

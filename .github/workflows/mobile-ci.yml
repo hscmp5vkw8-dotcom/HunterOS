@@ -29,6 +29,17 @@ jobs:
           EXPO_NO_TELEMETRY: '1'
       - run: npx playwright install --with-deps chromium
       - run: npm run test:web
+      - name: Export synthetic account preview
+        run: npx expo export --platform web --output-dir dist-profile-test --max-workers 2
+        env:
+          CI: '1'
+          EXPO_NO_TELEMETRY: '1'
+          EXPO_PUBLIC_SUPABASE_URL: 'https://hunteros-test.invalid'
+          EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: 'synthetic-public-test-key'
+      - run: npm run test:profile:web
+      - run: npm run test:messages:web
+        env:
+          HUNTEROS_TEST_WEB_ROOT: 'dist-profile-test'
       - name: Save check outputs
         if: always()
         uses: actions/upload-artifact@v4

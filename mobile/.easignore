@@ -18,3 +18,6 @@ credentials.json
 
 dist-photos/
 dist-social-test/
+dist-profile-test/
+profile-native-config.json
+playwright.local-regressions.config.ts

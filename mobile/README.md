@@ -1,4 +1,9 @@
-﻿# HunterOS v0.4 candidate
+# HunterOS profile release candidate
+
+Current source is 0.7.0/native 13 on `codex/account-profile-core`, based on verified baseline `8e1b7bf`. This candidate adds the top-right account/profile experience, optional screen name, permanent ID/social access and derived initials, with no backend changes. Photos are deferred. See PROFILE-REVIEW.md, IOS-PROFILE-RELEASE.md and ANDROID-PROFILE-RELEASE.md for current checks/approval gates. It has not been built or distributed to phones.
+
+The earlier v0.4 notes below are historical and do not describe current installed apps or account-service state.
+# HunterOS v0.4 candidate
 
 Source is now 0.4.1, prepared from main0cd5b807da518a37f7d71c0abb75b41325603b2e with shipped0.1.2 fixes preserved. Private feedback intake is live and tested in the browser: server receipts, saved failed submissions and manual retry. Account Back falls back to Trips on direct entry. EAS candidates are now0.4.1 Android6/iOS7; completion and distribution are tracked in RELEASE.md. Prior0.4.0 Android5/iOS6 lack these changes. Source remains in draft PR5. See FEEDBACK-OPERATIONS.md and RELEASE.md for acceptance/distribution status. This is not a public-store release.
 

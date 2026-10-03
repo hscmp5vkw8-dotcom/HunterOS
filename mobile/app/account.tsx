@@ -43,7 +43,7 @@ export default function Account() {
   if (error) {if(error.code==='email_not_confirmed'){setMode('confirm');setPassword('');}throw error;}
   setPassword('');setRepeat('');setEmail(address);
   if(create&&!data.session){setMode('confirm');setCode('');setResendAt(Date.now()+60000);return 'Check your email (including spam) for a HunterOS confirmation code. Already have an account? Return to sign in or reset your password.';}
-  setMode('signin');return 'Signed in. Your device workspace has not changed.';
+  setMode('signin');router.replace('/profile');return 'Signed in. Your device workspace has not changed.';
  }
  function changeMode(next:typeof mode) {setMode(next);setPassword('');setRepeat('');setCode('');setCodeSent(false);setMessage('');}
  async function sendCode(recovery:boolean) {
@@ -55,10 +55,11 @@ export default function Account() {
  }
  const disabled=busy||saving||!ready;
  const wait=Math.max(0,Math.ceil((resendAt-now)/1000));
- return <Page><Label>CLOUD + OFFLINE</Label><Text style={s.title}>HunterOS account.</Text>
+ return <Page><Label>{user?'SIGNED IN · CLOUD + OFFLINE':'SIGNED OUT · CLOUD + OFFLINE'}</Label><Text style={s.title}>HunterOS account.</Text>
  <Text style={s.body}>An account is optional. This device keeps its own working copy. Cloud backup saves a separate copy when you choose to upload; it does not automatically merge changes between phones.</Text>
  {!cloudConfigured ? <Card><Text style={s.h2}>Cloud backup is not available yet</Text><Text style={s.body}>Your trips and gear still work on this device. Use Settings to export a backup you can keep or transfer.</Text></Card> : !ready ? <Text style={s.body}>Checking your account...</Text> : user ? <Card>
  <Text style={s.h2}>{user.email}</Text>
+ <Button title="Open your profile" disabled={disabled} onPress={()=>router.push('/profile')}/>
  {social.userId===user.id&&social.data.profile?<><Label>YOUR USER ID</Label><Text selectable style={s.stat}>{social.data.profile.user_code}</Text><Text style={s.small}>Your permanent 8-digit ID. Friends can use it to send you a request.</Text></>:null}
  <Button title="Friends & groups" onPress={()=>router.push('/friends')}/><Button secondary title="Messages" onPress={()=>router.push('/messages')}/><Text style={s.body}>Signing in or out does not clear local plans. If you switch accounts or share this device, review the workspace before uploading it.</Text>
  <Button title={busy?'Working...':'Upload this device to cloud'} disabled={disabled} onPress={()=>void run(async()=>{
@@ -89,7 +90,7 @@ export default function Account() {
  <Field label="Email code" value={code} onChangeText={setCode} keyboardType="number-pad" autoComplete="one-time-code" textContentType="oneTimeCode" autoCorrect={false} maxLength={16} editable={!busy}/>
  <Button title={mode==='recover'?'Verify reset code':'Confirm email'} disabled={disabled} onPress={()=>void run(async()=>{
   if(mode==='recover'){await accountAuth!.verifyRecovery(email,code);setMode('reset');setCode('');return 'Code verified. Choose a new password.';}
-  await accountAuth!.confirmEmail(email,code);setMode('signin');setCode('');return 'Email confirmed. Your device workspace has not changed.';
+  await accountAuth!.confirmEmail(email,code);setMode('signin');setCode('');router.replace('/profile');return 'Email confirmed. Your device workspace has not changed.';
  })}/></>}
  {(mode==='confirm'||mode==='recover')&&<Button secondary title={wait?`Send another code in ${wait}s`:mode==='recover'&&!codeSent?'Send reset code':'Send another code'} disabled={disabled||wait>0} onPress={()=>void run(()=>sendCode(mode==='recover'))}/>}
  {mode==='reset'&&<Button title="Save new password" disabled={disabled} onPress={()=>void run(async()=>{await accountAuth!.finishRecovery(password,repeat);changeMode('signin');return 'Password updated. Sign in with your new password. Your local plans have not changed.';})}/>}

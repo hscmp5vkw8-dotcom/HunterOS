@@ -21,3 +21,7 @@ Exported backups include private notes and any entered locations. Removing local
 Third parties: Supabase (authentication/database), the selected SMTP service once configured (confirmation/recovery email), Open Food Facts (barcode lookup), manufacturer/retailer image/link hosts, Expo/EAS (build/distribution). HunterOS does not currently implement separate analytics or a crash-reporting SDK.
 
 Public privacy policy: https://hunteros-support.j5fyt5h7qj.chatgpt.site/privacy/. Before rollout, complete store disclosures and physical-device and two-account checks; keep provider and retention disclosures current.
+
+## Initials-only profile release
+
+The new profile route edits the existing social display name and shows the existing permanent ID. Initials avatars are derived at render time, with no avatar record, uploaded image, Storage request or new permission. Existing account deletion and workspace controls continue to apply.
