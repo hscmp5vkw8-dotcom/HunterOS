@@ -59,5 +59,5 @@ await check('only synthetic auth/RPC state was changed; private fields excluded'
   const state = await (await fetch('http://' + process.env.HUNTEROS_FIXTURE_HOST + ':9100/state')).json();
   assert.deepEqual(state.violations, []); assert.equal(state.published.length, 1); assert(state.reserved > 0);
 });
-console.log(JSON.stringify({ commit: process.env.GITHUB_SHA || 'local', checks }));
+console.log(JSON.stringify({ commit: process.env.HUNTEROS_TEST_COMMIT || 'local', checks }));
 if (checks.some(c => !c.passed)) process.exitCode = 1;

@@ -3,7 +3,8 @@ export type Vehicle = 'ATV' | 'UTV' | '4x4';
 export type Carry = 'packed' | 'worn' | 'consumable';
 export type Category = 'Pack system' | 'Shelter & sleep' | 'Clothing' | 'Water & food' | 'Food & nutrition' | 'Camp comfort' | 'Electronics & power' | 'Hunt essentials' | 'Navigation & safety' | 'Recovery & towing' | 'Tools & tires' | 'Vehicle storage' | 'Riding protection' | 'Other';
 export interface Photo { url:string; sourceURL:string; caption:string; checkedAt:string; rights:'reference-preview'; }
-export interface ProductFacts {manufacturer:string;seller:string;parentCompany:string;weightBasis:'product'|'net'|'pack'|'unknown';servingCount:number|null;servingSize:string;packSize?:string;servingBasis?:string;nutrition:{name:string;value:string}[];ingredients:string;allergens:string;identityEvidence:'page-stated'|'unknown';}
+import type { ProductFacts } from '../supabase/functions/product-import/facts.ts';
+export type { ProductFacts } from '../supabase/functions/product-import/facts.ts';
 export interface ImportedDetails {facts?:ProductFacts;sku:string;price:number|null;currency:string;weightValue:number|null;weightUnit:string;sourceCategory:string;attribution:string;missing:string[];variants:{key:string;label:string}[];selectedVariant:string;}
 export interface OutreachCandidate {id:string;name:string;role:'brand'|'manufacturer'|'unresolved';status:'source-stated'|'needs-review';sources:{url:string;product:string;checkedAt:string}[];}
 export interface Product {imported?:ImportedDetails;id:string;name:string;brand:string;model:string;variant:string;category:Category;kind:string;weightGrams:number|null;weightLabel:string;weightCheckedAt:string;priceUSD:number|null;priceCheckedAt:string;sourceURL:string;purchaseURL:string;checkedAt:string;note:string;tags:string[];carry:Carry;photo:Photo|null;reviewStatus:'legacy-reference'|'source-checked'|'community';}

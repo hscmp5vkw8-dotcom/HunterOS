@@ -1,6 +1,6 @@
 // Shared by the Edge Function and offline catalog import/tests. Never execute page scripts.
 import { pinnedPageRequest } from './network.ts';
-import type { ProductFacts } from '../../../src/types.ts';
+import type { ProductFacts } from './facts.ts';
 const host=(u:URL)=>u.hostname.replace(/^www\./,'');
 export function manufacturerURL(raw:unknown):URL {
  if(typeof raw!=='string'||raw.length>2048||[...raw.trim()].some(c=>c.charCodeAt(0)<=32||c==='\\'))throw Error('Paste a complete public product link.');

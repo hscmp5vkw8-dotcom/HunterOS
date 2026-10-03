@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/../../.."
+export HUNTEROS_TEST_COMMIT="$(git rev-parse HEAD)"
+printf 'Testing source commit %s\n' "$HUNTEROS_TEST_COMMIT"
 # Official release v1.77.4, linux/amd64 manifest verified from Docker Hub.
 image='supabase/edge-runtime@sha256:fded42ff725708990b1a0803633c2659453259d075c4bec6b4d01dfb82dc055e'
 container='hunteros-isolated-edge-probe'
