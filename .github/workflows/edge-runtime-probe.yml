@@ -1,8 +1,5 @@
 name: HunterOS isolated Edge Runtime probe
 on:
-  push:
-    branches: ['codex/tester-feedback-next']
-    paths: ['mobile/supabase/functions/product-import/**', 'mobile/supabase/tests/edge-probe/**', '.github/workflows/edge-runtime-probe.yml']
   pull_request:
     paths: ['mobile/supabase/functions/product-import/**', 'mobile/supabase/tests/edge-probe/**', '.github/workflows/edge-runtime-probe.yml']
 permissions:
