@@ -1,0 +1,64 @@
+{
+  "@context": "http://schema.org/",
+  "@id": "/products/gun-bearers#product",
+  "@type": "ProductGroup",
+  "brand": {
+    "@type": "Brand",
+    "name": "Kifaru Intl"
+  },
+  "category": "Weapon Slings",
+  "description": "The revolutionary GunBearer® is a simple, efficient way to securely carry your long gun, transferring the weight comfortably to your hips leaving both your hands free for climbing, bushwhacking, whatever. No more rifle slings slipping off your shoulder, no more banged scopes. This is the safest, most comfortable way ever devised to carry your rifle and a backpack. With a flick of your wrist, your rifle or shotgun can be instantly shouldered for firing. Fully adjustable for any length rifle or shotgun, use it right or left handed, or remove it when you aren’t packing a long gun.\r\nThe Kifaru GunBearers®\r\nFits any Kifaru pack system (Kifaru packs only)Offered as: GunBearer Right-Hand Carry and Left-Hand Carry\r\nOriginally invented for rambling in bear country, this is the safest, most comfortable way ever devised to carry your rifle and a backpack. Quicker than a shoulder sling, it’s fast enough for wing shooting. While many rifle slings function well for MOUT and CQB work, ours excel in rough terrain such as mountains and desert, where you need your hands free for bushwhacking or handling other equipment while still having quick access to your rifle for instant firing. The weight of the firearm rests on your waistbelt to keep your upper body from fatiguing.\r\n– Weight: 4.2oz– Fits Kifaru pack belts only– Forearm (Upper) strap: used to secure your rifle with optics (install on the lower metal 3-bar slider only). Offer for Right or Left-Handed individuals.– Cradle Mount – Used to attach cradle to the PALS webbing of the waistbelt.– Black Hypalon cradle with height adjustable black Nylon web lower strap\r\nUniversal GunBearers®Fit any Non-Kifaru pack you may own (including MOLLE and non-MOLLE waistbelts).\r\n– Universal Gunbearer Combo: Includes one universal shoulder strap wrap (upper), one hypalon cradle, one long waistbelt wrap, and one short waistbelt wrap– The universal shoulder strap (upper) wraps around the shoulder strap to secure your rifle with optics. Universal for Right- or Left-Handed Individuals. For non-Kifaru packs, the universal is necessary because most Non-Kifaru systems do not contain the correct upper connection.– Black Hypalon cradle with height adjustable black Nylon web lower strap\r\n**For any questions that you may have on which gun bearer you will need, please watch the videos in the imagesabove.",
+  "hasVariant": [
+    {
+      "@id": "/products/gun-bearers?variant=44675678011694#variant",
+      "@type": "Product",
+      "gtin": "840401500392",
+      "image": "https://kifaru.net/cdn/shop/products/Kifaru-International-Gun-Bearers-Upper-Strap-Attaches-to-Lower-3-Bar-Slider-Cradle-Mounts-to-Pals-Webbing-1024x1024.webp?v=1760543046&width=1920",
+      "name": "Gun Bearers - Kifaru / Left",
+      "offers": {
+        "@id": "/products/gun-bearers?variant=44675678011694#offer",
+        "@type": "Offer",
+        "availability": "http://schema.org/OutOfStock",
+        "price": "49.00",
+        "priceCurrency": "USD",
+        "url": "https://kifaru.net/products/gun-bearers?variant=44675678011694"
+      },
+      "sku": "GB102"
+    },
+    {
+      "@id": "/products/gun-bearers?variant=44675678044462#variant",
+      "@type": "Product",
+      "gtin": "840401500385",
+      "image": "https://kifaru.net/cdn/shop/products/Kifaru-International-Gun-Bearers-Upper-Strap-Attaches-to-Lower-3-Bar-Slider-Cradle-Mounts-to-Pals-Webbing-1024x1024.webp?v=1760543046&width=1920",
+      "name": "Gun Bearers - Kifaru / Right",
+      "offers": {
+        "@id": "/products/gun-bearers?variant=44675678044462#offer",
+        "@type": "Offer",
+        "availability": "http://schema.org/OutOfStock",
+        "price": "49.00",
+        "priceCurrency": "USD",
+        "url": "https://kifaru.net/products/gun-bearers?variant=44675678044462"
+      },
+      "sku": "GB101"
+    },
+    {
+      "@id": "/products/gun-bearers?variant=44675678306606#variant",
+      "@type": "Product",
+      "gtin": "840401500378",
+      "image": "https://kifaru.net/cdn/shop/products/Kifaru-International-Gun-Bearers-Waist-Belt-Cradle-Shoulder-Strap-Wrap-Universal-Gunbearer-1024x1024.webp?v=1760543046&width=1920",
+      "name": "Gun Bearers - Other / Universal",
+      "offers": {
+        "@id": "/products/gun-bearers?variant=44675678306606#offer",
+        "@type": "Offer",
+        "availability": "http://schema.org/OutOfStock",
+        "price": "79.00",
+        "priceCurrency": "USD",
+        "url": "https://kifaru.net/products/gun-bearers?variant=44675678306606"
+      },
+      "sku": "UGB103"
+    }
+  ],
+  "name": "Gun Bearers",
+  "productGroupID": "8109280493870",
+  "url": "https://kifaru.net/products/gun-bearers"
+}

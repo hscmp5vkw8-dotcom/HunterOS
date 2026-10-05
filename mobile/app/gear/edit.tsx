@@ -20,18 +20,19 @@ export default function GearEditor(){
  const [base]=useState(()=>original||newGear());const {products}=useCatalog(),account=useAccount();
  const [name,setName]=useState(base.name),[category,setCategory]=useState<Category>(base.category),[grams,setGrams]=useState(base.grams===null?'':String(base.grams)),[price,setPrice]=useState(base.price===null?'':String(base.price)),[calories,setCalories]=useState(base.calories===null?'':String(base.calories)),[quantity,setQuantity]=useState(String(base.quantity)),[carry,setCarry]=useState<Carry>(base.carry),[owned,setOwned]=useState((!tripId&&!loadoutId)||base.owned),[packed,setPacked]=useState(base.packed),[note,setNote]=useState(base.note),[error,setError]=useState('');
  const [brand,setBrand]=useState(base.details?.brand??base.product?.brand??''),[model,setModel]=useState(base.details?.model??base.product?.model??''),[sku,setSKU]=useState(base.details?.sku??base.product?.imported?.sku??'');
- const [attached,setAttached]=useState<Product|null>(base.product),[url,setURL]=useState(base.sourceURL||base.product?.sourceURL||''),[preview,setPreview]=useState<Product|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const [attached,setAttached]=useState<Product|null>(base.product),[url,setURL]=useState(base.sourceURL||base.product?.sourceURL||''),[preview,setPreview]=useState<Product|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[importError,setImportError]=useState('');
  const [facts,setFacts]=useState<ProductFacts>(()=>base.facts||base.product?.imported?.facts||emptyProductFacts()),[servings,setServings]=useState(()=>String(base.facts?.servingCount??base.product?.imported?.facts?.servingCount??''));
- const request=useRef(0),working=useRef(false),saveInFlight=useRef(false);
- const invalidate=useCallback(()=>{request.current++;working.current=false;setBusy(false);setPreview(null);},[]);
+ const request=useRef(0),working=useRef(false),saveInFlight=useRef(false),retryVariant=useRef('');
+ const invalidate=useCallback(()=>{request.current++;working.current=false;retryVariant.current='';setBusy(false);setPreview(null);setImportError('');},[]);
  useEffect(()=>{invalidate();},[account.user?.id,invalidate]);
  useFocusEffect(useCallback(()=>()=>{invalidate();},[invalidate]));
  const matched=attached||exactProduct(name,products),shown=matched?gearProduct({...base,product:matched},products):null;
  function changeURL(value:string){invalidate();setAttached(null);setURL(value);setMessage('');setError('');}
  async function lookup(variantKey=''){
-  if(working.current)return;working.current=true;const token=++request.current;setBusy(true);setError('');setMessage('');
+  if(working.current||(!variantKey&&preview)||(variantKey&&preview?.imported?.selectedVariant===variantKey))return;
+  working.current=true;retryVariant.current=variantKey;const token=++request.current;setBusy(true);setError('');setImportError('');setMessage('');
   try{const p=await manufacturerProduct(url,category,'preview',variantKey);if(token===request.current)setPreview(p);}
-  catch(e){if(token===request.current)setError(e instanceof Error?e.message:String(e));}
+  catch(e){if(token===request.current)setImportError(e instanceof Error?e.message:String(e));}
   finally{if(token===request.current){working.current=false;setBusy(false);}}
  }
  function applyProduct(p:Product){
@@ -40,7 +41,7 @@ export default function GearEditor(){
   setGrams(current=>current.trim()?current:p.weightGrams===null?'':String(p.weightGrams));
   setPrice(current=>current.trim()?current:p.priceUSD===null?'':String(p.priceUSD));
   if(category==='Other'){setCategory(p.category);if(p.category==='Food & nutrition')setCarry('consumable');}
-  setURL(p.sourceURL);setPreview(null);
+  setURL(p.sourceURL);setPreview(null);setImportError('');retryVariant.current='';
   if(p.imported?.facts){const source=p.imported.facts;setFacts(current=>({...current,manufacturer:current.manufacturer||source.manufacturer,seller:current.seller||source.seller,parentCompany:current.parentCompany||source.parentCompany,weightBasis:current.weightBasis==='unknown'?source.weightBasis:current.weightBasis,servingSize:current.servingSize||source.servingSize,packSize:current.packSize||source.packSize,servingBasis:current.servingBasis||source.servingBasis,nutrition:current.nutrition.length?current.nutrition:source.nutrition,ingredients:current.ingredients||source.ingredients,allergens:current.allergens||source.allergens}));setServings(current=>current||String(source.servingCount??''));}
   setMessage('Product details filled into blank fields. Review and edit below, then Save gear. Your entered values were kept.');
  }
@@ -72,19 +73,23 @@ export default function GearEditor(){
   <Label>{loadoutId?'LOADOUT EQUIPMENT':tripId?'TRIP EQUIPMENT':'OWNED EQUIPMENT'}</Label>
   <Card><Label>IMPORT FROM A PRODUCT LINK</Label><Text style={s.body}>Paste a public product page from a brand or retailer to find its available details. Review the result before applying or sharing. Missing values stay blank. Blocked sites can be kept as a private link.</Text>
    <Field label="Product page link" value={url} onChangeText={changeURL} placeholder="https://www.mysteryranch.com/pop-up-30-pack" autoCapitalize="none" autoCorrect={false} keyboardType="url" maxLength={2048}/>
-   <Button secondary title={busy?'Checking product page...':'Import product details'} onPress={()=>void lookup()} disabled={busy||!url.trim()}/>
+   <Button secondary title={busy?'Checking product page...':importError?'Try product link again':preview?'Product details ready':'Import product details'} onPress={()=>void lookup(importError?retryVariant.current:'')} disabled={busy||(!importError&&!!preview)||!url.trim()}/>
+   {busy?<Text accessibilityRole="alert" style={s.small}>Checking this product page. Keep this screen open while it finishes.</Text>:null}
+   <ErrorText message={importError}/>
+   {importError&&preview?<Text style={s.small}>The previous variant remains in review. Its details were kept.</Text>:null}
    {!account.user?<Button secondary title="Sign in to import product details" onPress={()=>router.push('/account')}/>:null}
-   {preview?<><Text style={s.h2}>Review product details</Text><ProductPhoto product={preview} height={200}/>
-    <Text selectable style={s.body}>Name: {preview.name}{'\n'}Brand: {preview.brand||'Not provided'}{'\n'}Model: {preview.model||'Not provided'}{'\n'}SKU: {preview.imported?.sku||'Not provided'}{'\n'}Category from page: {preview.imported?.sourceCategory||'Not provided — choose below'}{'\n'}Price: {importedPrice(preview)}{'\n'}Weight: {preview.weightLabel||'Not provided'}</Text>
+   {preview?<><Text style={s.h2}>Review product details</Text>{hasUnselectedVariant(preview)&&!preview.photo?<Text style={s.body}>Choose a variant to check its product photo.</Text>:<ProductPhoto product={preview} height={200}/>}
+    <Text selectable style={s.body}>Name: {preview.name}{'\n'}Brand: {preview.brand||'Not provided'}{'\n'}Model: {preview.model||'Not provided'}{'\n'}SKU: {preview.imported?.sku||(hasUnselectedVariant(preview)?'Choose a variant to check':'Not provided')}{'\n'}Category from page: {preview.imported?.sourceCategory||'Not provided - choose below'}{'\n'}Price: {hasUnselectedVariant(preview)&&preview.imported?.price===null?'Choose a variant to check':importedPrice(preview)}{'\n'}Weight: {hasUnselectedVariant(preview)&&preview.weightGrams===null?'Choose a variant to check':preview.weightLabel||'Not provided'}</Text>
     <Text selectable style={s.small}>{preview.imported?.attribution||preview.note}{'\n'}Source: {preview.sourceURL}</Text>
     {preview.imported?.facts?<ProductFactsView facts={preview.imported.facts}/>:null}
-    {preview.imported?.missing.length?<Text style={s.small}>Not provided: {preview.imported.missing.join(', ')}. Enter these only if you know them.</Text>:null}
+    {hasUnselectedVariant(preview)?<Text style={s.body}>Choose your exact variant to check its photo, SKU, price, currency and weight. These can differ between configurations. Your private fields stay unchanged until you apply the details.</Text>:preview.imported?.missing.length?<Text style={s.small}>Not provided for this variant: {preview.imported.missing.join(', ')}. Enter these only if you know them.</Text>:null}
     {preview.imported?.currency&&preview.imported.currency!=='USD'?<Text style={s.small}>The source price is retained in {preview.imported.currency}. Enter your price in USD below; no currency conversion is assumed.</Text>:null}
-    {preview.imported?.variants.length?<><Text style={s.h2}>Choose your exact variant</Text>{preview.imported.variants.map(v=><Button key={v.key} secondary title={(preview.imported?.selectedVariant===v.key?'Selected: ':'Choose: ')+v.label} disabled={busy} onPress={()=>void lookup(v.key)}/>)}</>:null}
+    {preview.imported?.variants.length?<><Text style={s.h2}>Choose your exact variant</Text>{preview.imported.variants.map(v=><Button key={v.key} secondary title={(preview.imported?.selectedVariant===v.key?'Selected: ':'Choose: ')+v.label} disabled={busy||preview.imported?.selectedVariant===v.key} onPress={()=>void lookup(v.key)}/>)}</>:null}
     <Text style={s.small}>Applying fills blank fields and keeps values you have entered. Confirm size, color and accessories; the page weight may be rounded. Edit private gear details below before saving.</Text>
     <Button secondary title="Open product page" onPress={()=>void Linking.openURL(preview.sourceURL).catch(()=>setError('Could not open the product page.'))}/>
     <Button title="Apply details to my private gear" onPress={()=>applyProduct(preview)} disabled={busy||hasUnselectedVariant(preview)}/>
     <Button secondary title="Share source product details with everyone" onPress={()=>void share()} disabled={busy||hasUnselectedVariant(preview)}/>
+    {busy||hasUnselectedVariant(preview)?<Text style={s.small}>{busy?'Public sharing is disabled while the product lookup is running.':'Public sharing is disabled until you choose your exact variant.'}</Text>:null}
     <Button secondary title="Discard import preview" onPress={()=>{invalidate();setError('');}} disabled={busy}/>
    </>:null}
    {message?<Text accessibilityRole="alert" style={s.body}>{message}</Text>:null}

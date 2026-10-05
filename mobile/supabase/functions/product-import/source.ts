@@ -55,10 +55,37 @@ const numeric=(v:unknown):number|null=>{
 };
 const units:Record<string,{unit:string;factor:number}>={g:{unit:'g',factor:1},grm:{unit:'g',factor:1},gram:{unit:'g',factor:1},grams:{unit:'g',factor:1},kg:{unit:'kg',factor:1000},kgm:{unit:'kg',factor:1000},kilogram:{unit:'kg',factor:1000},kilograms:{unit:'kg',factor:1000},lb:{unit:'lb',factor:453.59237},lbs:{unit:'lb',factor:453.59237},lbr:{unit:'lb',factor:453.59237},pound:{unit:'lb',factor:453.59237},pounds:{unit:'lb',factor:453.59237},oz:{unit:'oz',factor:28.349523125},onz:{unit:'oz',factor:28.349523125},ounce:{unit:'oz',factor:28.349523125},ounces:{unit:'oz',factor:28.349523125}};
 function weight(value:any):{value:number|null;unit:string;grams:number|null} {
+ // Preserve a source-stated compound mass as its exact equivalent in ounces.
+ const compound=typeof value==='string'?/^(\d+(?:\.\d+)?)\s*(?:lb|lbs|pound|pounds)\s+(\d+(?:\.\d+)?)\s*(?:oz|ounce|ounces)$/i.exec(clean(value)):null;
+ if(compound){const pounds=numeric(compound[1]),ounces=numeric(compound[2]);if(pounds!==null&&ounces!==null&&ounces<16){const total=pounds*16+ounces,grams=total*units.oz.factor;if(grams<=1000000)return {value:total,unit:'oz',grams:Math.round(grams*1000)/1000};}return {value:null,unit:'',grams:null};}
  const match=typeof value==='string'?/^(\d+(?:\.\d+)?)\s*([a-z]+)$/i.exec(clean(value)):null;
  const n=numeric(match?.[1]??value?.value),u=units[clean(match?.[2]??value?.unitCode??value?.unitText).toLowerCase()];
  if(n===null||!u||n*u.factor>1000000)return {value:null,unit:'',grams:null};
  return {value:n,unit:u.unit,grams:Math.round(n*u.factor*1000)/1000};
+}
+// Eberlestock labels the current product's mass in its specs-text block. Require
+// that exact label/markup and agreement across repeated specs; ignore page scripts.
+function eberlestockSpecWeight(html:string):string {
+ const data=html.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<!--[\s\S]*?-->/gi,'');
+ const values:string[]=[];
+ for(const match of data.matchAll(/<div\b[^>]*class=["'][^"']*\bspecs-text\b[^"']*["'][^>]*>([\s\S]{0,1500}?)<\/div>/gi)){
+  if(!/<strong\b[^>]*>\s*Weight:?\s*<\/strong>/i.test(match[1]))continue;
+  values.push(clean(/<span\b[^>]*class=["'][^"']*\bspecs-detail\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i.exec(match[1])?.[1]));
+ }
+ if(!values.length)return '';
+ const parsed=values.map(weight);return parsed[0].grams!==null&&parsed.every(w=>w.grams===parsed[0].grams)?values[0]:'';
+}
+// Gun Bearers states a product mass only in the Kifaru Left/Right description.
+// Scope to that product/configuration and section; never reuse it for Universal,
+// shipping metadata, other products, or an unresolved variant.
+function kifaruGunBearerWeight(root:any,variant:any,source:URL):string {
+ if(host(source)!=='kifaru.net'||source.pathname.replace(/\/$/,'')!=='/products/gun-bearers'||clean(root?.name).toLowerCase()!=='gun bearers'||!/^Gun Bearers\s*-\s*Kifaru\s*\/\s*(?:Left|Right)$/i.test(clean(variant?.name)))return '';
+ const description=clean(root?.description,16000),start=/\bThe Kifaru GunBearers\b/i.exec(description),end=/\bUniversal GunBearers\b/i.exec(description);
+ if(!start||!end||end.index<=start.index)return '';
+ const block=description.slice(start.index+start[0].length,end.index);
+ const values=[...block.matchAll(/(?:^|[-\u2013\u2014]\s*)Weight:\s*([^\u2013\u2014]+?)(?=\s*(?:[-\u2013\u2014]|$))/gi)].map(m=>m[1].trim());
+ if(!values.length)return '';
+ const parsed=values.map(weight);return parsed[0].grams!==null&&parsed.every(w=>w.grams===parsed[0].grams)?values[0]:'';
 }
 function samePage(value:unknown,source:URL):boolean {try{const u=new URL(String(value),source);return host(u)===host(source)&&u.pathname.replace(/\/collections\/[^/]+\/products\//,'/products/').replace(/\/$/,'')===source.pathname.replace(/\/collections\/[^/]+\/products\//,'/products/').replace(/\/$/,'');}catch{return false;}}
 function sameVariant(value:unknown,source:URL):boolean {
@@ -128,6 +155,10 @@ export function extractProduct(html:string,rawURL:string,variantKey=''):Manufact
  const net=prop(/^net (?:weight|content)$/i),pack=prop(/^(?:pack|package) weight$/i);
  let rawWeight=net||pack||(unresolved?(candidates[0]?._markup?undefined:root?.weight):node?.weight);if(rawWeight)weightBasis=net?'net':pack?'pack':'product';
  if(!rawWeight){const p=prop(/^weight$/i);if(p){rawWeight=p;weightBasis='product';}}
+ if(!rawWeight&&host(source)==='eberlestock.com'){
+  rawWeight=eberlestockSpecWeight(html);if(rawWeight)weightBasis='product';
+ }
+ if(!rawWeight){rawWeight=kifaruGunBearerWeight(root,variant,source);if(rawWeight)weightBasis='product';}
  // Mystery Ranch weight is a labeled product spec, separate from its load capacity.
  if(!rawWeight&&host(source)==='mysteryranch.com'){
   const block=/<h5\b[^>]*>\s*Weight\s*<\/h5>([\s\S]{0,1000}?)(?=<h5|<\/section|$)/i.exec(html)?.[1]||'';
